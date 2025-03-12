@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --col01: black;
+  --col02: white;
+  --col03: red;
+  --col04: blue;
+  --border: single 1rem var(--col02);
+}
