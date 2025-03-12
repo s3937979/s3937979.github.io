@@ -10,15 +10,48 @@
   --col02: white;
   --col03: red;
   --col04: blue;
-  --border: single 1rem var(--col02);
+  --border: single 1rem var(--col03);
 }
 
 body {
   font-family: "Work Sans", sans-serif;
-  font-weight: lighter;
+  font-weight: 500;
   background-color: var(--col02);
-  color: var(--col03);
+  color: var(--col01);
   line-height: 1.6;
+  text-align: center;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
 }
