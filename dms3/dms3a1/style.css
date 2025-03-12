@@ -15,8 +15,9 @@
 
 body {
   font-family: "Work Sans", sans-serif;
+  font-weight: lighter;
   background-color: var(--col02);
-  color: var(--col01);
+  color: var(--col03);
   line-height: 1.6;
   margin: 0;
   padding: 0;
