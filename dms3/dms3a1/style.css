@@ -12,3 +12,12 @@
   --col04: blue;
   --border: single 1rem var(--col02);
 }
+
+body {
+  font-family: "Work Sans", sans-serif;
+  background-color: var(--col02);
+  color: var(--col01);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
