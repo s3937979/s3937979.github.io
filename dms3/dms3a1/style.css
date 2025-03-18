@@ -5,6 +5,15 @@
   margin: 0;
 }
 
+.hero-section {
+  width: 1200px;
+  height: 9900px;
+  background-image: url("back.png");
+  background-size: cover;
+  background-position: calc(100% + 1100px) right center;
+  background-repeat: no-repeat;
+}
+
 :root {
   --col01: black;
   --col02: white;
