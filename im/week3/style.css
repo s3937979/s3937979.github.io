@@ -1,0 +1,77 @@
+* {
+  /* color: hotpink; */
+  font-weight: bold;
+}
+.purple-color {
+  color: purple;
+}
+
+h1 {
+  color: lime;
+}
+
+h3 {
+  color: crimson;
+}
+
+body {
+  background-color: pink;
+  font-size: 1.2rem;
+  font-family: "Barriecito", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.blue-color {
+  color: blue;
+}
+
+#pink-color {
+  color: rgb(171, 55, 74);
+}
+
+h1 {
+  color: red;
+  font-size: 4rem;
+  /* text-align: center;
+  text-transform: uppercase; */
+  font-family: "Big Shoulders Stencil", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+. h3 {
+  color: violet;
+  font-size: 1.6rem;
+}
+
+section {
+  text-align: center;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.heading-border {
+  border: 2px dashed white;
+}
+
+/* h1 {
+  color: red;
+}
+h2 {
+  color: green;
+}
+
+p {
+  color: blue;
+  font-weight: bold;
+}
+
+li {
+  color: brown;
+}
+
+h3 {
+  color: violet;
+} */
