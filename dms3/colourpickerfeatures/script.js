@@ -34,3 +34,32 @@ function pickingColour(e) {
   //   console.log(e.target.value);
   setSquareColour(e.target.value);
 }
+
+function numberToHex(number) {
+  let colString = "hsl(" + number + ", 100%, 50%)";
+  return "hsl(30, 100%, 50%)";
+}
+
+console.log(numberToHex(80));
+console.log(numberToHex(120));
+console.log(numberToHex(350));
+
+let parameter =
+  "You may notice how the brightness of the latter gradients is more even across the spectrum of hues than the sRGB gradient. Select the checkbox in the example above to convert the hue gradient to greyscale to make this more apparent.";
+
+console.log(para.length);
+console.log(numberToHex(parameter.length));
+
+let datepicker = document.getElementById("date-picker");
+
+datepicker.addEventListener("change", (e) => {
+  let chosenDate = new Date(e.target.value);
+  let UTC = datepicker.UTC(
+    chosenDate.getUTCFullYear(),
+    chosenDate.getUTCMonth(),
+    chosenDate.getUTCDate()
+  );
+  let newColour = numberToHex(UTC % 360);
+  setSquareColour(newColour);
+  console.log(newColour);
+});

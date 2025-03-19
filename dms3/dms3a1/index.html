@@ -16,6 +16,50 @@
 
     <h2>research questions</h2>
 
+    <img src="토마토1.png" alt="menu" class="thumbnail" onclick="openLightbox('Screenshot_1.png')">
+
+
+   <div id="lightbox" class="lightbox">
+   <span class="close" onclick="closeLightbox()">&times;</span>
+   <img id="lightbox-img" class="lightbox-img">
+   </div>
+
+   <style>
+    .modal{
+        position:absolute;
+        display:none;
+        
+        justify-content: center;
+        top:0;
+        left:0;
+
+        width:100%;
+        height:100%;
+
+        
+
+        background-color: rgba(0,0,0,0.4);
+    }
+</style>
+</head>
+<body>
+<div class="modal">
+    <div class="modal_body">
+        <h2>Sand</h2>
+        <p>Adding sand</p>
+    </div>
+</div>
+<button class="btn-open-modal">Modal열기</button>
+<script>
+    const modal = document.querySelector('.modal');
+    const btnOpenModal=document.querySelector('.btn-open-modal');
+
+    btnOpenModal.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    });
+</script>
+</body>
+
     <h3>1. What genre of creative software do you believe it belongs to?</h3>
 
     <p>It belongs to the sandbox simulation game.</p>
@@ -92,6 +136,11 @@
       The freedom to experiment and observe how the ecosystem evolves over time
       is interesting and novel.
     </p>
+
+    <video controls width="800">
+      <source src="your-video.mp4" type="video/mp4">
+      <source src="your-video.webm" type="video/webm">
+    </video>
   </body>
 </html>
 </div>
