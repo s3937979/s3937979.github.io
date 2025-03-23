@@ -1,0 +1,165 @@
+/* 기본 설정: 마진 제거, 높이 설정 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+/* 전체 화면을 감싸는 스크롤 가능한 컨테이너 */
+.scroll-wrapper {
+  height: 100vh;
+  overflow-y: scroll; /* 수직 스크롤 */
+  scroll-snap-type: y mandatory; /* 스냅 작동 설정 */
+  -webkit-scroll-snap-type: y mandatory; /* Safari 대응 */
+  scroll-behavior: smooth; /* 부드러운 스크롤 */
+}
+
+/* 각 섹션: 한 화면을 꽉 채움 + 스냅 포인트 설정 */
+.screen {
+  height: 100vh; /* 1 화면 = 100% */
+  scroll-snap-align: start; /* 섹션의 시작점을 맞춤 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: black;
+}
+
+/* 배경 색상 예시 (각 섹션마다 다르게) */
+
+body {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  background-color: var(--col02);
+  color: var(--col01);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--col01);
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-text {
+  color: black;
+  padding: 0 20px;
+}
+
+.main-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  color: black; /* 약간 연하게 */
+}
+
+.second {
+  background-image: url("images/background.png"); /* 배경 이미지 경로 */
+  background-size: 1080px; /* 화면을 꽉 채움 */
+  background-position: 60% center; /* 중앙 정렬 */
+  background-repeat: no-repeat; /* 반복 없음 */
+}
+
+.book-stack {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
+}
+
+.book {
+  position: absolute;
+  width: 500px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+/* 모달 기본 설정 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* 클릭했을 때 나타나게 */
+.modal:target {
+  display: flex;
+}
+
+/* 모달 내용 박스 */
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #333;
+}

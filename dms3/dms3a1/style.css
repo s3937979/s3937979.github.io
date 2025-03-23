@@ -5,21 +5,42 @@
   margin: 0;
 }
 
-.hero-section {
-  width: 1200px;
-  height: 9900px;
-  background-image: url("background.jpg");
-  background-size: cover;
-  background-position: calc(100% + 1100px) right center;
-  background-repeat: no-repeat;
-}
-
 :root {
   --col01: black;
   --col02: white;
   --col03: red;
   --col04: blue;
   --border: single 1rem var(--col03);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+.scroll-wrapper {
+  height: 1080px;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* y축 스크롤 + 스냅 강제 */
+}
+
+.screen {
+  height: 1080px; /* 화면 한 장 */
+  scroll-snap-align: start; /* 각 섹션이 시작점에 붙음 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
 }
 
 body {
@@ -63,29 +84,4 @@ h3 {
   color: var(--col01);
   text-align: center;
   margin: 1rem 0;
-}
-
-.image-container {
-  position: relative;
-  display: inline-block;
-}
-
-.main-image {
-  width: 500px;
-  height: auto;
-}
-
-.image-container:hover::after {
-  content: "Question 1";
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin-left: 10px;
-  width: 150px;
-  height: auto;
-  background-image: url("image.jpg");
-  background-size: cover;
-  border: 2px solid #ddd;
-  padding: 5px;
-  background-color: white;
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scroll Snap 테스트</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      .scroll-wrapper {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        -webkit-scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+
+      .screen {
+        height: 100vh;
+        scroll-snap-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-wrapper">
+      <section class="screen first hero">
+        <div class="hero-content">
+          <h1 class="main-title">Design Problem Response</h1>
+          <p class="subtitle">s3937979 Yeonwoo Hong</p>
+          <h2>research questions</h2>
+        </div>
+      </section>
+      <section class="screen second hero">
+        <div class="hero-content"></div>
+        <!-- 책 이미지들을 감싸는 컨테이너 -->
+        <div class="book-stack">
+          <!-- 책 1~9 -->
+          <a href="#modal1"
+            ><img src="images/book1.png" alt="책 1" class="book"
+          /></a>
+          <a href="#modal2"
+            ><img src="images/book2.png" alt="책 2" class="book"
+          /></a>
+          <a href="#modal3"
+            ><img src="images/book3.png" alt="책 3" class="book"
+          /></a>
+          <a href="#modal4"
+            ><img src="images/book4.png" alt="책 4" class="book"
+          /></a>
+          <a href="#modal5"
+            ><img src="images/book5.png" alt="책 5" class="book"
+          /></a>
+          <a href="#modal6"
+            ><img src="images/book6.png" alt="책 6" class="book"
+          /></a>
+          <a href="#modal7"
+            ><img src="images/book7.png" alt="책 7" class="book"
+          /></a>
+          <a href="#modal8"
+            ><img src="images/book8.png" alt="책 8" class="book"
+          /></a>
+          <a href="#modal9"
+            ><img src="images/book9.png" alt="책 9" class="book"
+          /></a>
+        </div>
+
+        <!-- 모달창들 1~9 -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 1의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal2" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 2의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal3" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 3의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal4" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 4의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal5" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 5의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal6" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 6의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal7" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 7의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal8" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 8의 내용입니다.</p>
+          </div>
+        </div>
+        <div id="modal9" class="modal">
+          <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <p>책 9의 내용입니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen third">세 번째 화면</section>
+    </div>
+  </body>
+</html>
