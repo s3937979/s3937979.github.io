@@ -49,11 +49,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   color: var(--col01);
-  text-align: center;
-  margin: 1rem 0;
+  text-align: left;
+  margin: 1.8rem 0;
 }
 
 h4 {
@@ -69,6 +69,14 @@ h3 {
   font-weight: 700;
   color: var(--col01);
   text-align: center;
+  margin: 1rem 0;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--col01);
+  text-align: left;
   margin: 1rem 0;
 }
 
@@ -99,9 +107,9 @@ h3 {
 }
 
 .second {
-  background-size: contain; /* 화면을 꽉 채움 */
-  background-position: 60% center; /* 중앙 정렬 */
-  background-repeat: no-repeat; /* 반복 없음 */
+  background-size: contain;
+  background-position: 60% center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
@@ -113,10 +121,9 @@ h3 {
 }
 
 .background-image {
-  width: 90%;
+  width: 100%;
   height: auto;
   display: block;
-  margin-left: auto;
 }
 
 .hotspot {
@@ -126,63 +133,11 @@ h3 {
   cursor: pointer;
 }
 
-.hotspot:hover {
-  outline: 2px dashed red; /* 디버깅용 */
-}
-
 .screen.second .book1 {
-  top: 12.5%;
-  left: 65%;
-  width: 6%;
-  height: 4%;
-}
-.screen.second .book2 {
-  top: 17.1%;
-  left: 65.2%;
-  width: 6%;
-  height: 4%;
-}
-.screen.second .book3 {
-  top: 21.6%;
-  left: 65.3%;
-  width: 6%;
-  height: 4%;
-}
-.screen.second .book4 {
-  top: 26.2%;
-  left: 65%;
-  width: 6.3%;
-  height: 4%;
-}
-.screen.second .book5 {
-  top: 30.6%;
-  left: 65%;
-  width: 6.3%;
-  height: 4%;
-}
-.screen.second .book6 {
-  top: 35.2%;
-  left: 65%;
-  width: 6.3%;
-  height: 4%;
-}
-.screen.second .book7 {
-  top: 39.7%;
-  left: 64.8%;
-  width: 6.5%;
-  height: 4%;
-}
-.screen.second .book8 {
-  top: 90%;
-  left: 59;
-  width: 6.5%;
-  height: 4%;
-}
-.screen.second .book9 {
-  top: 90%;
-  left: 59%;
-  width: 7%;
-  height: 4.5%;
+  top: 55%;
+  left: 70%;
+  width: 10%;
+  height: 10%;
 }
 
 .modal {
@@ -193,9 +148,9 @@ h3 {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
   justify-content: center;
   align-items: center;
-  z-index: 999;
 }
 
 .modal:target {
@@ -203,20 +158,63 @@ h3 {
 }
 
 .modal-content {
-  background: white;
-  padding: 2rem;
+  position: relative;
+  background: url("images/recipe.png") no-repeat center center;
+  background-size: cover;
+  padding: 2rem 3rem;
   border-radius: 10px;
   width: 80%;
-  max-width: 400px;
+  height: 300px;
+  max-width: 80%;
   text-align: center;
-  position: relative;
+  font-size: clamp(3px, 2vw, 18px);
 }
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 1.5rem;
+  right: 4rem;
   font-size: 2rem;
   text-decoration: none;
   color: #333;
+  cursor: pointer;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.slide {
+  display: block;
+  text-align: left;
+  margin-top: 3rem;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  display: inline-block;
+  margin: 8rem 0.5rem 0;
+  padding: 0.6rem 1.2rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #59c4eb;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.prev-btn {
+  left: 5rem;
+}
+
+.next-btn {
+  right: 5rem;
+}
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #205fa1;
 }
