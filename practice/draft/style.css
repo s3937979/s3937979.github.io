@@ -121,6 +121,8 @@ p {
 }
 
 .background-image {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   display: block;
@@ -129,8 +131,9 @@ p {
 .hotspot {
   position: absolute;
   display: block;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: black(0, 0, 0, 0);
   cursor: pointer;
+  z-index: 10;
 }
 
 .screen.second .book1 {
@@ -151,6 +154,15 @@ p {
   z-index: 999;
   justify-content: center;
   align-items: center;
+  overflow: visible;
+}
+
+.modal-image {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  display: block;
 }
 
 .modal:target {
@@ -158,16 +170,23 @@ p {
 }
 
 .modal-content {
+  width: 90vw;
+  height: 90vh;
+  background: url("images/book.png") no-repeat center center;
+  background-size: contain;
   position: relative;
-  background: url("images/recipe.png") no-repeat center center;
-  background-size: cover;
-  padding: 2rem 3rem;
-  border-radius: 10px;
-  width: 80%;
-  height: 300px;
-  max-width: 80%;
-  text-align: center;
-  font-size: clamp(3px, 2vw, 18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 76%;
+  text-align: left;
+  color: black;
+  z-index: 1;
 }
 
 .close-btn {
@@ -181,16 +200,10 @@ p {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
-.slide {
-  display: block;
-  text-align: left;
-  margin-top: 3rem;
-}
-
 .prev-btn,
 .next-btn {
   position: absolute;
-  top: 45%;
+  top: 48%;
   transform: translateY(-50%);
   display: inline-block;
   margin: 8rem 0.5rem 0;
@@ -212,7 +225,8 @@ p {
 }
 
 .next-btn {
-  right: 5rem;
+  margin-top: 2rem;
+  float: right;
 }
 .prev-btn:hover,
 .next-btn:hover {
