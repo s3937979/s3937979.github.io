@@ -5,40 +5,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>s3937979-YeonwooHong-A1</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Margarine&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <!-- 물고기 1 -->
+    <div class="fish-wrapper fish1">
+      <img src="images/fish1.png" alt="물고기1" class="fish fish-a" />
+    </div>
+
+    <!-- 물고기 2 -->
+    <div class="fish-wrapper fish2">
+      <img src="images/fish2.png" alt="fish2" class="fish fish-b" />
+    </div>
     <div class="hero-section">
       <img
         src="images/tomato.png"
         class="center-image float"
         alt="tomato image"
       />
-      <a href="#modal" class="invisible-button"></a>
-
-      <a href="#modal2" class="invisible-button button2"></a>
     </div>
 
+    <a href="#modal1" class="invisible-button button1"></a>
     <div id="modal1" class="modal">
       <div class="modal-content">
         <a href="#" class="close-btn">×</a>
-
         <img
           src="images/recipe.png"
-          alt="modal backgound"
+          alt="modal background"
           class="modal-image"
         />
-
+        <a href="#modal2" class="next-btn">→</a>
         <div class="modal-text">
-          <h2>질문 1</h2>
-          <p>이건 첫 번째 책에 대한 설명입니다. 내용을 여기에 적어줘!</p>
+          <h2>
+            1. What genre of creative software <br />do you believe it belongs
+            to?
+          </h2>
+          <p>- lt belongs to the sandbox simulation game.</p>
         </div>
       </div>
     </div>
 
+    <!-- 모달 2 -->
     <div id="modal2" class="modal">
       <div class="modal-content">
         <a href="#" class="close-btn">×</a>
-        <p>이건 두 번째 버튼의 모달입니다.</p>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal1" class="prev-btn">←</a>
+        <a href="#modal3" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>2. List three other examples of software <br />in this genre</h2>
+          <p>- Minecraft / Animal Crossing / Stardew Valley</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 3 -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        /><a href="#modal2" class="prev-btn">←</a>
+        <a href="#modal4" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>
+            3. List the program's interactive features/mechanics <br />
+            <p>(one sentence max explanation per feature/mechanic)</p>
+          </h2>
+          <p>
+            - Users can add elements like water, sand, fish, and bacteria to
+            <br />create user’s own ecosystem. <br />
+            - Environmental conditions and interactions follow real-world
+            <br />physics and biological processes. <br />
+            - The system evolves over time with organisms growing, dying, and
+            reproducing based on resource availability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 4 -->
+    <div id="modal4" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal3" class="prev-btn">←</a>
+        <a href="#modal5" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>
+            4. What features/mechanics indicate <br />its genre by aligning with
+            its conventions?
+          </h2>
+          <p>
+            - lt allows open-ended experimentation with complex, real-time
+            interactions between elements, without strict goals or rules.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 5 -->
+    <div id="modal5" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal4" class="prev-btn">←</a>
+        <a href="#modal6" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>5. What features/mechanics are novel <br />for its genre?</h2>
+          <p>
+            - The ecosystem's self-sustaining cycle, real-time manipulation of
+            biological processes, and dynamic evolution based on resource
+            <br />availability are unique features not commonly found in similar
+            <br />simulation games.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 6 -->
+    <div id="modal6" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal5" class="prev-btn">←</a>
+        <a href="#modal7" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>
+            6. What features/mechanics common <br />to its genre are missing or
+            might be <br />added?
+          </h2>
+          <p>
+            - Environmental disasters and a data visualization tool for
+            <br />tracking population and resources could add dynamic challenges
+            <br />and educational value.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 7 -->
+    <div id="modal7" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal6" class="prev-btn">←</a>
+        <a href="#modal8" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>
+            7. What context, community or niche <br />is it primarily aimed at
+            and what indicates this?
+          </h2>
+          <p>
+            - lt targets science enthusiasts and simulation lovers, focusing on
+            ecological processes and experimentation, with no predefined goals,
+            appealing to those who enjoy exploration and learning.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 8 -->
+    <div id="modal8" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal7" class="prev-btn">←</a>
+        <a href="#modal9" class="next-btn">→</a>
+        <div class="modal-text">
+          <h2>
+            8. What did you find annoying and/or <br />boring about interacting
+            with it?
+          </h2>
+          <p>
+            - The lack of detailed solutions for ecosystem scenarios makes
+            <br />it hard to understand and engage with the system's challenges.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달 9 -->
+    <div id="modal9" class="modal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">×</a>
+        <img
+          src="images/recipe.png"
+          alt="modal background"
+          class="modal-image"
+        />
+        <a href="#modal8" class="prev-btn">←</a>
+        <div class="modal-text">
+          <h2>9. What did you find enjoyable about interacting with it?</h2>
+          <p>
+            - The freedom to experiment and observe how the ecosystem
+            <br />evolves over time is interesting and novel.
+          </p>
+        </div>
+      </div>
+    </div>
+    <a href="#videoModal" class="invisible-button button2"></a>
+
+    <!-- 비디오 모달창 -->
+    <div id="videoModal" class="modal">
+      <div class="modal-content video-modal">
+        <!-- 닫힘 버튼 (이것만 있으면 됨!) -->
+        <a href="#" class="close-btn video-close">×</a>
+
+        <!-- 비디오 삽입 -->
+        <video controls class="modal-video">
+          <source src="video/video.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   </body>

@@ -26,7 +26,7 @@ body {
 
 .center-image {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   width: 100vw;
   height: auto;
@@ -41,7 +41,7 @@ body {
   }
   50% {
     transform: translate(-50%, -55%);
-  } /* 살짝 위로 */
+  }
   100% {
     transform: translate(-50%, -50%);
   }
@@ -51,14 +51,13 @@ body {
   animation: float 5s ease-in-out infinite;
 }
 
-/* 배경 색상 예시 (각 섹션마다 다르게) */
 .invisible-button {
   position: absolute;
   top: 48%;
   left: 35%;
   width: 10vw;
   height: auto;
-  aspect-ratio: 1 / 1; /* 이미지가 정사각형이면 유지, 아니면 조정 */
+  aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
   z-index: 2;
   background-color: transparent;
@@ -70,7 +69,6 @@ body {
   left: 34%;
 }
 
-/* 두 번째 버튼 위치 */
 .button2 {
   top: 48%;
   left: 67%;
@@ -87,6 +85,12 @@ body {
   padding: 0;
 }
 
+.margarine-regular {
+  font-family: "Margarine", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 900;
@@ -96,7 +100,8 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-family: "Margarine", sans-serif;
+  font-size: 40px;
   font-weight: 700;
   color: var(--col01);
   text-align: left;
@@ -120,7 +125,8 @@ h3 {
 }
 
 p {
-  font-size: 15px;
+  font-family: "Margarine", sans-serif;
+  font-size: 25px;
   font-weight: 900;
   color: var(--col01);
   text-align: left;
@@ -147,42 +153,118 @@ p {
 .modal-content {
   display: flex;
   justify-content: center;
-
   position: relative;
-  align-items: center;     /* 세로 중앙 (필요한 경우) */
+  align-items: center;
   width: 95vw;
-  height: auto; /* 또는 필요에 따라 100vh */
-  position: relative;
-}
+  height: auto;
+  margin: auto;
 }
 
 .modal-image {
   width: 100%;
   height: auto;
-  max-width: 1080px; /* ← 이 값을 키우면 이미지가 커져! */
+  max-width: 1080px;
   display: block;
   margin: 0;
 }
 
-/* 내용이 올라가는 위치 */
-.modal-text {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  width: 80%;
-  color: #333;
-  z-index: 2;
-  text-align: left;
+.slide-wrapper {
+  display: none;
 }
 
-/* 닫기 버튼 */
-.close-btn {
+/* 활성화된 슬라이드만 표시 */
+#modal1-slide1:target,
+#modal1-slide2:target,
+#modal1-slide3:target,
+#modal1-slide4:target,
+#modal1-slide5:target,
+#modal1-slide6:target,
+#modal1-slide7:target,
+#modal1-slide8:target,
+#modal1-slide9:target {
+  display: block;
+}
+
+.modal-text {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: rem;
-  color: #333;
+  top: 45%;
+  left: 54%;
+  width: 60%;
+  transform: translate(-50%, -50%);
+  margin: 2rem auto 0;
+  color: black;
+  z-index: 2;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.prev-btn,
+.next-btn {
+  font-family: "Margarine", sans-serif;
+  position: absolute;
+  top: clamp(30%, 50%, 60%);
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #ea7cb8;
+  color: black;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   text-decoration: none;
-  z-index: 3;
+  font-weight: 800;
+  transition: background-color 0.3s ease;
   cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-btn {
+  left: 5%;
+}
+
+.next-btn {
+  right: 5%;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #0056b3;
+}
+
+.close-btn {
+  font-family: "Margarine", sans-serif;
+  position: absolute;
+  top: 18%;
+  right: 20%;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 90%;
+  background-color: #ff97d5;
+  color: black;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  display: none;
+}
+
+.slide:target {
+  display: block;
+  color: black;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* 변경: 기본 슬라이드 활성화 대상 이름 수정 */
+.modal:not(:has(.slide:target)) #modal1-slide1 {
+  display: block;
 }
