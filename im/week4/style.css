@@ -33,3 +33,9 @@ span {
   color: blue;
   /* display: block; */
 }
+
+ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}

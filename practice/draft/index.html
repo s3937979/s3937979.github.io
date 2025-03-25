@@ -2,171 +2,43 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>s3937979-YeonwooHong-A1</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="scroll-wrapper">
-      <section class="screen first">
-        <div class="hero-content">
-          <h1 class="main-title">Design Problem Response</h1>
-          <p class="subtitle">s3937979 Yeonwoo Hong</p>
-          <h2>research questions</h2>
-        </div>
-      </section>
+    <div class="hero-section">
+      <img
+        src="images/tomato.png"
+        class="center-image float"
+        alt="tomato image"
+      />
+      <a href="#modal" class="invisible-button"></a>
 
-      <section class="screen second">
-        <div class="image-wrapper">
-          <img
-            src="images/background.png"
-            class="background-image"
-            alt="this is the background image."
-          />
-
-          <!-- 투명 버튼 하나 (예시용) -->
-          <a href="#modal" class="hotspot book1"></a>
-        </div>
-      </section>
-
-      <section class="screen third">
-        <h1>세 번째 화면</h1>
-      </section>
+      <a href="#modal2" class="invisible-button button2"></a>
     </div>
 
-    <!-- 모든 모달은 scroll-wrapper 밖에 둬야 전체 화면 덮음 -->
-    <div id="modal" class="modal">
+    <div id="modal1" class="modal">
       <div class="modal-content">
         <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>
-            1. What genre of creative software do you believe it belongs to?
-          </h2>
-          <p>- It belongs to the sandbox simulation game.</p>
-          <a href="#modal:slide2" class="next-btn">Next</a>
+
+        <img
+          src="images/recipe.png"
+          alt="modal backgound"
+          class="modal-image"
+        />
+
+        <div class="modal-text">
+          <h2>질문 1</h2>
+          <p>이건 첫 번째 책에 대한 설명입니다. 내용을 여기에 적어줘!</p>
         </div>
       </div>
     </div>
 
-    <div id="modal:slide2" class="modal">
+    <div id="modal2" class="modal">
       <div class="modal-content">
         <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>2. List three other examples of software in this genre</h2>
-          <p>- Sandspiel / Ecosystem / The Powder Toy</p>
-          <a href="#modal" class="prev-btn">Previous</a>
-          <a href="#modal:slide3" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide3" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>3. List the program's interactive features/mechanics</h2>
-          <p>
-            - Users can add elements like water, sand, fish, and bacteria to
-            create their own ecosystem.<br />
-            - Environmental conditions and interactions follow real-world
-            physics and biological processes.<br />
-            - The system evolves over time with organisms growing, dying, and
-            reproducing based on resource availability.
-          </p>
-          <a href="#modal:slide2" class="prev-btn">Previous</a>
-          <a href="#modal:slide4" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide4" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>4. What features/mechanics indicate its genre?</h2>
-          <p>
-            - It allows open-ended experimentation with complex, real-time
-            interactions between elements, without strict goals or rules.
-          </p>
-          <a href="#modal:slide3" class="prev-btn">Previous</a>
-          <a href="#modal:slide5" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide5" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>5. What features/mechanics are novel for its genre?</h2>
-          <p>
-            - The ecosystem's self-sustaining cycle, real-time manipulation of
-            biological processes, and dynamic evolution based on resource
-            availability are unique features not commonly found in similar
-            simulation games.
-          </p>
-          <a href="#modal:slide4" class="prev-btn">Previous</a>
-          <a href="#modal:slide6" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide6" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>6. What features/mechanics common to its genre are missing?</h2>
-          <p>
-            - Environmental disasters and a data visualization tool for tracking
-            population and resources could add dynamic challenges and
-            educational value.
-          </p>
-          <a href="#modal:slide5" class="prev-btn">Previous</a>
-          <a href="#modal:slide7" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide7" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>7. What context or community is it aimed at?</h2>
-          <p>
-            - It targets science enthusiasts and simulation lovers, focusing on
-            ecological processes and experimentation, with no predefined goals.
-          </p>
-          <a href="#modal:slide6" class="prev-btn">Previous</a>
-          <a href="#modal:slide8" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide8" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>8. What did you find annoying or boring?</h2>
-          <p>
-            - The lack of detailed solutions for ecosystem scenarios makes it
-            hard to understand and engage with the system's challenges.
-          </p>
-          <a href="#modal:slide7" class="prev-btn">Previous</a>
-          <a href="#modal:slide9" class="next-btn">Next</a>
-        </div>
-      </div>
-    </div>
-
-    <div id="modal:slide9" class="modal">
-      <div class="modal-content">
-        <a href="#" class="close-btn">×</a>
-        <div class="slide">
-          <h2>9. What did you find enjoyable about interacting with it?</h2>
-          <p>
-            - The freedom to experiment and observe how the ecosystem evolves
-            over time is interesting and novel.
-          </p>
-          <a href="#modal:slide8" class="prev-btn">Previous</a>
-        </div>
+        <p>이건 두 번째 버튼의 모달입니다.</p>
       </div>
     </div>
   </body>
