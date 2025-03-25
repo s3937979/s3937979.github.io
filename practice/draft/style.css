@@ -1,11 +1,4 @@
 /* 기본 설정: 마진 제거, 높이 설정 */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: sans-serif;
-}
 
 .hero-section {
   width: 100vw;
@@ -65,12 +58,12 @@ body {
 }
 
 .button1 {
-  top: 47%;
+  top: clamp(57%, 47%, 37%);
   left: 34%;
 }
 
 .button2 {
-  top: 48%;
+  top: clamp(57%, 47%, 37%);
   left: 67%;
 }
 
@@ -101,7 +94,7 @@ h1 {
 
 h2 {
   font-family: "Margarine", sans-serif;
-  font-size: 40px;
+  font-size: clamp(10px, 2vw, 40px);
   font-weight: 700;
   color: var(--col01);
   text-align: left;
@@ -126,7 +119,7 @@ h3 {
 
 p {
   font-family: "Margarine", sans-serif;
-  font-size: 25px;
+  font-size: clamp(10px, 2vw, 25px);
   font-weight: 900;
   color: var(--col01);
   text-align: left;
@@ -155,9 +148,12 @@ p {
   justify-content: center;
   position: relative;
   align-items: center;
-  width: 95vw;
-  height: auto;
+  max-width: 100%;
+  min-width: 10%;
+  width: 100vw;
+  height: 10%;
   margin: auto;
+  font-size: clamp(40px, 2vw, 30px);
 }
 
 .modal-image {
@@ -187,9 +183,10 @@ p {
 
 .modal-text {
   position: absolute;
-  top: 45%;
+  top: clamp(15%, 2vw, 50%);
   left: 54%;
-  width: 60%;
+  width: clamp(80%, 1.25rem, 1%);
+  max-width: 60%;
   transform: translate(-50%, -50%);
   margin: 2rem auto 0;
   color: black;
@@ -219,6 +216,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  size: clamp(10%, 15%, 20%);
 }
 
 .prev-btn {
@@ -237,8 +235,8 @@ p {
 .close-btn {
   font-family: "Margarine", sans-serif;
   position: absolute;
-  top: 18%;
-  right: 20%;
+  top: -12rem;
+  right: 21rem;
   width: 2rem;
   height: 2rem;
   border: none;
@@ -267,4 +265,74 @@ p {
 /* 변경: 기본 슬라이드 활성화 대상 이름 수정 */
 .modal:not(:has(.slide:target)) #modal1-slide1 {
   display: block;
+}
+
+#videoModal.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#videoModal:target {
+  display: flex;
+}
+
+/* 비디오 전용 모달 콘텐츠 */
+.modal-content.video-modal {
+  background: transparent;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 비디오 자체 */
+.modal-video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  outline: none;
+}
+
+.video-open-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: transparent;
+  color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.video-open-btn:hover {
+  background-color: #e65100;
+}
+
+/* 닫힘 버튼 */
+.close-btn.video-close {
+  position: absolute;
+  top: -10rem;
+  right: 1rem;
+  font-size: 3rem;
+  text-decoration: none;
+  color: black;
+  background-color: #ff97d5;
+  border-radius: 50%;
+
+  cursor: pointer;
+  z-index: 1;
 }
