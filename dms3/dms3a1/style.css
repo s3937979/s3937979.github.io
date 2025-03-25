@@ -1,46 +1,70 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+/* 기본 설정: 마진 제거, 높이 설정 */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
+.hero-section {
+  width: 100vw;
+  height: 100vh;
+  background: url("images/background.png"),
+    linear-gradient(
+      to bottom,
+      #abc9ff 0%,
+      #abc9ff 50%,
+      #ffe79e 50%,
+      #ffe79e 100%
+    );
+  background-size: 100vw, contain;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-blend-mode: normal;
 }
 
-:root {
-  --col01: black;
-  --col02: white;
-  --col03: red;
-  --col04: blue;
-  --border: single 1rem var(--col03);
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.center-image {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 100vw;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  animation: float 4s ease-in-out infinite;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  scroll-behavior: smooth;
+@keyframes float {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -55%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
 }
 
-.scroll-wrapper {
-  height: 1080px;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory; /* y축 스크롤 + 스냅 강제 */
+.float {
+  animation: float 5s ease-in-out infinite;
 }
 
-.screen {
-  height: 1080px; /* 화면 한 장 */
-  scroll-snap-align: start; /* 각 섹션이 시작점에 붙음 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
+.invisible-button {
+  position: absolute;
+  top: 48%;
+  left: 35%;
+  width: 10vw;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button1 {
+  top: clamp(57%, 47%, 37%);
+  left: 34%;
+}
+
+.button2 {
+  top: clamp(57%, 47%, 37%);
+  left: 67%;
 }
 
 body {
@@ -54,6 +78,12 @@ body {
   padding: 0;
 }
 
+.margarine-regular {
+  font-family: "Margarine", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 900;
@@ -63,11 +93,12 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: "Margarine", sans-serif;
+  font-size: clamp(10px, 2vw, 40px);
+  font-weight: 700;
   color: var(--col01);
-  text-align: center;
-  margin: 1rem 0;
+  text-align: left;
+  margin: 1.8rem 0;
 }
 
 h4 {
@@ -84,4 +115,224 @@ h3 {
   color: var(--col01);
   text-align: center;
   margin: 1rem 0;
+}
+
+p {
+  font-family: "Margarine", sans-serif;
+  font-size: clamp(10px, 2vw, 25px);
+  font-weight: 900;
+  color: var(--col01);
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal:target {
+  display: flex;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  max-width: 100%;
+  min-width: 10%;
+  width: 100vw;
+  height: 10%;
+  margin: auto;
+  font-size: clamp(40px, 2vw, 30px);
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  max-width: 1080px;
+  display: block;
+  margin: 0;
+}
+
+.slide-wrapper {
+  display: none;
+}
+
+/* 활성화된 슬라이드만 표시 */
+#modal1-slide1:target,
+#modal1-slide2:target,
+#modal1-slide3:target,
+#modal1-slide4:target,
+#modal1-slide5:target,
+#modal1-slide6:target,
+#modal1-slide7:target,
+#modal1-slide8:target,
+#modal1-slide9:target {
+  display: block;
+}
+
+.modal-text {
+  position: absolute;
+  top: clamp(15%, 2vw, 50%);
+  left: 54%;
+  width: clamp(80%, 1.25rem, 1%);
+  max-width: 60%;
+  transform: translate(-50%, -50%);
+  margin: 2rem auto 0;
+  color: black;
+  z-index: 2;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.prev-btn,
+.next-btn {
+  font-family: "Margarine", sans-serif;
+  position: absolute;
+  top: clamp(30%, 50%, 60%);
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #ea7cb8;
+  color: black;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  text-decoration: none;
+  font-weight: 800;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  size: clamp(10%, 15%, 20%);
+}
+
+.prev-btn {
+  left: 5%;
+}
+
+.next-btn {
+  right: 5%;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #0056b3;
+}
+
+.close-btn {
+  font-family: "Margarine", sans-serif;
+  position: absolute;
+  top: -12rem;
+  right: 21rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 90%;
+  background-color: #ff97d5;
+  color: black;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  display: none;
+}
+
+.slide:target {
+  display: block;
+  color: black;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* 변경: 기본 슬라이드 활성화 대상 이름 수정 */
+.modal:not(:has(.slide:target)) #modal1-slide1 {
+  display: block;
+}
+
+#videoModal.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#videoModal:target {
+  display: flex;
+}
+
+/* 비디오 전용 모달 콘텐츠 */
+.modal-content.video-modal {
+  background: transparent;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 800px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 비디오 자체 */
+.modal-video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  outline: none;
+}
+
+.video-open-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: transparent;
+  color: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.video-open-btn:hover {
+  background-color: #e65100;
+}
+
+/* 닫힘 버튼 */
+.close-btn.video-close {
+  position: absolute;
+  top: -10rem;
+  right: 1rem;
+  font-size: 3rem;
+  text-decoration: none;
+  color: black;
+  background-color: #ff97d5;
+  border-radius: 50%;
+
+  cursor: pointer;
+  z-index: 1;
 }
