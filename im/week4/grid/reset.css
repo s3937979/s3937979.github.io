@@ -16,8 +16,8 @@
 }
 
 html {
-  color-scheme: dark light; Default dark */
-  hanging-punctuation: first last; /* Not supported in Chrome
+  color-scheme: dark light; /* Default dark */
+  hanging-punctuation: first last; /* Not supported in Chrome */
 }
 
 body {
@@ -43,9 +43,8 @@ h6 {
 }
 
 p {
-  /* CMD / */
   max-width: 75ch;
-  text-wrap: pretty; Prevents orphans on lines
+  text-wrap: pretty; /* Prevents orphans on lines */
 }
 
 @media (prefers-reduced-motion: no-preference) {
