@@ -14,9 +14,10 @@ html {
 }
 
 h1 {
-  font-family: "Jersey 20", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
   font-size: 50px;
   width: 100%;
   margin: 7rem;
@@ -26,20 +27,22 @@ h1 {
 }
 
 h2 {
-  font-family: "Jersey 20", sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
   font-size: 30px;
   position: relative;
   width: 70%;
-  padding: 1rem;
+  padding: 1.3rem;
   border-radius: 2rem;
   background-color: rgb(255, 255, 254, 0.9);
 }
 
 h3 {
-  font-family: "Jersey 20", sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
   font-size: 27px;
   position: relative;
@@ -61,19 +64,21 @@ h3 {
 }
 
 h4{
-  font-family: "Jersey 20", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
   font-size: 27px;
   position: relative;
-  top: 15%;
-  left: 4.5%
+  top: 45%;
+  /* left: 1% */
 
 }
 
 p {
-  font-family: "Jersey 20", sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
   position: relative;
   top: 5%;
