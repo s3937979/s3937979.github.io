@@ -1,41 +1,83 @@
-body,
-html {
-  overflow-x: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  background: linear-gradient(to right, #fd6bc3 0%, #63beff 50%, #f5d357 100%);
+body,
+html {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 h1 {
-  font-size: 36px;
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
   width: 100%;
-  margin-left: 5rem;
+  margin: 7rem;
+  margin-top: 1rem;
+  margin-left: 6rem;
+  text-align: center;
 }
 
 h2 {
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 30px;
-  width: 90%;
-  padding: 2rem;
-  margin-top: 10%;
-  margin-left: 5rem;
-  background-color: blanchedalmond;
+  position: relative;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: rgb(255, 255, 254, 0.9);
+}
+
+h3 {
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 27px;
+  position: relative;
+  top: 6%;
+  left: 4.5%
+  animation: floatText 5s ease-in-out infinite;
+}
+
+@keyframes floatText {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -70%); /* 위로 떠오름 */
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+h4{
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 27px;
+  position: relative;
+  top: 15%;
+  left: 4.5%
+
 }
 
 p {
-  /* font-size: 23px;
-  width: 80%; 
-  min-height: 60%;
-  margin: 0 auto;
-  margin-bottom: auto;
-  margin-top: auto;
-  padding: 2rem; 
-  background-color: rgb(215, 215, 61);
-  color: black; 
-  border-radius: 2rem; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  */
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   position: relative;
-  font-size: 20px;
+  top: 5%;
+  font-size: clamp(14px,2vw,25px);
   width: 60%;
   min-height: auto;
   color: black;
@@ -45,22 +87,24 @@ p {
   line-height: 1.8;
   letter-spacing: 0.03em;
   word-spacing: 0.1em;
-  background-color: white;
-  /* border: 2px solid #ff97d5; */
-  /* border-radius: 1rem; */
+  background-color: rgb(255, 255, 254, 0.9);
+  border-radius: 2rem;
   box-sizing: content-box;
 }
 
 .scroll-wrapper {
   display: flex;
-  width: 100vw;
+  width: 1500vw;
   height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .screen {
+  position: relative;
   flex: none;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   flex-shrink: 0;
   scroll-snap-align: start;
   display: flex;
@@ -68,14 +112,79 @@ p {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  background-color: transparent;
-  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+#page1 {
+  background-image: url("images/1.png");
+}
+#page2 {
+  background-image: url("images/2.png");
+}
+#page3 {
+  background-image: url("images/3.png");
+}
+#page4 {
+  background-image: url("images/4.png");
+}
+#page5 {
+  background-image: url("images/5.png");
+}
+
+#page6 {
+  background-image: url("images/6.png");
+}
+#page7 {
+  background-image: url("images/7.png");
+}
+#page8 {
+  background-image: url("images/8.png");
+}
+#page9 {
+  background-image: url("images/9.png");
+}
+#page10 {
+  background-image: url("images/10.png");
+}
+
+#page11 {
+  background-image: url("images/11.png");
+}
+#page12 {
+  background-image: url("images/12.png");
+}
+#page13 {
+  background-image: url("images/13.png");
+}
+#page14 {
+  background-image: url("images/14.png");
+}
+#page15 {
+  background-image: url("images/15.png");
+}
+
+.invisible-button {
+  position: absolute;
+  top: clamp(50%, 45vh, 100%);
+  right: clamp(20%, 35vw, 80%);
+  width: clamp(20%, 10vw, 5%);
+  height: clamp(5%, 10vw, 10%);
+  background: transparent;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#page1 .invisible-button {
+  pointer-events: auto; /* page1에서는 클릭 가능 */
+  display: block;
+}
 .next-btn {
   position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 3rem;
   font-size: 2rem;
   background: black;
   color: white;
@@ -86,8 +195,8 @@ p {
 
 .prev-btn {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 1.5rem;
+  left: 1rem;
   font-size: 2rem;
   background: black;
   color: white;
