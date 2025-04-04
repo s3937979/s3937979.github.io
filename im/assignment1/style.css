@@ -1,3 +1,4 @@
+/* Basic setting - applying elements to the entire document */
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +13,17 @@ html {
   width: 100vw;
   height: 100vh;
 }
+
+/* Entire font settings - 
+Using 'Montserrat' for its modern and similar with "Endless-summer" website font.  
+Its clean geometry and soft curves help convey clarity and elegance, 
+while maintaining high readability across headings and body text. 
+Consistent use across elements ensures a unified visual tone.
+*/
+
+/* h1 font size - Large size to establish visual hierarchy and focus. 
+  Positioned centrally to draw attention as the main section title.
+*/
 
 h1 {
   font-family: "Montserrat", sans-serif;
@@ -80,6 +92,19 @@ h6 {
   top: 27%;
   margin-left: 80rem;
 }
+
+/* Paragraph font-size - 
+  Responsive font sizing using clamp() ensures optimal readability 
+  across various devices and screen sizes. 
+  The range keeps the text neither too small nor too dominant.
+*/
+
+/* Paragraph background color - 
+  Soft off-white background used to reduce visual strain 
+  and separate text from the gradient-heavy backgrounds. 
+  Adds readability without breaking emotional tone.
+*/
+
 p {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -132,6 +157,11 @@ p {
   background-repeat: no-repeat;
 }
 
+/* Background images -
+Illustrations that I made are divided into dawn, day, and evening scenes 
+to reflect the passing of time throughout the experience.
+*/
+
 #page1 {
   background-image: url("images/1.png");
 }
@@ -180,6 +210,29 @@ p {
   background-image: url("images/15.png");
 }
 
+/* Floating animation - 
+  Floating animation is used to gently draw attention to the sun element, 
+  encouraging the user to click it without being too aggressive or distracting.
+  The motion serves as a subtle visual cue within the calm atmosphere of the page.
+  */
+
+.floating-text {
+  display: inline-block;
+  animation: floatText 3s ease-in-out infinite;
+}
+
+@keyframes floatText {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .link-button {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -199,6 +252,9 @@ p {
   top: 70%;
 }
 
+/* Link button -
+Hover effect used to add a sense of interactivity and responsiveness.
+*/
 .link-button:hover {
   background-color: rgb(255, 255, 254, 0.9);
 }
@@ -216,7 +272,7 @@ p {
 }
 
 #page1 .invisible-button {
-  pointer-events: auto; /* page1에서는 클릭 가능 */
+  pointer-events: auto;
   display: block;
 }
 
@@ -244,6 +300,9 @@ p {
   border-radius: 5rem;
 }
 
+/* Hover effect for buttons - 
+Hover effect used to add a sense of interactivity and responsiveness.
+*/
 .hover-react {
   transition: all 0.3s ease;
   font-family: "Montserrat", sans-serif;
@@ -252,6 +311,6 @@ p {
 }
 
 .hover-react:hover {
-  font-weight: 600;
-  width: 63%;
+  color: black;
+  background-color: white;
 }
