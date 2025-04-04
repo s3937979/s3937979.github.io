@@ -53,11 +53,10 @@ h4 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: 27px;
   position: relative;
-  top: 45%;
-  /* left: 1% */
+  top: 44%;
 }
 
 h5 {
