@@ -11,10 +11,22 @@ body {
 
 h1 {
   color: #cb0000;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 20px;
+  font-size: 220px;
+  margin-top: 1px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+h2 {
+  color: #cb0000;
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: "pt-serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
 .main-page {
   text-align: center;
 }
@@ -31,12 +43,4 @@ h1 {
   height: 300px;
   object-fit: cover;
   border-radius: 10px;
-}
-
-.title {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 20px;
-  font-family: "Georgia", serif;
 }
