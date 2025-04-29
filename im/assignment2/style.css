@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+
+h1 {
+  color: #cb0000;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.main-page {
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-cover {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  font-family: "Georgia", serif;
+}
