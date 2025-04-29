@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,29 +10,70 @@ body {
 
 h1 {
   position: absolute;
+  text-align: center;
   color: #cb0000;
-  font-size: 220px;
-  margin-top: 60px;
+  font-size: 230px;
+  top: 240px;
+  left: 440px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 h2 {
-  /* position: absolute; */
+  position: absolute;
   color: #f60707;
   font-size: 20px;
+  top: 420px;
+  left: 640px;
   font-family: "pt-serif", serif;
   font-weight: 700;
   font-style: italic;
 }
 
+h3 {
+  position: relative;
+  color: #ff0000;
+  font-size: 25px;
+  top: 610px;
+  right: 71px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+h4 {
+  position: relative;
+  color: #ff0202;
+  font-size: 60px;
+  top: 500px;
+  right: 10px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+h5 {
+  text-align: left;
+  position: absolute;
+  color: #fff0f0;
+  font-size: 21px;
+  width: 1000px;
+  height: 800px;
+  top: 600px;
+  left: -190px;
+  font-family: "bagatela", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
 .main-page {
   text-align: center;
+  align-items: center;
 }
 
 .content {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,10 +81,52 @@ h2 {
 
 .album-cover {
   position: absolute;
-  bottom: 10px;
+  top: 0px;
+  right: 490px;
   width: 500px;
   height: 500px;
-
   object-fit: cover;
-  border-radius: 10px;
+}
+
+.album-info {
+  position: relative;
+  align-items: center;
+}
+
+.album-info-image {
+  position: relative;
+  top: 1500px;
+  left: 150px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.album-info-image2 {
+  position: relative;
+  top: 1200px;
+  right: 150px;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.lp {
+  position: absolute;
+  top: 2000px;
+  right: 755px;
+  width: 600px;
+  height: 700px;
+  border-radius: 50%;
+}
+
+.tonearm {
+  position: absolute;
+  top: 2050px;
+  right: 680px;
+  width: 300px;
+  height: 400px;
+  transform-origin: left center;
+  cursor: grab;
+  user-select: none;
 }
