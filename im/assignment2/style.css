@@ -10,18 +10,19 @@ body {
 }
 
 h1 {
+  position: absolute;
   color: #cb0000;
   font-size: 220px;
-  margin-top: 1px;
+  margin-top: 60px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 h2 {
-  color: #cb0000;
+  /* position: absolute; */
+  color: #f60707;
   font-size: 20px;
-  margin-top: 20px;
   font-family: "pt-serif", serif;
   font-weight: 700;
   font-style: italic;
@@ -39,8 +40,11 @@ h2 {
 }
 
 .album-cover {
-  width: 300px;
-  height: 300px;
+  position: absolute;
+  bottom: 10px;
+  width: 500px;
+  height: 500px;
+
   object-fit: cover;
   border-radius: 10px;
 }
