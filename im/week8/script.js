@@ -1,3 +1,21 @@
+const playlist = [
+  {
+    id: 1,
+    src: "stardust.mp4",
+    name: "Stardust",
+  },
+  {
+    id: 2,
+    src: "zenscape.mp4",
+    name: "zenscape",
+  },
+  {
+    id: 3,
+    src: "stardust.mp4",
+    name: "Music video",
+  },
+];
+
 const myVideo = document.querySelector("#my-video");
 console.log(myVideo);
 
@@ -86,4 +104,27 @@ function goFullscreen() {
   } else {
     document.exitFullscreen();
   }
+}
+
+const heartButton = document.querySelector("#heart-button");
+console.log(heartButton);
+
+let likes = 0;
+
+const likesContainer = document.querySelector("#likes");
+console.log(likesContainer);
+
+heartButton.addEventListener("click", updatelikes);
+
+function updatesLikes() {
+  likes++;
+  likesContainer.textContent = likes;
+}
+const progressBar = document.querySelector("#progress-bar");
+console.log(progressBar);
+
+myVideo.addEventListener("timeupdate", updateProgress);
+function updateProgress() {
+  let progress = (myVideo.currentTime / myVideo.duration) * 100;
+  conosole.log(progress);
 }
