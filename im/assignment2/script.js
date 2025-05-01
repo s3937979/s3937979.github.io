@@ -181,5 +181,5 @@ volumeContainer.addEventListener("mouseleave", () => {
   hideTimeout = setTimeout(() => {
     volumeSlider.style.opacity = "0";
     volumeSlider.style.pointerEvents = "none";
-  }, 800);
+  }, 810);
 });
