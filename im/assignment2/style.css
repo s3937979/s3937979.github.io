@@ -131,7 +131,6 @@ h7 {
 h8 {
   position: relative;
   color: #ff0202;
-  /* background-color: white; */
   width: 170px;
   font-size: 50px;
   top: 1800px;
@@ -159,13 +158,12 @@ h8 {
 
 /* Active track feedback with color change for better UX */
 #tracklist li.active {
-  background-color: #ee3a3a; /* 노란색 강조 */
+  background-color: #ee3a3a;
   color: rgb(0, 0, 0);
   font-weight: bold;
   transition: background-color 0.7s ease;
 }
 
-/* 각각 위치 조정 */
 #tracklist li:nth-child(1) {
   top: 1200px;
   left: -110px;
@@ -462,10 +460,10 @@ audio {
 
 .time {
   position: absolute;
-  top: 150%; /* 바로 아래에 표시 */
+  top: 150%;
   font-size: 15px;
   color: #ffffff;
-  transform: translateY(4px); /* 간격 */
+  transform: translateY(4px);
   font-family: "pt-serif", serif;
   font-weight: 700;
   font-style: italic;
