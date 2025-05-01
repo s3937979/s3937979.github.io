@@ -1,3 +1,24 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+  animation: fadeOut 1.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -35,7 +56,7 @@ h3 {
   position: relative;
   color: #ff0000;
   font-size: 25px;
-  top: 610px;
+  top: 810px;
   right: 71px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
@@ -46,7 +67,7 @@ h4 {
   position: relative;
   color: #ff0202;
   font-size: 60px;
-  top: 500px;
+  top: 700px;
   right: 10px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
@@ -60,11 +81,142 @@ h5 {
   font-size: 21px;
   width: 1000px;
   height: 800px;
-  top: 600px;
-  left: -190px;
+  top: 740px;
+  left: -70px;
   font-family: "bagatela", serif;
   font-weight: 200;
   font-style: italic;
+}
+
+h6 {
+  position: relative;
+  color: #ff0202;
+  background-color: white;
+  width: 170px;
+  font-size: 21px;
+  top: 1090px;
+  left: 931px;
+  font-family: "bagatela", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+h7 {
+  position: relative;
+  color: #ff0202;
+  background-color: white;
+  font-size: 63px;
+  top: 1120px;
+  left: 270px;
+  font-family: "bagatela", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+h8 {
+  position: relative;
+  color: #ff0202;
+  /* background-color: white; */
+  width: 170px;
+  font-size: 60px;
+  top: 1800px;
+  left: -570px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#tracklist {
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+#tracklist li {
+  position: absolute;
+  font-size: 1.3rem;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+#tracklist li.active {
+  background-color: #ee3a3a; /* 노란색 강조 */
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: background-color 0.7s ease;
+}
+
+/* 각각 위치 조정 */
+#tracklist li:nth-child(1) {
+  top: 1200px;
+  left: -110px;
+}
+#tracklist li:nth-child(2) {
+  top: 1250px;
+  left: -110px;
+}
+#tracklist li:nth-child(3) {
+  top: 1300px;
+  left: -110px;
+}
+#tracklist li:nth-child(4) {
+  top: 1350px;
+  left: -110px;
+}
+#tracklist li:nth-child(5) {
+  top: 1400px;
+  left: -110px;
+}
+#tracklist li:nth-child(6) {
+  top: 1450px;
+  left: -110px;
+}
+#tracklist li:nth-child(7) {
+  top: 1500px;
+  left: -110px;
+}
+#tracklist li:nth-child(8) {
+  top: 1200px;
+  right: -110px;
+}
+#tracklist li:nth-child(9) {
+  top: 1250px;
+  right: -110px;
+}
+#tracklist li:nth-child(10) {
+  top: 1300px;
+  right: -110px;
+}
+#tracklist li:nth-child(11) {
+  top: 1350px;
+  right: -110px;
+}
+#tracklist li:nth-child(12) {
+  top: 1400px;
+  right: -110px;
+}
+#tracklist li:nth-child(13) {
+  top: 1450px;
+  right: -110px;
+}
+#tracklist li:nth-child(14) {
+  top: 1500px;
+  right: -110px;
+}
+#tracklist li:nth-child(15) {
+  top: 1550px;
+  right: -110px;
+}
+
+.fade-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-text.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .main-page {
@@ -95,8 +247,8 @@ h5 {
 
 .album-info-image {
   position: relative;
-  top: 1500px;
-  left: 150px;
+  top: 1800px;
+  right: -290px;
   width: 300px;
   height: 300px;
   object-fit: cover;
@@ -104,8 +256,8 @@ h5 {
 
 .album-info-image2 {
   position: relative;
-  top: 1200px;
-  right: 150px;
+  top: 1500px;
+  right: 10px;
   width: 300px;
   height: 400px;
   object-fit: cover;
@@ -122,35 +274,39 @@ h5 {
 
 .lp {
   position: absolute;
-  top: 2200px;
-  right: 10px;
+  top: 2400px;
+  left: 130px;
   width: 600px;
   height: 700px;
   border-radius: 50%;
-  animation: spin 4s linear infinite;
+  animation: spin 3s linear infinite;
   animation-play-state: paused;
   pointer-events: none;
 }
 
 .tonearm {
   position: absolute;
-  top: 2250px;
-  left: 420px;
-  width: 240px;
+  top: 2490px;
+  left: 530px;
+  width: 250px;
   height: 430px;
   transform-origin: left center;
   cursor: grab;
   user-select: none;
 }
 
+.tonearm:hover {
+  transform: scale(1.05);
+}
+
 #click-zone {
   position: absolute;
-  top: 2610px; /* 클릭 가능한 위치 (조정 가능) */
-  left: 420px;
-  width: 130px;
-  height: 30px;
+  top: 2830px;
+  left: 530px;
+  width: 150px;
+  height: 50px;
   transform: rotate(-36deg);
-  background: rgb(198, 182, 182); /* 실제로는 안 보이게 설정 */
+  background: transparent;
   z-index: 10;
   cursor: pointer;
 }
@@ -165,45 +321,137 @@ audio {
   margin-bottom: 20px;
 }
 
-.lyrics-box {
+#next-button {
+  width: 90px;
+  cursor: pointer;
   position: absolute;
-  background-color: transparent;
-  padding: 20px;
-  top: 2480px;
-  left: 610px;
-  height: 2em;
-  width: 400px;
-  overflow: hidden;
-  text-align: center;
-  color: #fff;
+  top: 2700px;
+  left: 800px;
+  z-index: 20;
+}
 
+#next-button:hover {
+  transform: scale(1.1);
+}
+
+#prev-button {
+  width: 90px;
+  cursor: pointer;
+  position: absolute;
+  top: 2700px;
+  right: 780px;
+  z-index: 20;
+}
+
+#prev-button:hover {
+  transform: scale(1.1);
+}
+
+#repeat-button {
+  position: relative;
+  width: 60px;
+  height: 50px;
+  top: 2110px;
+  right: 600px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#repeat-button.active {
+  transform: scale(1.2);
+}
+
+.volume-container {
+  position: relative;
+  display: inline-block;
+}
+
+#volume-button {
+  position: relative;
+  scale: 2;
+  top: 2010px;
+  left: 660px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#volume-slider {
+  position: relative;
+  top: 2000px;
+  left: 690px;
+  transform: translateX(-50%) rotate(-90deg); /* 세로로 돌림 */
+  width: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+/* 마우스를 올렸을 때 슬라이더 보이기 */
+.volume-container:hover #volume-slider {
+  opacity: 3;
+  pointer-events: all;
+}
+
+.song-title {
+  position: relative;
+  top: 2400px;
+  right: -10px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "pt-serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.progress-container {
+  width: 480px;
+  height: 8px;
+  background-color: #000000;
+  border-radius: 4px;
+  top: 2410px;
+  right: -190px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-container:hover {
+  transform: scale(1.1);
+  background-color: #fff0f0;
+}
+
+.progress-bar {
+  position: relative;
+  height: 100%;
+  width: 0%;
+  background-color: rgb(204, 15, 15);
+  border-radius: 4px;
+  transition: width 0.2s linear;
+  cursor: pointer;
+}
+
+.time {
+  position: absolute;
+  top: 150%; /* 바로 아래에 표시 */
+  font-size: 15px;
+  color: #ffffff;
+  transform: translateY(4px); /* 간격 */
   font-family: "pt-serif", serif;
   font-weight: 700;
-  font-style: normal;
-  font-size: 20px;
+  font-style: italic;
 }
 
-.lyric-line {
-  font-size: 1.2rem;
-  color: rgb(100, 100, 100);
-  opacity: 0.5;
-  margin: 0.3em 0;
+.time.current {
+  left: 0;
 }
 
-.lyric-line.active {
-  font-size: 2rem;
-  font-weight: bold;
-  color: rgb(255, 1, 1);
-  opacity: 1;
+.time.total {
+  right: 0;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background: #555;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.artboard7 {
+  position: absolute;
+  top: 3000px;
 }

@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YeonwooHong_s3937979_A2</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+   
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css">
   </head>
   <body>
+    <div id="overlay"></div>
+    
     <section class="main-page">
       <div class="content"></div>
       <img
@@ -30,7 +32,7 @@
         alt="this is the album info image"
         class="album-info-image"
        />
-       <h5>&nbsp; "Jennie's first solo studio album, Ruby, showcases her diverse talents and charm, capturing Jennie's unique style. Through various songs and concepts in multiple genres, this album aims to highlight her potential as a solo artist.<br />
+       <h5 class="fade-text">&nbsp; "Jennie's first solo studio album, Ruby, showcases her diverse talents and charm, capturing Jennie's unique style. Through various songs and concepts in multiple genres, this album aims to highlight her potential as a solo artist.<br />
         <br />
         &nbsp;&nbsp;The concept of the album begins with the famous line from Shakespeare's comedy As You Like It:
         "All the world's a stage, And all the men and women merely players."
@@ -45,8 +47,29 @@
         alt="this is the album info image2"
         class="album-info-image2"
        />
-
+       <h7 class="fade-text">Tracklist</h7>
+       <h6 class="fade-text">Click on a song title</h6>
+       <ul id="tracklist">
+        <li>01. Intro - JANE with FKJ</li>
+        <li>02. like Jennie</li>
+        <li>03. start a war</li>
+        <li>04. Handlebars</li>
+        <li>05. with the IE (way up)</li>
+        <li>06. ExtraL</li>
+        <li>07. Mantra</li>
+        <li>08. Love Hangover</li>
+        <li>09. Zen</li>
+        <li>10. Damn right</li>
+        <li>11. F.T.S</li>
+        <li>12. Filter</li>
+        <li>13. Seoul City</li>
+        <li>14. Starlight</li>
+        <li>15. twin</li>
+      </ul>
+      
+    <h8 class="fade-text">Click the tonearm</h8>
     <section class="lp-player">
+      
         <img src="images/lp.png" alt="LP" class="lp"/>
         <img src="images/tonearm.png" alt="tonarm" class="tonearm" />
         <div id="click-zone"></div>
@@ -56,17 +79,33 @@
         <audio id="player" ></audio>
         <!-- <audio src="musics/01.mp3" ></audio> -->
         
-        <div id="lyrics-box" class="lyrics-box">
+        <div id="lyrics-box" class="lyrics-box"></div>
         </div>
-        <div class="controls">
-          <button id="play-pause-button" class="double-border">
-            <img
-              src="https://img.icons8.com/ios-glyphs/30/play--v2.png"
-              alt=""
-              id="play-pause-img"
-            />
-      
     
-    </section>
+        <!-- <img src="buttons/play.png" id="play-button" alt="this is the play button" style="cursor: pointer;" /> -->
+        <img src="buttons/next.png" id="next-button" alt="this is the next button" style="cursor: pointer;"/>
+        <img src="buttons/previous.png" id="prev-button" alt="this is the previous button" style="cursor: pointer;"/>
+        <img src="buttons/repeat.png"  id="repeat-button" alt="Repeat"/>
+
+    </section> 
+
+      <div id="song-title" class="song-title">01. Intro - JANE with FKJ</div>
+
+    <div class="progress-container" id="progress-container">
+
+      <div class="progress-bar" id="progress-bar"></div>
+      <span class="time current" id="current-time">0:00</span>
+      <span class="time total" id="total-duration">0:00</span>
+      
+    </div>
+
+    <div class="volume-container">
+      <img src="buttons/volume.png" id="volume-button" alt="Volume" />
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" />
+    </div>
+    
+
+       <img src="images/Artboard 7.png" alt="LP" class="artboard7"/>
+    <script src="script.js" defer></script>
   </body>
 </html>
