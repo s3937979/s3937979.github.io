@@ -111,6 +111,15 @@ h5 {
   object-fit: cover;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .lp {
   position: absolute;
   top: 2000px;
@@ -123,22 +132,25 @@ h5 {
   pointer-events: none;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .tonearm {
   position: absolute;
   top: 2050px;
-  right: 680px;
-  width: 300px;
-  height: 400px;
+  right: 690px;
+  width: 240px;
+  height: 430px;
   transform-origin: left center;
   cursor: grab;
   user-select: none;
+}
+
+#click-zone {
+  position: absolute;
+  top: 2400px;
+  /* right: 800px; */
+  width: 120px;
+  height: 40px;
+  z-index: 999;
+  transform: rotate(-40deg);
+  cursor: pointer;
+  background-color: rgb(29, 122, 141); /* 필요하면 red로 바꿔서 위치 확인 */
 }
