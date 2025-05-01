@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YeonwooHong_s3937979_A2</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css">
@@ -52,14 +52,20 @@
         <div id="click-zone"></div>
     
         <div class="player-container">
+  
+        <audio id="player" ></audio>
+        <!-- <audio src="musics/01.mp3" ></audio> -->
         
-        <h2 id="song-title"></h2>
-        <audio id="player" controls></audio>
         <div id="lyrics-box" class="lyrics-box">
         </div>
-  
-      <!-- 다음 곡 버튼 (추후 확장용) -->
-      <button id="next-button">다음 곡 ▶</button>
+        <div class="controls">
+          <button id="play-pause-button" class="double-border">
+            <img
+              src="https://img.icons8.com/ios-glyphs/30/play--v2.png"
+              alt=""
+              id="play-pause-img"
+            />
+      
     
     </section>
   </body>

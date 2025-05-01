@@ -1,21 +1,28 @@
-const lp = document.getElementById(".lp");
+const lp = document.querySelector(".lp");
 const clickZone = document.getElementById("click-zone");
-const audio = document.getElementById("player");
-const lyricsBox = document.getElementById("lyrics-box");
-const title = document.getElementById("song-title");
-const nextButton = document.getElementById("next-button");
 
 let isPlaying = false;
-let currentSongIndex = 0;
-let currentLyrics = [];
-let currentLine = 0;
 
 clickZone.addEventListener("click", () => {
   isPlaying = !isPlaying;
 
+  // LP 회전 제어
   lp.style.animationPlayState = isPlaying ? "running" : "paused";
-  console.log(isPlaying ? "▶️ LP 회전 시작!" : "⏸️ LP 멈춤");
+
+  // 음악 재생/정지
+  if (isPlaying) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
 });
+
+const audio = document.getElementById("player");
+const lyricsBox = document.getElementById("lyrics-box");
+const nextButton = document.getElementById("next-button");
+const title = document.getElementById("song-title");
+
+audio.src = "musics/01.mp3";
 
 const songs = [
   {
@@ -118,7 +125,10 @@ const songs = [
   },
 ];
 
-// 곡 로드 함수
+let currentSongIndex = 0;
+let currentLyrics = songs[0].lyrics;
+let currentLine = 0;
+
 function loadSong(index) {
   const song = songs[index];
   title.textContent = `🎵 ${song.title}`;
@@ -127,50 +137,57 @@ function loadSong(index) {
   currentLine = 0;
   lyricsBox.innerHTML = "";
 
-  currentLyrics.forEach((lineObj) => {
+  currentLyrics.forEach((line) => {
     const p = document.createElement("p");
     p.classList.add("lyric-line");
-    p.textContent = lineObj.text;
+    p.textContent = line.text;
     lyricsBox.appendChild(p);
   });
 
+  // 🔒 LP 정지
   lp.style.animationPlayState = "paused";
   isPlaying = false;
 }
 
-// 가사 싱크
 audio.addEventListener("timeupdate", () => {
   const time = audio.currentTime;
-  const lines = document.querySelectorAll(".lyric-line");
 
   if (
     currentLine < currentLyrics.length &&
     time >= currentLyrics[currentLine].time
   ) {
-    lines.forEach((line) => line.classList.remove("active"));
-    lines[currentLine].classList.add("active");
-    lyricsBox.style.transform = `translateY(-${2.2 * currentLine}em)`;
+    const line = document.createElement("p");
+    line.textContent = currentLyrics[currentLine].text;
+    lyricsBox.appendChild(line);
+    lyricsBox.scrollTop = lyricsBox.scrollHeight;
     currentLine++;
   }
 });
 
-// 다음 곡 버튼
-nextButton.addEventListener("click", () => {
-  currentSongIndex = (currentSongIndex + 1) % songs.length;
-  loadSong(currentSongIndex);
-});
+const playPauseButton = document.querySelector("#play-pause-button");
+console.log(playPauseButton);
 
-// 자동 다음 곡 전환 (옵션)
-audio.addEventListener("ended", () => {
-  currentSongIndex++;
-  if (currentSongIndex >= songs.length) {
-    lp.style.animationPlayState = "paused";
-    isPlaying = false;
-    currentSongIndex = 0;
-    return;
+// listen to click on this button
+playPauseButton.addEventListener("click", togglePlay);
+
+// fetch the image so that we can change the icon
+const playPauseImg = document.querySelector("#play-pause-button img");
+console.log(playPauseImg);
+
+// run this function when click happens
+function togglePlay() {
+  if (myVideo.paused || myVideo.ended) {
+    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v2.png";
+    myVideo.play();
+  } else {
+    playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v2.png";
+    myVideo.pause();
   }
-  loadSong(currentSongIndex);
-});
+}
+audio.play();
+lp.style.animationPlayState = "running";
+isPlaying = true;
+// });
 
-// 첫 곡 로드
+// 첫 곡 자동 로드
 loadSong(0);

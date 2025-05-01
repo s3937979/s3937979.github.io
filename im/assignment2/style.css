@@ -150,7 +150,7 @@ h5 {
   width: 130px;
   height: 30px;
   transform: rotate(-36deg);
-  background: transparent; /* 실제로는 안 보이게 설정 */
+  background: rgb(198, 182, 182); /* 실제로는 안 보이게 설정 */
   z-index: 10;
   cursor: pointer;
 }
@@ -176,6 +176,7 @@ audio {
   overflow: hidden;
   text-align: center;
   color: #fff;
+
   font-family: "pt-serif", serif;
   font-weight: 700;
   font-style: normal;
