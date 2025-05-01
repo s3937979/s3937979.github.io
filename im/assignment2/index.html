@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic HTML head setup: meta info, external styles, and fonts -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YeonwooHong_s3937979_A2</title>
+
+    <!-- Custom stylesheet and JavaScript file -->
     <link rel="stylesheet" href="style.css" />
-   
+    <script src="script.js" defer></script>
+
+    <!-- Adobe Typekit font selected to match Jennie's elegant and bold branding -->
     <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css">
   </head>
+
   <body>
+    <!-- Page fade-in effect using overlay div (JavaScript controlled) -->
     <div id="overlay"></div>
-    
+
     <section class="main-page">
+      <!-- Album intro: visually replicates a vinyl sleeve for immersive context -->
       <div class="content"></div>
       <img
         src="images/ruby_album_cover.png"
-        alt="this is the first page image"
+        alt="Album cover image"
         class="album-cover"
       />
       <h2>THE 1ST STUDIO ALBUM</h2>
@@ -25,87 +31,132 @@
       <h3>by</h3>
       <h4>Jennie</h4>
 
-    <section class="album-info">
-      <div class="content"></div>
+      <!-- Album description section: designed to provide deeper engagement -->
+      <section class="album-info">
+        <div class="content"></div>
         <img
-        src="images/album_info.png"
-        alt="this is the album info image"
-        class="album-info-image"
-       />
-       <h5 class="fade-text">&nbsp; "Jennie's first solo studio album, Ruby, showcases her diverse talents and charm, capturing Jennie's unique style. Through various songs and concepts in multiple genres, this album aims to highlight her potential as a solo artist.<br />
-        <br />
-        &nbsp;&nbsp;The concept of the album begins with the famous line from Shakespeare's comedy As You Like It:
-        "All the world's a stage, And all the men and women merely players."
-        This line reflects the diversity of musical roles that Jennie portrays, offering a glimpse into her versatility.<br />
-        <br />
-        &nbsp;&nbsp;The album title, Ruby, was inspired by Jennie's middle name, aiming to express her distinct color and identity. Since the concept of the album originates from theater, the red curtain, symbolizing the opening of a new act, is used as a symbolic representation throughout the album.<br />
-        <br />
-        &nbsp;&nbsp;Ruby consists of 15 tracks in total, and features collaborations with globally renowned artists, including British pop star Dua Lipa, Donald Glover's musical alter ego Childish Gambino, rapper Doechii, Dominic Fike, French musician FKJ, and singer-songwriter Kali Uchis."</h5>
+          src="images/album_info.png"
+          alt="Album details"
+          class="album-info-image"
+        />
+
+        <!-- The paragraph below gives narrative background. 
+             The Shakespeare quote reinforces Jennie’s diverse artistic roles. -->
+        <h5 class="fade-text">
+          &nbsp; "Jennie's first solo studio album, Ruby, showcases her diverse
+          talents and charm, capturing Jennie's unique style. Through various
+          songs and concepts in multiple genres, this album aims to highlight
+          her potential as a solo artist.<br />
+          <br />
+          &nbsp;&nbsp;The concept of the album begins with the famous line from
+          Shakespeare's comedy As You Like It: "All the world's a stage, And all
+          the men and women merely players." This line reflects the diversity of
+          musical roles that Jennie portrays, offering a glimpse into her
+          versatility.<br />
+          <br />
+          &nbsp;&nbsp;The album title, Ruby, was inspired by Jennie's middle
+          name, aiming to express her distinct color and identity. Since the
+          concept of the album originates from theater, the red curtain,
+          symbolizing the opening of a new act, is used as a symbolic
+          representation throughout the album.<br />
+          <br />
+          &nbsp;&nbsp;Ruby consists of 15 tracks in total, and features
+          collaborations with globally renowned artists, including British pop
+          star Dua Lipa, Donald Glover's musical alter ego Childish Gambino,
+          rapper Doechii, Dominic Fike, French musician FKJ, and
+          singer-songwriter Kali Uchis."
+        </h5>
 
         <img
-        src="images/album_info2.png"
-        alt="this is the album info image2"
-        class="album-info-image2"
-       />
-       <h7 class="fade-text">Tracklist</h7>
-       <h6 class="fade-text">Click on a song title</h6>
-       <ul id="tracklist">
-        <li>01. Intro - JANE with FKJ</li>
-        <li>02. like Jennie</li>
-        <li>03. start a war</li>
-        <li>04. Handlebars</li>
-        <li>05. with the IE (way up)</li>
-        <li>06. ExtraL</li>
-        <li>07. Mantra</li>
-        <li>08. Love Hangover</li>
-        <li>09. Zen</li>
-        <li>10. Damn right</li>
-        <li>11. F.T.S</li>
-        <li>12. Filter</li>
-        <li>13. Seoul City</li>
-        <li>14. Starlight</li>
-        <li>15. twin</li>
-      </ul>
-      
-    <h8 class="fade-text">Click the tonearm</h8>
-    <section class="lp-player">
-      
-        <img src="images/lp.png" alt="LP" class="lp"/>
-        <img src="images/tonearm.png" alt="tonarm" class="tonearm" />
-        <div id="click-zone"></div>
-    
-        <div class="player-container">
-  
-        <audio id="player" ></audio>
-        <!-- <audio src="musics/01.mp3" ></audio> -->
-        
-        <div id="lyrics-box" class="lyrics-box"></div>
+          src="images/album_info2.png"
+          alt="Additional album image"
+          class="album-info-image2"
+        />
+
+        <!-- Tracklist section: allows users to jump directly to any track -->
+        <h7 class="fade-text">Tracklist</h7>
+        <h6 class="fade-text">Click on a song title</h6>
+        <ul id="tracklist">
+          <li>01. Intro - JANE with FKJ</li>
+          <li>02. like Jennie</li>
+          <li>03. start a war</li>
+          <li>04. Handlebars</li>
+          <li>05. with the IE (way up)</li>
+          <li>06. ExtraL</li>
+          <li>07. Mantra</li>
+          <li>08. Love Hangover</li>
+          <li>09. Zen</li>
+          <li>10. Damn right</li>
+          <li>11. F.T.S</li>
+          <li>12. Filter</li>
+          <li>13. Seoul City</li>
+          <li>14. Starlight</li>
+          <li>15. twin</li>
+        </ul>
+
+        <!-- User instruction: encourages interactive exploration via LP -->
+        <h8 class="fade-text">Tap the tonearm to play and pause</h8>
+
+        <!-- LP-style player: selected to reflect the nostalgic, analog tone of Jennie's album -->
+        <section class="lp-player">
+          <!-- LP visual: animated spin when music plays -->
+          <img src="images/lp.png" alt="LP" class="lp" />
+          <!-- Interactive tonearm (acts as play/pause button) -->
+          <img src="images/tonearm.png" alt="tonearm" class="tonearm" />
+          <div id="click-zone"></div>
+
+          <!-- Audio player and lyrics container -->
+          <div class="player-container">
+            <!-- Audio tag controlled dynamically with JavaScript -->
+            <audio id="player"></audio>
+            <div id="lyrics-box" class="lyrics-box"></div>
+          </div>
+
+          <!-- Playback control buttons: icon-based for visual clarity -->
+          <img
+            src="buttons/next.png"
+            id="next-button"
+            alt="Next song"
+            style="cursor: pointer"
+          />
+          <img
+            src="buttons/previous.png"
+            id="prev-button"
+            alt="Previous song"
+            style="cursor: pointer"
+          />
+          <img src="buttons/repeat.png" id="repeat-button" alt="Repeat" />
+        </section>
+
+        <!-- Display the currently playing track (keeps user oriented) -->
+        <div id="song-title" class="song-title">01. Intro - JANE with FKJ</div>
+
+        <!-- Progress bar section: shows playback status + allows seeking -->
+        <div class="progress-container" id="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+          <!-- Time display: real-time feedback enhances usability -->
+          <span class="time current" id="current-time">0:00</span>
+          <span class="time total" id="total-duration">0:00</span>
         </div>
-    
-        <!-- <img src="buttons/play.png" id="play-button" alt="this is the play button" style="cursor: pointer;" /> -->
-        <img src="buttons/next.png" id="next-button" alt="this is the next button" style="cursor: pointer;"/>
-        <img src="buttons/previous.png" id="prev-button" alt="this is the previous button" style="cursor: pointer;"/>
-        <img src="buttons/repeat.png"  id="repeat-button" alt="Repeat"/>
 
-    </section> 
+        <!-- Volume control: appears on hover for minimalist design -->
+        <div class="volume-container">
+          <img src="buttons/volume.png" id="volume-button" alt="Volume" />
+          <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
+        </div>
+      </section>
+    </section>
 
-      <div id="song-title" class="song-title">01. Intro - JANE with FKJ</div>
-
-    <div class="progress-container" id="progress-container">
-
-      <div class="progress-bar" id="progress-bar"></div>
-      <span class="time current" id="current-time">0:00</span>
-      <span class="time total" id="total-duration">0:00</span>
-      
-    </div>
-
-    <div class="volume-container">
-      <img src="buttons/volume.png" id="volume-button" alt="Volume" />
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" />
-    </div>
-    
-
-       <img src="images/Artboard 7.png" alt="LP" class="artboard7"/>
-    <script src="script.js" defer></script>
+    <!-- Copyright notice for academic and creative rights compliance -->
+    <p class="copyright">
+      &copy; 2025 SONY MUSIC ENTERTAINMENT. All rights reserved.
+    </p>
   </body>
 </html>

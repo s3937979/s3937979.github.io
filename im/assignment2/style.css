@@ -1,3 +1,12 @@
+/* Jennie’s album Ruby uses red as its signature color, 
+so I chose red as the primary color theme for the website 
+to reflect the album’s identity. I also incorporated the 'Vivaldi' 
+font, which is featured in the album design, to visually align 
+the site with the album’s artistic concept. */
+
+/* === FADE-IN OVERLAY ON PAGE LOAD === */
+/* This overlay creates a smooth fade-in effect when the website is opened,
+   matching the dramatic, theatrical theme of the album (inspired by stage curtains). */
 #overlay {
   position: fixed;
   top: 0;
@@ -19,6 +28,8 @@
   }
 }
 
+/* === BASE BODY STYLING === */
+/* Centered layout for dramatic first impact */
 body {
   margin: 0;
   padding: 0;
@@ -29,6 +40,9 @@ body {
   background-color: #000000;
 }
 
+/* === HEADER STYLES (ALBUM TITLE, ARTIST NAME, ETC.) === */
+/* These headers use theatrical typography and carefully placed positions
+   to replicate a physical album cover layout. */
 h1 {
   position: absolute;
   text-align: center;
@@ -56,7 +70,7 @@ h3 {
   position: relative;
   color: #ff0000;
   font-size: 25px;
-  top: 810px;
+  top: 790px;
   right: 71px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
@@ -67,7 +81,7 @@ h4 {
   position: relative;
   color: #ff0202;
   font-size: 60px;
-  top: 700px;
+  top: 680px;
   right: 10px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
@@ -79,6 +93,7 @@ h5 {
   position: absolute;
   color: #fff0f0;
   font-size: 21px;
+  margin-bottom: 10px;
   width: 1000px;
   height: 800px;
   top: 740px;
@@ -118,9 +133,9 @@ h8 {
   color: #ff0202;
   /* background-color: white; */
   width: 170px;
-  font-size: 60px;
+  font-size: 50px;
   top: 1800px;
-  left: -570px;
+  left: -440px;
   font-family: "vivaldi-mn", sans-serif;
   font-weight: 400;
   font-style: italic;
@@ -132,6 +147,9 @@ h8 {
   padding: 0;
 }
 
+/* === TRACKLIST ITEM POSITIONING === */
+/* Each <li> is manually positioned to allow full visual customization.
+   Although not ideal for responsive design, it aligns with the artistic control over LP layout. */
 #tracklist li {
   position: absolute;
   font-size: 1.3rem;
@@ -139,6 +157,7 @@ h8 {
   cursor: pointer;
 }
 
+/* Active track feedback with color change for better UX */
 #tracklist li.active {
   background-color: #ee3a3a; /* 노란색 강조 */
   color: rgb(0, 0, 0);
@@ -272,6 +291,8 @@ h8 {
   }
 }
 
+/* === LP PLAYER STYLING === */
+/* The LP graphic rotates only when playing, mimicking real turntable behavior */
 .lp {
   position: absolute;
   top: 2400px;
@@ -295,6 +316,8 @@ h8 {
   user-select: none;
 }
 
+/* Tonearm is interactive and serves as a play/pause toggle.
+   A hover scale effect gives the user visual feedback. */
 .tonearm:hover {
   transform: scale(1.05);
 }
@@ -321,6 +344,8 @@ audio {
   margin-bottom: 20px;
 }
 
+/* === CONTROL BUTTONS === */
+/* Next, previous, repeat buttons are styled as large icons with hover scaling for feedback */
 #next-button {
   width: 90px;
   cursor: pointer;
@@ -380,14 +405,15 @@ audio {
   position: relative;
   top: 2000px;
   left: 690px;
-  transform: translateX(-50%) rotate(-90deg); /* 세로로 돌림 */
+  transform: translateX(-50%) rotate(-90deg);
   width: 100px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s ease;
 }
 
-/* 마우스를 올렸을 때 슬라이더 보이기 */
+/* === VOLUME CONTROL === */
+/* Volume slider appears on hover for cleaner UI. Rotated vertically for compact design */
 .volume-container:hover #volume-slider {
   opacity: 3;
   pointer-events: all;
@@ -417,6 +443,8 @@ audio {
   position: relative;
 }
 
+/* === PROGRESS BAR AND SONG TITLE === */
+/* Shows current time, duration, and includes a hover enlargement effect */
 .progress-container:hover {
   transform: scale(1.1);
   background-color: #fff0f0;
@@ -451,7 +479,14 @@ audio {
   right: 0;
 }
 
-.artboard7 {
+/* === COPYRIGHT TEXT === */
+/* Placed at bottom for formal branding. Not using <footer> tag to preserve custom layout */
+.copyright {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #ffffff;
   position: absolute;
-  top: 3000px;
+  top: 3500px;
+  right: 540px;
 }
