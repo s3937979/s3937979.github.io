@@ -123,7 +123,7 @@ h5 {
 .lp {
   position: absolute;
   top: 2200px;
-  right: 755px;
+  right: 10px;
   width: 600px;
   height: 700px;
   border-radius: 50%;
@@ -135,7 +135,7 @@ h5 {
 .tonearm {
   position: absolute;
   top: 2250px;
-  right: 690px;
+  left: 420px;
   width: 240px;
   height: 430px;
   transform-origin: left center;
@@ -146,11 +146,11 @@ h5 {
 #click-zone {
   position: absolute;
   top: 2610px; /* 클릭 가능한 위치 (조정 가능) */
-  right: 800px;
+  left: 420px;
   width: 130px;
   height: 30px;
   transform: rotate(-36deg);
-  background: rgb(18, 190, 101); /* 실제로는 안 보이게 설정 */
+  background: transparent; /* 실제로는 안 보이게 설정 */
   z-index: 10;
   cursor: pointer;
 }
@@ -166,18 +166,34 @@ audio {
 }
 
 .lyrics-box {
-  background-color: #ff2626;
+  position: absolute;
+  background-color: transparent;
   padding: 20px;
-  top: 5000px;
-  right: 100px;
-  height: 250px;
+  top: 2480px;
+  left: 610px;
+  height: 2em;
   width: 400px;
-  overflow-y: auto;
-  border-radius: 10px;
+  overflow: hidden;
   text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  box-shadow: 0 0 10px rgba(255, 228, 228, 0.4);
+  color: #fff;
+  font-family: "pt-serif", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.lyric-line {
+  font-size: 1.2rem;
+  color: rgb(100, 100, 100);
+  opacity: 0.5;
+  margin: 0.3em 0;
+}
+
+.lyric-line.active {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(255, 1, 1);
+  opacity: 1;
 }
 
 button {
