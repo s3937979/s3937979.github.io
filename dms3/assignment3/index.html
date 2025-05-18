@@ -36,9 +36,28 @@
       alt="this is the second page."
       class="second-page"
     />
-    <dialog id="myDialog">
-      <h2>Today's shooting dream</h2>
-      <button id="save-button" autofocus>Save</button>
+    <dialog id="myDialog" class="win95-dialog">
+      <div class="dialog-header"></div>
+       <h2>&nbsp;Today's shooting dream</h2>
+       <!-- <button id="send-button" autofocus>Send</button> -->
+      </div>
+
+      <div id="dialog-body">
+        <input type="text" placeholder="Title" class="dream-title"/>
+        <input type="text" value="01/01/2000" class="dream-date">
+        <textarea placeholder="Contents" class="dream-contents"></textarea>
+      </div>
+
+      <div id="dialog-footer">
+        <select class="emotion-select">
+          <option>#Emotion</option>
+          <option>#Happy</option>
+          <option>#Sad</option>
+          <option>#Weird</option>
+        </select> 
+        <button class="send-button">SEND</button>
+      </div>
+
     </dialog>
   </body>
 </html>
