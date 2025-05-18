@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YeonwooHong_A3</title>
+    <title>Shooting Dreams</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +19,7 @@
         src="images/main-page.png"
         alt="this is my main page."
         class="main-page"
+        id="main-page"
       />
       <img
         src="images/main-page-stars.png"
@@ -26,18 +27,19 @@
         class="main-page-stars"
       />
     </div>
-    <h1 id="second-page-button" src="images/second-page.png">
-      Send Shooting Star
-    </h1>
 
-    <img
+    <div class="second-page">
+      <h1 id="heading" src="images/second-page.png">Send Shooting Star</h1>
+
+      <!-- <img
       src="images/second-page.png"
       alt="this is the second page."
       class="second-page"
-    />
-    <dialog id="dialog" open>
-      <button id="save-button" autofocus>Save</button>
-      <h2>Today's shooting dream</h2>
-    </dialog>
+    /> -->
+      <dialog id="myDialog">
+        <h2>Today's shooting dream</h2>
+        <button id="save-button" autofocus>Save</button>
+      </dialog>
+    </div>
   </body>
 </html>
