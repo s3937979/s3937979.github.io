@@ -71,6 +71,7 @@ h2 {
 }
 
 .second-page {
+  display: none;
   position: fixed;
   top: -0.2px;
   left: -1px;

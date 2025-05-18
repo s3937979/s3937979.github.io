@@ -6,7 +6,7 @@ heading.addEventListener("click", () => {
   document.querySelector(".main-page").style.display = "none";
   document.querySelector(".main-page-stars").style.display = "none";
 
-  mainImage.src = "images/second-page.png";
+  document.querySelector(".second-page").style.display = "block";
 
   dialog.showModal();
 });
