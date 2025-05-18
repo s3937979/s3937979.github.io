@@ -5,8 +5,8 @@ h1 {
   width: 300px;
   height: 33px;
   border-radius: 30px;
-  font-size: 30px;
-  font-family: "Jersey 25", sans-serif;
+  font-size: 23px;
+  font-family: "receipt-narrow", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-align: center;
@@ -24,11 +24,13 @@ h1:hover {
 
 h2 {
   position: relative;
-  top: -53px;
+  top: -59px;
   font-size: 24px;
   width: 632px;
   height: 32px;
-  /* background: rgb(61, 61, 249); */
+  font-family: "receipt-narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @keyframes floating {
@@ -70,13 +72,25 @@ h2 {
 }
 
 .second-page {
-  display: none;
-  position: fixed;
-  top: -0.2px;
-  left: -1px;
+  position: relative;
+  display: none; /* 기본은 숨김 */
   width: 100%;
-  height: 100%;
-  /* z-index: 1; */
+  height: 100vh;
+  overflow: hidden;
+}
+
+.second-page-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.star-character {
+  position: relative;
+  width: 200px;
+  height: 600px;
 }
 
 .win95-dialog {
@@ -92,26 +106,17 @@ h2 {
 }
 
 .dialog-header {
-  background: linear-gradient(to right, #0d48a1, #369);
+  background: linear-gradient(to right, #0d48a1, rgb(44, 128, 211));
   color: white;
   width: 600px;
   height: 30px;
   padding: 4px 8px;
   display: flex;
   justify-content: space-between;
+
   font-weight: bold;
   border-bottom: 3px solid black;
 }
-
-/* .dialog-body {
-  position: absolute;
-  top: 50px;
-  left: 10px;
-  padding: 0 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-} */
 
 .dream-title {
   position: absolute;
@@ -119,7 +124,9 @@ h2 {
   left: 10px;
   width: 400px;
   height: 30px;
-  font-family: "Courier New", monospace;
+  font-family: "receipt-narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 20px;
   border: 1px black;
   box-shadow: 4px 4px 0px #a3a3a3;
@@ -132,7 +139,9 @@ h2 {
   right: 11px;
   width: 150px;
   height: 30px;
-  font-family: "Courier New", monospace;
+  font-family: "receipt-narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 20px;
   border: 1px black;
   box-shadow: 4px 4px 0px #a3a3a3;
@@ -144,8 +153,10 @@ h2 {
   top: 100px;
   left: 10px;
   width: 572px;
-  height: 400px;
-  font-family: "Courier New", monospace;
+  height: 440px;
+  font-family: "receipt-narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 20px;
   border: 1px black;
   box-shadow: 4px 4px 0px #a3a3a3;
@@ -160,25 +171,36 @@ h2 {
 
 .emotion-select {
   position: absolute;
-  top: 530px;
+  top: 560px;
   left: 10px;
   width: 300px;
   height: 30px;
-
-  font-family: "Courier New", monospace;
+  font-family: "receipt-narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
   border: 1px black;
   box-shadow: 4px 4px 0px #a3a3a3;
 }
 
 .send-button {
   position: absolute;
-  top: 530px;
+  top: 560px;
   right: 10px;
   width: 200px;
   height: 30px;
-  font-family: "Courier New", monospace;
+  font-family: "receipt-narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
   background-color: #ebebeb;
   border: 1px black;
   box-shadow: 4px 4px 0px #a3a3a3;
   cursor: pointer;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }

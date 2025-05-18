@@ -8,6 +8,7 @@
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/tgs5udc.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap"
       rel="stylesheet"
@@ -27,37 +28,43 @@
         class="main-page-stars"
         id="main-image"
       />
+
+      <h1 id="heading" src="images/second-page.png">Send Shooting Star</h1>
     </div>
 
-    <h1 id="heading" src="images/second-page.png">Send Shooting Star</h1>
+    <div class="second-page">
+      <img
+        src="images/second-page.png"
+        alt="this is the second page."
+        class="second-page-bg"
+      />
 
-    <img
-      src="images/second-page.png"
-      alt="this is the second page."
-      class="second-page"
-    />
-    <dialog id="myDialog" class="win95-dialog">
-      <div class="dialog-header"></div>
-       <h2>&nbsp;Today's shooting dream</h2>
-       <!-- <button id="send-button" autofocus>Send</button> -->
-      </div>
+      <img
+        src="images/star-character.png"
+        alt="this is the star character image"
+        class="star-character"
+      />
 
-      <div id="dialog-body">
-        <input type="text" placeholder="Title" class="dream-title"/>
-        <input type="text" value="01/01/2000" class="dream-date">
-        <textarea placeholder="Contents" class="dream-contents"></textarea>
-      </div>
+      <dialog id="myDialog" class="win95-dialog">
+        <div class="dialog-header"></div>
+        <h2>&nbsp;Today's shooting dream</h2>
 
-      <div id="dialog-footer">
-        <select class="emotion-select">
-          <option>#Emotion</option>
-          <option>#Happy</option>
-          <option>#Sad</option>
-          <option>#Weird</option>
-        </select> 
-        <button class="send-button">SEND</button>
-      </div>
+        <div id="dialog-body">
+          <input type="text" placeholder="Title" class="dream-title" />
+          <input type="text" placeholder="01/JAN/2000" class="dream-date" />
+          <textarea placeholder="Contents" class="dream-contents"></textarea>
+        </div>
 
-    </dialog>
+        <div id="dialog-footer">
+          <select id="emotion-select">
+            <option>#Emotion</option>
+            <option>#Happy</option>
+            <option>#Sad</option>
+            <option>#Weird</option>
+          </select>
+          <button class="send-button">SEND</button>
+        </div>
+      </dialog>
+    </div>
   </body>
 </html>
