@@ -75,7 +75,7 @@ h2 {
   position: relative;
   display: none; /* 기본은 숨김 */
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -83,14 +83,18 @@ h2 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
 }
 
 .star-character {
   position: relative;
-  width: 200px;
+  top: 200px;
+  left: -10px;
+  width: 700px;
   height: 600px;
+  z-index: 9000;
+  pointer-events: none;
 }
 
 .win95-dialog {
@@ -103,6 +107,8 @@ h2 {
   color: black;
   box-shadow: 4px 4px 0 #000;
   overflow-x: hidden;
+  overflow: visible;
+  z-index: 1000;
 }
 
 .dialog-header {
@@ -113,7 +119,6 @@ h2 {
   padding: 4px 8px;
   display: flex;
   justify-content: space-between;
-
   font-weight: bold;
   border-bottom: 3px solid black;
 }
