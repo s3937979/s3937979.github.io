@@ -61,20 +61,27 @@
             <option>#Happy</option>
             <option>#Sad</option>
             <option>#Weird</option>
+            <option>#Excited</option>
+            <option>#Scared</option>
+            <option>#Surprised</option>
+            <option>#Angry</option>
           </select>
-          <button class="send-button">SEND</button>
+          <button class="send-button" src="images/third-page.png">SEND</button>
         </div>
       </dialog>
     </div>
 
-    <div class="third-page" style="display: none">
+    <div class="third-page" display="none">
       <img
         src="images/third-page.png"
         alt="this is the third page"
         class="third-page-bg"
       />
-      <h2 class="star-message">Your dream has been sent! 🌠</h2>
-      <!-- 여기에 별이 날아가는 효과나 결과 표시 등을 넣으면 돼 -->
+
+      <div class="scratch-container">
+        <img src="images/happy-emotion.png" id="colored-star" />
+        <canvas id="scratchCanvas" width="500" height="500"></canvas>
+      </div>
     </div>
   </body>
 </html>
