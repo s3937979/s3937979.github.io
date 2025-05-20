@@ -1,56 +1,53 @@
-const heading = document.getElementById("heading");
-const mainImage = document.getElementById("main-image");
-const secondPage = document.getElementById("second-page");
-const dialog = document.getElementById("myDialog");
-
-heading.addEventListener("click", () => {
-  document.querySelector(".main-page").style.display = "none";
-  document.querySelector(".main-page-stars").style.display = "none";
-  document.querySelector(".second-page").style.display = "block";
-
-  // 별 캐릭터 먼저 보여주기 (예: 나타났다 사라지게 만들 수도 있음)
-  const star = document.querySelector(".star-character");
-  star.style.display = "block";
-
-  // 💡 dialog는 2초 뒤에 열기
-  setTimeout(() => {
-    dialog.showModal();
-  }, 4000); // 2000ms = 2초
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-  const sendButton = document.querySelector(".send-button");
+  const bgMusic = document.getElementById("bg-music");
+  const heading = document.getElementById("heading");
+  const mainPage = document.querySelector(".main-page");
+  const mainStars = document.querySelector(".main-page-stars");
   const secondPage = document.querySelector(".second-page");
   const thirdPage = document.querySelector(".third-page");
-
-  if (sendButton) {
-    sendButton.addEventListener("click", () => {
-      secondPage.style.display = "none";
-      thirdPage.style.display = "flex";
-    });
-  } else {
-    console.warn("sendButton not found!");
-  }
-});
-
-const sendButton = document.querySelector(".send-button");
-const thirdPage = document.querySelector(".third-page");
-const emotionSelect = document.getElementById("emotion-select");
-const emotionStar = document.getElementById("emotion-star");
-
-sendButton.addEventListener("click", () => {
-  const rawEmotion = emotionSelect.value;
-  const emotion = rawEmotion.replace("#", "").toLowerCase(); // "#Happy" → "happy"
-
-  emotionStar.src = `images/${emotion}-star.png`;
-
-  secondPage.style.display = "none";
-  thirdPage.style.display = "block";
-
+  const dialog = document.getElementById("myDialog");
+  const sendButton = document.querySelector(".send-button");
+  const emotionSelect = document.getElementById("emotion-select");
+  const emotionStar = document.getElementById("emotion-star");
   const fadeText = document.getElementById("fade-text");
+  const backText = document.getElementById("back-text");
+  const star = document.querySelector(".star-character");
 
-  // 문구가 다시 나타날 수 있도록 animation 초기화 → 재적용
-  fadeText.style.animation = "none";
-  fadeText.offsetHeight; // reflow 트릭
-  fadeText.style.animation = "fadeInOut 3s ease forwards";
+  // 🔊 유저 클릭 시 배경음악 실행
+  document.addEventListener("click", () => {
+    bgMusic.muted = false;
+    bgMusic.play().catch((err) => {
+      console.warn("배경음악 재생 실패:", err);
+    });
+  });
+
+  // 🌟 heading 누르면 second page 보여주기
+  heading.addEventListener("click", () => {
+    mainPage.style.display = "none";
+    mainStars.style.display = "none";
+    secondPage.style.display = "block";
+
+    // 캐릭터 잠깐 등장
+    star.style.display = "block";
+
+    setTimeout(() => {
+      dialog.showModal();
+    }, 4000);
+  });
+
+  // 📤 send 버튼 누르면 third page로 이동
+  sendButton.addEventListener("click", () => {
+    const rawEmotion = emotionSelect.value;
+    const emotion = rawEmotion.replace("#", "").toLowerCase(); // "#Happy" → "happy"
+
+    emotionStar.src = `images/${emotion}-star.png`;
+
+    secondPage.style.display = "none";
+    thirdPage.style.display = "block";
+
+    // 문장 애니메이션 실행
+    fadeText.style.animation = "none"; // 초기화
+    fadeText.offsetHeight; // 강제 재계산
+    fadeText.style.animation = "fadeInOut 20s ease forwards";
+  });
 });
