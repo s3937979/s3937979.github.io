@@ -33,37 +33,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const canvas = document.getElementById("scratchCanvas");
-const ctx = canvas.getContext("2d");
+const sendButton = document.querySelector(".send-button");
+const thirdPage = document.querySelector(".third-page");
+const emotionSelect = document.getElementById("emotion-select");
+const emotionStar = document.getElementById("emotion-star");
 
-// 캔버스 사이즈 세팅
-canvas.width = canvas.offsetWidth;
-canvas.height = canvas.offsetHeight;
+sendButton.addEventListener("click", () => {
+  const rawEmotion = emotionSelect.value;
+  const emotion = rawEmotion.replace("#", "").toLowerCase(); // "#Happy" → "happy"
 
-// 먼저 검은색으로 덮어줌 (중요!!)
-ctx.fillStyle = "#000";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+  emotionStar.src = `images/${emotion}-star.png`;
 
-let isDrawing = false;
+  secondPage.style.display = "none";
+  thirdPage.style.display = "block";
 
-canvas.addEventListener("mousedown", () => {
-  isDrawing = true;
-});
+  const fadeText = document.getElementById("fade-text");
 
-canvas.addEventListener("mouseup", () => {
-  isDrawing = false;
-  ctx.beginPath();
-});
-
-canvas.addEventListener("mousemove", (e) => {
-  if (!isDrawing) return;
-
-  const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  ctx.globalCompositeOperation = "destination-out";
-  ctx.beginPath();
-  ctx.arc(x, y, 20, 0, Math.PI * 2, false);
-  ctx.fill();
+  // 문구가 다시 나타날 수 있도록 animation 초기화 → 재적용
+  fadeText.style.animation = "none";
+  fadeText.offsetHeight; // reflow 트릭
+  fadeText.style.animation = "fadeInOut 3s ease forwards";
 });
