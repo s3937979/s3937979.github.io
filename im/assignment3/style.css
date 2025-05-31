@@ -1,0 +1,43 @@
+.title {
+  position: relative;
+  top: -40px;
+  left: 70px;
+  font-size: 190px;
+  font-family: "dreamboat", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #b81b1b;
+  text-shadow: -6px 6px 0 #3a1c00, 6px 4px 0 #3a1c00;
+  padding: 40px;
+  display: inline-block;
+}
+
+.main-page {
+  position: fixed;
+  top: 0px;
+  left: 1px;
+  width: 100%;
+  height: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+}
+
+.main-btn {
+  font-family: "Fredoka One", cursive;
+  font-size: 24px;
+  padding: 15px 30px;
+  background-color: #fcd34d;
+  color: #3a1c00;
+  border: 3px solid #3a1c00;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 2px 4px #d97706;
+  transition: transform 0.1s ease;
+}
+
+.main-btn:hover {
+  transform: scale(1.05);
+}
