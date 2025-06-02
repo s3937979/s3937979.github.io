@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://use.typekit.net/mkh0xpl.css" />
-    <title>Hamboogi</title>
-  </head>
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'cgz7wya',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>  </head>
   <body>
     <div class="main-page">
-      <img src="ketchup.png" class="ketchup" id="ketchup" alt="ketchup">
-      <h1 class="title">RUN!TOM!</h1>
+      <img src="image/ketchup.png" class="ketchup" id="ketchup" alt="ketchup" >
+      <img src="image/tomato1.png" class="tomato1" id="tomato1" alt="tomato1">
+      <h1 class="title" id="title">RUN! <br />TOM!</h1>
+      <div class="button-group" id="buttonGroup">
+        <button class="main-btn" id="start-btn">START</button>
+        <button class="main-btn" id="info-btn">Story</button>
+      </div>
     </div>
+    
+    
      
     </div>
   </body>
