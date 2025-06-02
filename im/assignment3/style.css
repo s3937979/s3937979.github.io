@@ -1,43 +1,49 @@
-.title {
-  position: relative;
-  top: -40px;
-  left: 70px;
-  font-size: 190px;
-  font-family: "dreamboat", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  color: #b81b1b;
-  text-shadow: -6px 6px 0 #3a1c00, 6px 4px 0 #3a1c00;
-  padding: 40px;
-  display: inline-block;
+body {
+  margin: 0;
+  background-color: #fff5e6;
+  font-family: "Bungee", sans-serif;
+  overflow: hidden;
 }
 
 .main-page {
-  position: fixed;
-  top: 0px;
-  left: 1px;
-  width: 100%;
-  height: 100%;
-}
-
-.button-group {
+  height: 100vh;
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
 }
 
-.main-btn {
-  font-family: "Fredoka One", cursive;
-  font-size: 24px;
-  padding: 15px 30px;
-  background-color: #fcd34d;
-  color: #3a1c00;
-  border: 3px solid #3a1c00;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 2px 4px #d97706;
-  transition: transform 0.1s ease;
+/* 처음엔 화면 밖에 있다가 */
+.ketchup {
+  position: absolute;
+  top: 100px;
+  left: -200px;
+  width: 150px;
+  transition: left 0.6s ease-out;
 }
 
-.main-btn:hover {
-  transform: scale(1.05);
+/* 등장할 때 위치 이동 + 살짝 튀는 애니메이션 */
+.ketchup.show {
+  left: 50px;
+  animation: bounceIn 0.4s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.title {
+  font-size: 64px;
+  color: #000000;
+  text-shadow: 3px 3px #8b0000;
+  margin-top: 80px;
 }
