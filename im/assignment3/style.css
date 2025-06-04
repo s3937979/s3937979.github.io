@@ -17,7 +17,7 @@ body {
 /* 처음엔 화면 밖에 있다가 */
 .ketchup {
   position: absolute;
-  top: 200px;
+  top: 100px;
   right: -60px;
   opacity: 0;
   transform: scale(0.2);
@@ -138,7 +138,7 @@ body {
   font-size: 40px;
   border: 3px solid #000000;
   border-radius: 19px;
-  background-color: #c92f2f; /* 토마토색 🍅 */
+  background-color: #e32626;
   color: rgb(0, 0, 0);
   font-family: "Bungee", cursive;
   cursor: pointer;
@@ -165,9 +165,12 @@ body.fade-out {
   background-repeat: repeat-x;
   background-position: center;
   background-size: contain;
-  animation: scroll-bg 10s linear infinite;
   width: 1520px;
   height: 770px;
+}
+
+#game.scroll {
+  animation: scroll-bg 10s linear infinite;
 }
 
 @keyframes scroll-bg {
@@ -179,13 +182,119 @@ body.fade-out {
   }
 }
 
-#tomato {
+#stage-start {
   position: absolute;
-  bottom: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 60px;
+  border-radius: 20px;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5) translate(-50%, -50%);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+#stage-start {
+  animation: popIn 0.4s ease;
+}
+
+#tomato2 {
+  position: absolute;
+  bottom: 79px;
   left: 100px;
-  width: 80px;
+  width: 200px;
   height: auto;
-  z-index: 5;
+  z-index: 999;
+  display: block;
   transition: bottom 0.3s ease;
-  pointer-events: none; /* 클릭 방지 */
+  pointer-events: none;
+  opacity: 1;
+}
+
+#tomato2 {
+  transition: bottom 0.3s ease; /* ← 점프 & 착지 부드럽게 */
+}
+
+.obstacle {
+  width: 300px;
+  height: 100px;
+  bottom: 79px;
+  background-image: url("image/obstacle1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#score {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 48px;
+  color: rgb(0, 0, 0);
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  z-index: 9999;
+}
+
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 4px solid #000;
+  border-radius: 20px;
+  padding: 40px 60px;
+  font-size: 40px;
+  text-align: center;
+  z-index: 9999;
+  display: none;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-over button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 24px;
+  background-color: #e32626;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 15px;
+  border: 3px solid #000000;
+  cursor: pointer;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: transform 0.2s ease;
+}
+
+#game-over button:hover {
+  transform: scale(1.2);
 }
