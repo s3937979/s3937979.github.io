@@ -26,14 +26,14 @@ h1 {
 
 h2 {
   color: black;
-  font-size: 100px;
+  font-size: 108px;
   font-family: "Inter", sans-serif;
   font-weight: 900;
   font-style: normal;
   text-align: center;
-  letter-spacing: -px;
+  letter-spacing: -5px;
   position: absolute;
-  top: 280px;
+  top: 290px;
   left: 130px;
   transform: scaleY(1.5);
   display: inline-block;
@@ -76,20 +76,18 @@ h3 {
   font-weight: 300;
   font-style: light;
   font-size: 15px;
-  border-radius: 6px;
   text-decoration: none;
   transition: background 0.2s;
 }
 
 .side-nav a:hover {
-  background: #333;
+  background: #000000;
+  color: white;
 }
 
 .content-section {
   height: 100vh;
   padding: 80px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
 }
 
 .star {
@@ -103,10 +101,100 @@ h3 {
 }
 .star2 {
   position: absolute;
-  top: 400px;
+  top: 300px;
   right: -40px;
   width: 500px;
   height: 500px;
   z-index: 1;
   rotate: 10deg;
+}
+
+img.floating-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.editorial-section {
+  padding: 120px 60px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.section-inner {
+  display: flex;
+  max-width: 1500px;
+  width: 100%;
+  gap: 60px;
+  align-items: flex-start;
+  border-top: 1.5px solid #e3e3e3;
+}
+
+.section-label {
+  font-size: 30px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-style: light;
+  letter-spacing: -2px;
+  margin-top: -50px;
+  margin-right: -100px;
+  width: 250px;
+}
+
+.section-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-image img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  margin-top: 100px;
+}
+
+.section-video {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 180px;
+  margin-left: -150px;
+  margin-right: -50px;
+}
+
+.section-text {
+  flex: 1;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: -1px;
+  line-height: 1.8;
+  margin-top: 60px;
+  margin-right: -10px;
+  margin-left: 100px;
+}
+
+.section-text h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.site-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -1px;
 }
