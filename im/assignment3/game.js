@@ -3,6 +3,16 @@ let scoreInterval;
 let isJumping = false;
 let isGameOver = false;
 let currentStage = 1;
+let allowCollision = true;
+let allowObstacleMove = true;
+let allowObstacleCreate = true;
+let obstacleInterval;
+let obstacleCount = 0;
+const maxObstacles = {
+  1: 8, // Stage 1은 무제한
+  2: 13, // Stage 2는 10개까지만
+  3: 15, // Stage 3은 15개까지만
+};
 
 window.onload = () => {
   const stageStart = document.getElementById("stage-start");
@@ -10,34 +20,32 @@ window.onload = () => {
   const tomato = document.getElementById("tomato2");
   const game = document.getElementById("game");
 
-  setTimeout(() => {
-    if (!isGameOver) {
-      goToStage2();
-    }
-  }, 30000); // 30초 후 Stage 2
+  stageStart.textContent = "Stage 1";
+  stageStart.style.display = "flex";
+  stageStart.style.opacity = "1";
 
-  // 1. Stage 1 메시지 보여주기
   setTimeout(() => {
     stageStart.style.opacity = "0";
   }, 2000);
 
-  // 2. Stage 1 사라진 후 → 점수 시작 + 배경 스크롤
   setTimeout(() => {
     stageStart.style.display = "none";
-
-    // ✅ 점수 증가 시작
+    game.classList.add("scroll");
     scoreInterval = setInterval(() => {
       if (!isGameOver) {
         score++;
         scoreDisplay.textContent = score;
       }
-    }, 100); // 0.1초마다 +1
-
-    // ✅ 배경 스크롤 시작
-    game.classList.add("scroll");
+    }, 100);
   }, 2600);
 
-  // 3. 점프 이벤트
+  setTimeout(() => {
+    if (!isGameOver) goToStage(2);
+  }, 30000);
+  setTimeout(() => {
+    if (!isGameOver) goToStage(3);
+  }, 60000);
+
   document.addEventListener("keydown", (e) => {
     if (
       (e.code === "Space" || e.code === "ArrowUp") &&
@@ -57,64 +65,60 @@ window.onload = () => {
   function jumpTomato() {
     isJumping = true;
     tomato.style.bottom = "300px";
-
     setTimeout(() => {
       tomato.style.bottom = "79px";
     }, 800);
-
     setTimeout(() => {
       isJumping = false;
     }, 1600);
-
     tomato.style.transform = "scaleY(0.5)";
     setTimeout(() => {
       tomato.style.transform = "scaleY(1)";
     }, 150);
   }
 
-  // 4. 장애물 생성
   function createObstacle() {
-    const obstacle = document.createElement("div");
+    if (obstacleCount >= (maxObstacles[currentStage] || Infinity)) return;
+    obstacleCount++;
 
+    const obstacle = document.createElement("div");
+    const obstacleStage = currentStage;
     obstacle.style.position = "absolute";
     obstacle.style.top = "465px";
     obstacle.style.left = window.innerWidth + "px";
-    obstacle.style.width = "150px";
-    obstacle.style.height = "200px";
-    obstacle.style.backgroundImage = "url('image/obstacle1.png')";
+    obstacle.style.width = obstacleStage === 2 ? "150px" : "150px";
+    obstacle.style.height = obstacleStage === 2 ? "200px" : "200px";
+    obstacle.style.backgroundImage =
+      obstacleStage === 3
+        ? "url('image/obstacle3.png')"
+        : obstacleStage === 2
+        ? "url('image/obstacle2.png')"
+        : "url('image/obstacle1.png')";
     obstacle.style.backgroundSize = "contain";
     obstacle.style.backgroundRepeat = "no-repeat";
     obstacle.style.zIndex = "1000";
     obstacle.classList.add("obstacle");
-
     game.appendChild(obstacle);
 
     let pos = window.innerWidth;
+    const speed = obstacleStage === 2 ? 8 : 5;
 
     const move = setInterval(() => {
-      if (isGameOver) {
-        clearInterval(move);
-        return;
-      }
-
-      pos -= 5;
+      if (isGameOver || !allowObstacleMove) return;
+      pos -= speed;
       obstacle.style.left = `${pos}px`;
-
       const tomatoBox = tomato.getBoundingClientRect();
       const obsBox = obstacle.getBoundingClientRect();
-
       const isColliding =
         tomatoBox.left + 50 < obsBox.right - 50 &&
         tomatoBox.right - 50 > obsBox.left + 50 &&
         tomatoBox.bottom > obsBox.top + 50 &&
         tomatoBox.top < obsBox.bottom - 50;
-
-      if (isColliding) {
+      if (isColliding && allowCollision && !isGameOver) {
         clearInterval(move);
         obstacle.remove();
         handleGameOver();
       }
-
       if (pos < -150) {
         clearInterval(move);
         obstacle.remove();
@@ -122,43 +126,64 @@ window.onload = () => {
     }, 16);
   }
 
-  // 5. 게임 오버 처리
+  function startObstacleInterval() {
+    const delay = currentStage === 2 ? 1800 : 3000;
+    obstacleInterval = setInterval(() => {
+      if (!isGameOver && allowObstacleCreate) {
+        createObstacle();
+      }
+    }, delay);
+  }
+
+  function resetObstacleInterval() {
+    clearInterval(obstacleInterval);
+    startObstacleInterval();
+  }
+
+  function updateTomatoImage(stage) {
+    if (stage === 2) {
+      tomato.src = "image/tomato3.png";
+    } else if (stage === 3) {
+      tomato.src = "image/tomato4.png";
+    } else {
+      tomato.src = "image/tomato2.png";
+    }
+  }
+
   function handleGameOver() {
     isGameOver = true;
     clearInterval(scoreInterval);
-
+    clearInterval(obstacleInterval);
     game.classList.remove("scroll");
     game.classList.add("paused");
-
     document.getElementById("game-over").style.display = "flex";
-
     document.querySelectorAll(".obstacle").forEach((obs) => obs.remove());
   }
 
-  // 6. 일정 간격으로 장애물 생성
-  setInterval(() => {
-    if (!isGameOver) {
-      createObstacle();
-    }
-  }, 3000);
-
-  function goToStage2() {
-    currentStage = 2;
-
-    // Stage 2 메시지 표시
-    const stageStart = document.getElementById("stage-start");
-    stageStart.textContent = "Stage 2";
-    stageStart.style.opacity = "1";
+  function goToStage(stageNumber) {
+    currentStage = stageNumber;
+    obstacleCount = 0;
+    allowCollision = false;
+    allowObstacleMove = false;
+    allowObstacleCreate = false;
+    game.classList.remove("scroll");
+    game.style.backgroundImage = `url('image/bg-stage${stageNumber}.jpg')`;
+    updateTomatoImage(stageNumber);
+    stageStart.textContent = `Stage ${stageNumber}`;
     stageStart.style.display = "flex";
-
-    // 메시지 잠깐 보여줌
+    stageStart.style.opacity = "1";
     setTimeout(() => {
       stageStart.style.opacity = "0";
     }, 2000);
     setTimeout(() => {
       stageStart.style.display = "none";
+      game.classList.add("scroll");
+      allowCollision = true;
+      allowObstacleMove = true;
+      allowObstacleCreate = true;
+      resetObstacleInterval();
     }, 2600);
-
-    // (선택) Stage 2 효과: 장애물 더 자주 나오게 하기 등
   }
+
+  startObstacleInterval();
 };
