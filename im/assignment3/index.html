@@ -5,29 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+
+    <!-- Adobe Fonts loading using Typekit. This block asynchronously loads custom web fonts hosted by Adobe, enabling styled typography across the webpage. A timeout ensures fallback behavior in case font loading is delayed, and a class is added to signal when fonts are inactive. This is useful for consistent branding through typography. -->
     <script>
-      (function(d) {
+      (function (d) {
         var config = {
-          kitId: 'cgz7wya',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            kitId: "cgz7wya",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
       })(document);
-    </script>  </head>
+    </script>
+    <title>RUN! TOM!</title>
+  </head>
+
   <body>
     <div class="main-page">
-      <img src="image/ketchup.png" class="ketchup" id="ketchup" alt="ketchup" >
-      <img src="image/tomato1.png" class="tomato1" id="tomato1" alt="tomato1">
+      <!-- This image element displays a ketchup splash. It's animated using JavaScript and CSS to visually pop into the screen, creating a playful and engaging entrance effect that draws the player's attention right at the start. It sets a fun and energetic tone for the game. -->
+      <img src="image/ketchup.png" class="ketchup" id="ketchup" alt="ketchup" />
+
+      <!-- This is the main tomato character image. It appears after the ketchup in a similar animated fashion. This staged appearance builds visual hierarchy and helps focus the user's eyes on the core character they will be helping during gameplay. -->
+      <img src="image/tomato1.png" class="tomato1" id="tomato1" alt="tomato1" />
+
+      <!-- The game's title. It uses custom fonts and visual styling to stand out, and includes a line break to stack the title text creatively. The text animates in, reinforcing the game's playful atmosphere while capturing attention through bold styling. -->
       <h1 class="title" id="title">RUN! <br />TOM!</h1>
+
+      <!-- Two core user interface buttons: one to start the game and one to view the story. These are the main calls-to-action. The buttons are styled consistently and become visible with animation for a polished user experience. -->
       <div class="button-group" id="buttonGroup">
         <button class="main-btn" id="start-btn">START</button>
-        <button class="main-btn" id="info-btn">Story</button>
+        <button class="main-btn" id="info-btn">STORY</button>
       </div>
-    </div>
-    
-    
-     
+
+      <!-- This popup contains the narrative of the game. It introduces the main character, Tom, and her longing for freedom. This element is hidden by default and triggered when the STORY button is clicked. It creates emotional context for the player's journey. -->
+      <div id="story-popup">
+        <p>
+          <strong>RUN! TOM!</strong><br /><br />
+          Meet Tom, a little tomato who works at the supermarket!
+          <br />She works hard every day... but he's so tired. <br />“All I want
+          is to roll through fields and feel the breeze…” <br />Tom dreams of
+          escaping the noisy city and finding peace in nature. <br />Can you
+          help her sneak away and start a brand new life? <br />Roll, dash, and
+          bounce your way through a sweet little adventure!
+        </p>
+        <button id="close-story">Close</button>
+      </div>
+
+      <!-- This audio tag is responsible for playing the main background music on the index page. It is set to loop and will begin playback when the STORY button is clicked. Volume and control are handled via JavaScript. -->
+      <audio id="bgm-index" src="music/index-bgm.mp3" loop></audio>
     </div>
   </body>
 </html>
