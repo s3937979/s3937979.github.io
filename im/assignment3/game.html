@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="game.js" defer></script>
+
+    <!--  Loads custom Adobe Fonts asynchronously for visual consistency across the game. A fallback triggers if fonts fail to load within 3 seconds, ensuring that layout isn't broken. This improves branding and user experience through styled typefaces. -->
     <script>
       (function (d) {
         var config = {
@@ -40,23 +42,36 @@
     <title>RUN! TOM!</title>
   </head>
   <body>
+    <!-- Displays the current stage text at the top-center of the screen. Initially set to "Stage 1" and later updated dynamically by JavaScript during gameplay. Serves as visual guidance for progression. -->
     <div id="stage-start">Stage 1</div>
 
+    <!-- Main gameplay container where the background, obstacles, and the tomato character appear. It handles the side-scrolling animation and collision interactions. -->
     <div id="game">
       <img id="tomato2" src="image/tomato2.png" alt="tomato" />
     </div>
 
+    <!-- Displays the current score in the top-right corner. It is updated in real-time during the game loop and visually tracks the player's progress. -->
     <div id="score">0</div>
 
+    <!-- This is the game over screen. It appears when the player loses, offering a button to reload and try again. Hidden by default and activated via JavaScript. -->
     <div id="game-over">
       <p>Will you run again?</p>
       <button onclick="location.reload()">YES</button>
     </div>
 
+    <!-- This is the Game Clear screen, shown only when the player completes all stages successfully. Also hidden initially and triggered through the script. -->
     <div id="game-clear">Game Clear!</div>
+
+    <!-- Main background music for the gameplay. Loops continuously during play and is controlled by JavaScript to start/stop as needed. -->
     <audio id="bgm" src="music/bgm.mp3" loop></audio>
+
+    <!-- Jump sound effect. Triggered each time the tomato jumps, providing auditory feedback for user actions. -->
     <audio id="sfx-jump" src="music/jump.mp3"></audio>
+
+    <!-- Game over sound effect. Played when the player collides with an obstacle and loses. Enhances emotional feedback. -->
     <audio id="sfx-gameover" src="music/game-over.mp3"></audio>
+
+    <!-- Game clear sound effect. Played once the final stage is completed successfully, giving satisfying feedback for accomplishment. -->
     <audio id="sfx-clear" src="music/game-clear.mp3"></audio>
   </body>
 </html>
