@@ -21,10 +21,9 @@ body {
 .mobile-screen {
   position: relative;
   width: 393px;
-  height: 100svh;
+  height: 852px;
   overflow: hidden;
   background: #fff;
-  justify-content: center;
 }
 
 .page {
