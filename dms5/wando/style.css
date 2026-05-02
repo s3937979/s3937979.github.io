@@ -19,9 +19,9 @@ body {
 }
 
 .mobile-screen {
-  position: relative;
+  position: absolute;
   width: 393px;
-  height: 852px;
+  height: 703px;
   overflow: hidden;
   background: #fff;
 }
