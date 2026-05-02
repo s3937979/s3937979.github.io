@@ -56,24 +56,72 @@ body {
 }
 
 .splash1-page {
-  padding: 32px;
-  background: #f4f7fb;
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 393px;
+  height: 852px;
+  padding: 0;
+  background: #f1f1f1;
+  overflow: hidden;
 }
 
-.splash-content {
-  text-align: center;
+.slide-dot {
+  position: absolute;
+  top: 96px;
+  width: 24px;
+  height: 10px;
+  left: 162px;
+  background: #6d9e51;
+  border-radius: 17px;
 }
 
-.splash-content h1 {
-  margin: 0 0 12px;
-  font-size: 32px;
-  line-height: 1.2;
-  color: #172033;
+.slide-dot.dot2 {
+  width: 10px;
+  height: 10px;
+  left: 199px;
+  background: #bcd9a2;
+  border-radius: 9999px;
 }
 
-.splash-content p {
+.slide-dot.dot3 {
+  width: 10px;
+  height: 10px;
+  left: 222px;
+  background: #bcd9a2;
+  border-radius: 9999px;
+}
+
+.splash-img {
+  position: absolute;
+  left: 24px;
+  top: 193px;
+  width: 346px;
+  height: 359px;
+  object-fit: contain;
+}
+
+.splash-title {
+  position: absolute;
+  left: 47px;
+  top: 639px;
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #526070;
+  color: black;
+  font-size: 32px;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  line-height: 29px;
+}
+
+.splash-desc {
+  position: absolute;
+  left: 47px;
+  top: 683px;
+  width: 300px;
+  margin: 0;
+  color: black;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  font-weight: 300;
+  line-height: 29px;
 }
