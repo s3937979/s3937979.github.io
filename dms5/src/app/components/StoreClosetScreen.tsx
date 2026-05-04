@@ -1,5 +1,25 @@
 import { useState, useEffect } from "react";
+import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
+import bottoms1 from "../../imports/bottoms-1.png";
+import bottoms2 from "../../imports/bottoms-2.png";
+import bottoms3 from "../../imports/bottoms-3.png";
+import bottomsPreview1 from "../../imports/bottoms-1-1.png";
+import bottomsPreview2 from "../../imports/bottoms-2-1.png";
+import bottomsPreview3 from "../../imports/bottoms-3-1.png";
+import shoes1 from "../../imports/shoes-1.png";
+import shoes2 from "../../imports/shoes-2.png";
+import shoes3 from "../../imports/shoes-3.png";
+import shoesPreview1 from "../../imports/shoes-1-1.png";
+import shoesPreview2 from "../../imports/shoes-2-1.png";
+import shoesPreview3 from "../../imports/shoes-3-1.png";
+import acc1 from "../../imports/acc-1.png";
+import acc2 from "../../imports/acc-2.png";
+import acc3 from "../../imports/acc-3.png";
+import accPreview1 from "../../imports/acc-1-1.png";
+import accPreview2 from "../../imports/acc-2-1.png";
+import accPreview3 from "../../imports/acc-3-1.png";
+import tomato from "../../imports/tomato.png";
 
 interface StoreClosetScreenProps {
   onBack: () => void;
@@ -18,6 +38,8 @@ interface ClosetItem {
   name: string;
   price: number;
   subcategory: SubCategory;
+  image?: string;
+  wornImage?: string;
 }
 
 export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceClick, onHomeClick, onMissionClick, onIslandClick, onProfileClick }: StoreClosetScreenProps) {
@@ -28,21 +50,21 @@ export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceCl
   const [wornItem, setWornItem] = useState<ClosetItem | null>(null);
 
   const bottomsItems: ClosetItem[] = [
-    { id: "b1", name: "Blue pants", price: 20, subcategory: "bottoms" },
-    { id: "b2", name: "Striped pants", price: 30, subcategory: "bottoms" },
-    { id: "b3", name: "Yellow pants", price: 25, subcategory: "bottoms" },
+    { id: "b1", name: "Blue pants", price: 20, subcategory: "bottoms", image: bottoms1, wornImage: bottomsPreview1 },
+    { id: "b2", name: "Striped pants", price: 30, subcategory: "bottoms", image: bottoms2, wornImage: bottomsPreview2 },
+    { id: "b3", name: "Yellow pants", price: 25, subcategory: "bottoms", image: bottoms3, wornImage: bottomsPreview3 },
   ];
 
   const shoesItems: ClosetItem[] = [
-    { id: "s1", name: "Red shoes", price: 15, subcategory: "shoes" },
-    { id: "s2", name: "Black shoes", price: 20, subcategory: "shoes" },
-    { id: "s3", name: "White shoes", price: 18, subcategory: "shoes" },
+    { id: "s1", name: "Black shoes", price: 15, subcategory: "shoes", image: shoes1, wornImage: shoesPreview1 },
+    { id: "s2", name: "Red shoes", price: 20, subcategory: "shoes", image: shoes2, wornImage: shoesPreview2 },
+    { id: "s3", name: "Striped shoes", price: 18, subcategory: "shoes", image: shoes3, wornImage: shoesPreview3 },
   ];
 
   const accessoriesItems: ClosetItem[] = [
-    { id: "a1", name: "Hat", price: 10, subcategory: "accessories" },
-    { id: "a2", name: "Glasses", price: 12, subcategory: "accessories" },
-    { id: "a3", name: "Scarf", price: 8, subcategory: "accessories" },
+    { id: "a1", name: "Glasses", price: 10, subcategory: "accessories", image: acc1, wornImage: accPreview1 },
+    { id: "a2", name: "Headband", price: 12, subcategory: "accessories", image: acc2, wornImage: accPreview2 },
+    { id: "a3", name: "Headphones", price: 8, subcategory: "accessories", image: acc3, wornImage: accPreview3 },
   ];
 
   useEffect(() => {
@@ -98,7 +120,7 @@ export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceCl
           Store
         </h1>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-[#F4C430] rounded-full border-2 border-black"></div>
+          <CoinIcon className="w-6 h-6" />
           <span className="text-black" style={{ fontSize: '18px', fontWeight: 700 }}>{userCoins}</span>
         </div>
       </div>
@@ -127,59 +149,67 @@ export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceCl
         </button>
       </div>
 
-      {/* Tomato character */}
-      <div className="flex items-center justify-center py-6 flex-shrink-0">
-        <div className="w-[180px] h-[180px] bg-[#E74C3C] rounded-full border-4 border-black relative">
-          {/* Visual changes based on worn item */}
-          {wornItem && wornItem.subcategory === "bottoms" && (
-            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-20 h-14 bg-blue-600 border-2 border-black rounded-sm"></div>
-          )}
-          {wornItem && wornItem.subcategory === "shoes" && (
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-6 bg-black border-2 border-white rounded-lg"></div>
-          )}
-          {wornItem && wornItem.subcategory === "accessories" && wornItem.id === "a1" && (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-12 bg-black border-2 border-white rounded-b-full"></div>
-          )}
+      <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide pb-24">
+        {/* Tomato character */}
+        <div className="flex items-center justify-center py-1">
+          <div className="relative flex h-[292px] w-[282px] items-center justify-center">
+            {wornItem?.wornImage ? (
+              <img
+                src={wornItem.wornImage}
+                alt={`${wornItem.name} preview`}
+                className="h-full w-full object-contain"
+              />
+            ) : (
+              <img src={tomato} alt="Tomato preview" className="h-full w-full object-contain" />
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Separator line */}
-      <div className="w-full h-0.5 bg-black flex-shrink-0"></div>
+        {/* Separator line */}
+        <div className="w-full h-0.5 bg-black"></div>
 
-      {/* Subcategory buttons */}
-      <div className="flex gap-2 px-4 py-3 flex-shrink-0">
-        <button
-          onClick={() => setActiveSubcategory("bottoms")}
-          className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
-            activeSubcategory === "bottoms" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-          }`}
-          style={{ fontSize: '14px', fontWeight: 600 }}
-        >
-          Bottoms
-        </button>
-        <button
-          onClick={() => setActiveSubcategory("shoes")}
-          className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
-            activeSubcategory === "shoes" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-          }`}
-          style={{ fontSize: '14px', fontWeight: 600 }}
-        >
-          Shoes
-        </button>
-        <button
-          onClick={() => setActiveSubcategory("accessories")}
-          className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
-            activeSubcategory === "accessories" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-          }`}
-          style={{ fontSize: '14px', fontWeight: 600 }}
-        >
-          Accessories
-        </button>
-      </div>
+        {/* Subcategory buttons */}
+        <div className="flex gap-2 px-4 py-3">
+          <button
+            onClick={() => {
+              setActiveSubcategory("bottoms");
+              setWornItem(null);
+            }}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              activeSubcategory === "bottoms" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '14px', fontWeight: 600 }}
+          >
+            Bottoms
+          </button>
+          <button
+            onClick={() => {
+              setActiveSubcategory("shoes");
+              setWornItem(null);
+            }}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              activeSubcategory === "shoes" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '14px', fontWeight: 600 }}
+          >
+            Shoes
+          </button>
+          <button
+            onClick={() => {
+              setActiveSubcategory("accessories");
+              setWornItem(null);
+            }}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              activeSubcategory === "accessories" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '14px', fontWeight: 600 }}
+          >
+            Accessories
+          </button>
+        </div>
 
-      {/* Horizontally scrollable items */}
-      <div className="flex-1 pb-24 overflow-hidden">
-        <div className="overflow-x-auto overflow-y-hidden scrollbar-hide px-4 h-full">
+        {/* Horizontally scrollable items */}
+        <div className="overflow-x-auto overflow-y-hidden scrollbar-hide px-4">
           <div className="flex gap-4 items-start pt-2">
             {items.map((item) => (
               <div
@@ -190,14 +220,19 @@ export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceCl
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
+                    setWornItem(item);
                     setSelectedItem(item);
                   }}
                   className="w-full h-28 bg-gray-200 rounded-lg border-2 border-black/10 mb-3 flex items-center justify-center cursor-pointer hover:bg-gray-300"
                 >
-                  <div className="w-20 h-20 bg-gray-400 rounded"></div>
+                  {item.image ? (
+                    <img src={item.image} alt={item.name} className="max-h-[104px] max-w-[104px] object-contain" />
+                  ) : (
+                    <div className="w-20 h-20 bg-gray-400 rounded"></div>
+                  )}
                 </div>
                 <div className="flex items-center justify-center gap-1">
-                  <div className="w-5 h-5 bg-[#F4C430] rounded-full border-2 border-black"></div>
+                  <CoinIcon className="w-5 h-5" />
                   <span className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>{item.price}</span>
                 </div>
               </div>
@@ -211,11 +246,15 @@ export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceCl
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-3xl p-6 mx-4 max-w-sm w-full border-2 border-black/20">
             <div className="bg-gray-100 rounded-2xl p-6 mb-4 flex items-center justify-center border-2 border-black/10">
-              <div className="w-32 h-32 bg-gray-400 rounded-lg"></div>
+              {selectedItem.image ? (
+                <img src={selectedItem.image} alt={selectedItem.name} className="h-32 w-32 object-contain" />
+              ) : (
+                <div className="w-32 h-32 bg-gray-400 rounded-lg"></div>
+              )}
             </div>
 
             <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-6 h-6 bg-[#F4C430] rounded-full border-2 border-black"></div>
+              <CoinIcon className="w-6 h-6" />
               <span className="text-black" style={{ fontSize: '20px', fontWeight: 700 }}>{selectedItem.price}</span>
             </div>
 
@@ -264,7 +303,7 @@ export default function StoreClosetScreen({ onBack, onDecorClick, onAppearanceCl
 
       {/* Fixed bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
-        <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
+        <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
       </div>
     </div>
   );

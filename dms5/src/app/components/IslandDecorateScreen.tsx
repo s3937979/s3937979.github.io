@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
 
 type DecorateCategory = "house" | "nature";
@@ -121,7 +122,7 @@ function IslandDecorateScreenContent({ initialCategory = "house", onBack, onCate
       <div className="px-4 pt-2 pb-1 flex-shrink-0">
         <div className="flex items-start justify-end mb-1">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 bg-[#F4C430] rounded-full border-2 border-black"></div>
+            <CoinIcon className="w-5 h-5" />
             <span className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>63</span>
           </div>
         </div>
@@ -165,7 +166,7 @@ function IslandDecorateScreenContent({ initialCategory = "house", onBack, onCate
 
       {/* Bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
-        <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onBack} onTab4Click={onProfileClick} />
+        <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onBack} onTab4Click={onProfileClick} />
       </div>
     </div>
   );

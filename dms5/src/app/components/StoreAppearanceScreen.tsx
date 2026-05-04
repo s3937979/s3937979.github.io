@@ -1,5 +1,25 @@
 import { useState, useEffect } from "react";
+import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
+import hair1 from "../../imports/hair-1.png";
+import hair2 from "../../imports/hair-2.png";
+import hair3 from "../../imports/hair-3.png";
+import hairPreview1 from "../../imports/hair-1-1.png";
+import hairPreview2 from "../../imports/hair-2-1.png";
+import hairPreview3 from "../../imports/hair-3-1.png";
+import face1 from "../../imports/face-1.png";
+import face2 from "../../imports/face-2.png";
+import face3 from "../../imports/face-3.png";
+import facePreview1 from "../../imports/face-1-1.png";
+import facePreview2 from "../../imports/face-2-1.png";
+import facePreview3 from "../../imports/face-3-1.png";
+import body1 from "../../imports/body-1.png";
+import body2 from "../../imports/body-2.png";
+import body3 from "../../imports/body-3.png";
+import bodyPreview1 from "../../imports/body-1-1.png";
+import bodyPreview2 from "../../imports/body-2-1.png";
+import bodyPreview3 from "../../imports/body-3-1.png";
+import tomato from "../../imports/tomato.png";
 
 interface StoreAppearanceScreenProps {
   onBack: () => void;
@@ -18,6 +38,8 @@ interface AppearanceItem {
   name: string;
   price: number;
   subcategory: SubCategory;
+  image?: string;
+  wornImage?: string;
 }
 
 export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetClick, onHomeClick, onMissionClick, onIslandClick, onProfileClick }: StoreAppearanceScreenProps) {
@@ -28,21 +50,21 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
   const [wornItem, setWornItem] = useState<AppearanceItem | null>(null);
 
   const hairItems: AppearanceItem[] = [
-    { id: "h1", name: "Bowl cut", price: 20, subcategory: "hair" },
-    { id: "h2", name: "Top knot", price: 30, subcategory: "hair" },
-    { id: "h3", name: "Wavy hair", price: 25, subcategory: "hair" },
+    { id: "h1", name: "Thin hair", price: 20, subcategory: "hair", image: hair1, wornImage: hairPreview1 },
+    { id: "h2", name: "Bowl cut", price: 30, subcategory: "hair", image: hair2, wornImage: hairPreview2 },
+    { id: "h3", name: "Curly hair", price: 25, subcategory: "hair", image: hair3, wornImage: hairPreview3 },
   ];
 
   const faceItems: AppearanceItem[] = [
-    { id: "f1", name: "Sunglasses", price: 15, subcategory: "face" },
-    { id: "f2", name: "Mustache", price: 10, subcategory: "face" },
-    { id: "f3", name: "Freckles", price: 8, subcategory: "face" },
+    { id: "f1", name: "Star eyes", price: 15, subcategory: "face", image: face1, wornImage: facePreview1 },
+    { id: "f2", name: "Round eyes", price: 10, subcategory: "face", image: face2, wornImage: facePreview2 },
+    { id: "f3", name: "Sleepy eyes", price: 8, subcategory: "face", image: face3, wornImage: facePreview3 },
   ];
 
   const bodyItems: AppearanceItem[] = [
-    { id: "bo1", name: "Spots", price: 12, subcategory: "body" },
-    { id: "bo2", name: "Stripes", price: 18, subcategory: "body" },
-    { id: "bo3", name: "Stars", price: 15, subcategory: "body" },
+    { id: "bo1", name: "Round body", price: 12, subcategory: "body", image: body1, wornImage: bodyPreview1 },
+    { id: "bo2", name: "Long arms", price: 18, subcategory: "body", image: body2, wornImage: bodyPreview2 },
+    { id: "bo3", name: "Small legs", price: 15, subcategory: "body", image: body3, wornImage: bodyPreview3 },
   ];
 
   useEffect(() => {
@@ -98,7 +120,7 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
           Store
         </h1>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-[#F4C430] rounded-full border-2 border-black"></div>
+          <CoinIcon className="w-6 h-6" />
           <span className="text-black" style={{ fontSize: '18px', fontWeight: 700 }}>{userCoins}</span>
         </div>
       </div>
@@ -127,59 +149,67 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
         </button>
       </div>
 
-      {/* Tomato character */}
-      <div className="flex items-center justify-center py-6 flex-shrink-0">
-        <div className="w-[180px] h-[180px] bg-[#E74C3C] rounded-full border-4 border-black relative">
-          {/* Visual changes based on worn item */}
-          {wornItem && wornItem.subcategory === "hair" && wornItem.id === "h1" && (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-12 bg-black border-2 border-white rounded-b-full"></div>
-          )}
-          {wornItem && wornItem.subcategory === "hair" && wornItem.id === "h2" && (
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 bg-black border-2 border-white rounded-full"></div>
-          )}
-          {wornItem && wornItem.subcategory === "face" && wornItem.id === "f1" && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-6 bg-black border-2 border-white rounded-lg"></div>
-          )}
+      <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide pb-24">
+        {/* Tomato character */}
+        <div className="flex items-center justify-center py-1">
+          <div className="relative flex h-[292px] w-[282px] items-center justify-center">
+            {wornItem?.wornImage ? (
+              <img
+                src={wornItem.wornImage}
+                alt={`${wornItem.name} preview`}
+                className="h-full w-full object-contain"
+              />
+            ) : (
+              <img src={tomato} alt="Tomato preview" className="h-full w-full object-contain" />
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Separator line */}
-      <div className="w-full h-0.5 bg-black flex-shrink-0"></div>
+        {/* Separator line */}
+        <div className="w-full h-0.5 bg-black"></div>
 
-      {/* Subcategory buttons */}
-      <div className="flex gap-2 px-4 py-3 flex-shrink-0">
-        <button
-          onClick={() => setActiveSubcategory("hair")}
-          className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
-            activeSubcategory === "hair" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-          }`}
-          style={{ fontSize: '14px', fontWeight: 600 }}
-        >
-          Hair
-        </button>
-        <button
-          onClick={() => setActiveSubcategory("face")}
-          className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
-            activeSubcategory === "face" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-          }`}
-          style={{ fontSize: '14px', fontWeight: 600 }}
-        >
-          Face
-        </button>
-        <button
-          onClick={() => setActiveSubcategory("body")}
-          className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
-            activeSubcategory === "body" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-          }`}
-          style={{ fontSize: '14px', fontWeight: 600 }}
-        >
-          Body
-        </button>
-      </div>
+        {/* Subcategory buttons */}
+        <div className="flex gap-2 px-4 py-3">
+          <button
+            onClick={() => {
+              setActiveSubcategory("hair");
+              setWornItem(null);
+            }}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              activeSubcategory === "hair" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '14px', fontWeight: 600 }}
+          >
+            Hair
+          </button>
+          <button
+            onClick={() => {
+              setActiveSubcategory("face");
+              setWornItem(null);
+            }}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              activeSubcategory === "face" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '14px', fontWeight: 600 }}
+          >
+            Face
+          </button>
+          <button
+            onClick={() => {
+              setActiveSubcategory("body");
+              setWornItem(null);
+            }}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              activeSubcategory === "body" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '14px', fontWeight: 600 }}
+          >
+            Body
+          </button>
+        </div>
 
-      {/* Horizontally scrollable items */}
-      <div className="flex-1 pb-24 overflow-hidden">
-        <div className="overflow-x-auto overflow-y-hidden scrollbar-hide px-4 h-full">
+        {/* Horizontally scrollable items */}
+        <div className="overflow-x-auto overflow-y-hidden scrollbar-hide px-4">
           <div className="flex gap-4 items-start pt-2">
             {items.map((item) => (
               <div
@@ -190,14 +220,19 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
+                    setWornItem(item);
                     setSelectedItem(item);
                   }}
                   className="w-full h-28 bg-gray-200 rounded-lg border-2 border-black/10 mb-3 flex items-center justify-center cursor-pointer hover:bg-gray-300"
                 >
-                  <div className="w-20 h-20 bg-gray-400 rounded"></div>
+                  {item.image ? (
+                    <img src={item.image} alt={item.name} className="max-h-[104px] max-w-[104px] object-contain" />
+                  ) : (
+                    <div className="w-20 h-20 bg-gray-400 rounded"></div>
+                  )}
                 </div>
                 <div className="flex items-center justify-center gap-1">
-                  <div className="w-5 h-5 bg-[#F4C430] rounded-full border-2 border-black"></div>
+                  <CoinIcon className="w-5 h-5" />
                   <span className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>{item.price}</span>
                 </div>
               </div>
@@ -211,11 +246,15 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-3xl p-6 mx-4 max-w-sm w-full border-2 border-black/20">
             <div className="bg-gray-100 rounded-2xl p-6 mb-4 flex items-center justify-center border-2 border-black/10">
-              <div className="w-32 h-32 bg-gray-400 rounded-lg"></div>
+              {selectedItem.image ? (
+                <img src={selectedItem.image} alt={selectedItem.name} className="h-32 w-32 object-contain" />
+              ) : (
+                <div className="w-32 h-32 bg-gray-400 rounded-lg"></div>
+              )}
             </div>
 
             <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-6 h-6 bg-[#F4C430] rounded-full border-2 border-black"></div>
+              <CoinIcon className="w-6 h-6" />
               <span className="text-black" style={{ fontSize: '20px', fontWeight: 700 }}>{selectedItem.price}</span>
             </div>
 
@@ -264,7 +303,7 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
 
       {/* Fixed bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
-        <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
+        <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
       </div>
     </div>
   );

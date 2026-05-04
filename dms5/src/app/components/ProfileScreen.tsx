@@ -193,7 +193,7 @@ export default function ProfileScreen({ onHomeClick, onIslandClick, onMissionCli
 
       {/* Fixed bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
-        <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={() => {}} />
+        <TabBar activeTab="profile" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={() => {}} />
       </div>
     </div>
   );

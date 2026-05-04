@@ -94,46 +94,46 @@ export default function MissionScreen({ onCategoryChange, onHomeClick, onMission
 
   return (
     <div className="h-full flex flex-col bg-[#EDEDEE]">
+      {/* Fixed Header */}
+      <div className="flex-shrink-0 pt-5 pb-4 px-4 bg-[#EDEDEE] z-10">
+        <h1 className="text-black mb-4" style={{ fontSize: '32px', fontWeight: 700 }}>
+          Mission
+        </h1>
+
+        {/* Category buttons */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => handleCategoryClick("starter")}
+            className={`px-4 py-2 rounded-full border-2 border-black transition-colors ${
+              category === "starter" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '16px', fontWeight: 600 }}
+          >
+            Starter
+          </button>
+          <button
+            onClick={() => handleCategoryClick("intermediate")}
+            className={`px-4 py-2 rounded-full border-2 border-black transition-colors ${
+              category === "intermediate" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '16px', fontWeight: 600 }}
+          >
+            Intermediate
+          </button>
+          <button
+            onClick={() => handleCategoryClick("advanced")}
+            className={`px-4 py-2 rounded-full border-2 border-black transition-colors ${
+              category === "advanced" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: '16px', fontWeight: 600 }}
+          >
+            Advanced
+          </button>
+        </div>
+      </div>
+
       {/* Scrollable content */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide">
-        {/* Header */}
-        <div className="pt-5 pb-4 px-4">
-          <h1 className="text-black mb-4" style={{ fontSize: '28px', fontWeight: 700 }}>
-            Mission
-          </h1>
-
-          {/* Category buttons */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => handleCategoryClick("starter")}
-              className={`px-4 py-2 rounded-full border-2 border-black transition-colors ${
-                category === "starter" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-              }`}
-              style={{ fontSize: '12px', fontWeight: 600 }}
-            >
-              Starter
-            </button>
-            <button
-              onClick={() => handleCategoryClick("intermediate")}
-              className={`px-4 py-2 rounded-full border-2 border-black transition-colors ${
-                category === "intermediate" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-              }`}
-              style={{ fontSize: '12px', fontWeight: 600 }}
-            >
-              Intermediate
-            </button>
-            <button
-              onClick={() => handleCategoryClick("advanced")}
-              className={`px-4 py-2 rounded-full border-2 border-black transition-colors ${
-                category === "advanced" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
-              }`}
-              style={{ fontSize: '12px', fontWeight: 600 }}
-            >
-              Advanced
-            </button>
-          </div>
-        </div>
-
         {/* Mission cards */}
         <div className="px-4 space-y-3 pb-20">
           {missions.map((mission) => (
@@ -142,26 +142,26 @@ export default function MissionScreen({ onCategoryChange, onHomeClick, onMission
               className="bg-[#B8D4A0] rounded-2xl p-4 border-2 border-black/20"
             >
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-black flex-1" style={{ fontSize: '14px', fontWeight: 700 }}>
+                <h3 className="text-black flex-1" style={{ fontSize: '18px', fontWeight: 700 }}>
                   {mission.title}
                 </h3>
                 {mission.status === "not-started" && (
                   <button
                     onClick={() => handleStartMission(mission.id)}
                     className="bg-[#7A9B5F] text-white px-4 py-1 rounded-lg border-2 border-black/20"
-                    style={{ fontSize: '11px', fontWeight: 600 }}
+                    style={{ fontSize: '15px', fontWeight: 600 }}
                   >
                     Start
                   </button>
                 )}
                 {mission.status === "in-progress" && (
                   <div className="bg-[#7A9B5F] text-white px-3 py-1 rounded-lg border-2 border-black/20">
-                    <span style={{ fontSize: '10px', fontWeight: 600 }}>In Progress</span>
+                    <span style={{ fontSize: '14px', fontWeight: 600 }}>In Progress</span>
                   </div>
                 )}
                 {mission.status === "completed" && (
                   <div className="text-red-600 px-2 py-1">
-                    <span style={{ fontSize: '12px', fontWeight: 700 }}>Completed</span>
+                    <span style={{ fontSize: '16px', fontWeight: 700 }}>Completed</span>
                   </div>
                 )}
               </div>
@@ -177,10 +177,10 @@ export default function MissionScreen({ onCategoryChange, onHomeClick, onMission
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-black" style={{ fontSize: '9px', fontWeight: 400 }}>
+                <span className="text-black" style={{ fontSize: '13px', fontWeight: 400 }}>
                   {mission.progress}
                 </span>
-                <span className="text-black" style={{ fontSize: '9px', fontWeight: 600 }}>
+                <span className="text-black" style={{ fontSize: '13px', fontWeight: 600 }}>
                   Reward: {mission.reward} coins
                 </span>
               </div>
@@ -190,7 +190,7 @@ export default function MissionScreen({ onCategoryChange, onHomeClick, onMission
       </div>
 
       {/* Bottom tab bar */}
-      <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
+      <TabBar activeTab="mission" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
     </div>
   );
 }

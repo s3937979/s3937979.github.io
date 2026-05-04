@@ -173,7 +173,7 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
 
       {/* Fixed bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
-        <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
+        <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
       </div>
     </div>
   );

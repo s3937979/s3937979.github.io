@@ -1,5 +1,11 @@
 import { useState } from "react";
+import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
+import customizeIcon from "../../imports/customize.png";
+import editIcon from "../../imports/edit-icon.png";
+import friendsIcon from "../../imports/friends-icon.png";
+import islandImage from "../../imports/island.png";
+import storeIcon from "../../imports/store-icon.png";
 
 interface IslandMainScreenProps {
   onStoreClick: () => void;
@@ -13,7 +19,7 @@ interface IslandMainScreenProps {
 }
 
 export default function IslandMainScreen({ onStoreClick, onFriendsClick, onDecorateClick, onCustomizeClick, onHomeClick, onMissionClick, onProfileClick, decorations }: IslandMainScreenProps) {
-  const [islandName, setIslandName] = useState("Tom's Island");
+  const [islandName, setIslandName] = useState("Island");
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(islandName);
 
@@ -40,71 +46,68 @@ export default function IslandMainScreen({ onStoreClick, onFriendsClick, onDecor
   return (
     <div className="h-full flex flex-col bg-[#8DC5E8]">
       {/* Yellow header */}
-      <div className="bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
+      <div className="relative bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
         {/* Store icon */}
-        <button onClick={onStoreClick} className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
-          <div className="w-6 h-6 bg-white rounded-sm"></div>
+        <button onClick={onStoreClick} className="w-12 h-12 flex items-center justify-center">
+          <img src={storeIcon} alt="Store" className="w-[41px] h-[41px] object-contain" />
         </button>
 
         {/* Title */}
-        {isEditing ? (
-          <input
-            type="text"
-            value={editValue}
-            onChange={(e) => setEditValue(e.target.value)}
-            onBlur={handleTitleBlur}
-            onKeyDown={handleKeyDown}
-            autoFocus
-            className="text-black text-center bg-transparent border-b-2 border-black outline-none"
-            style={{ fontSize: '20px', fontWeight: 700 }}
-          />
-        ) : (
-          <h1
-            onClick={handleTitleClick}
-            className="text-black cursor-pointer"
-            style={{ fontSize: '20px', fontWeight: 700 }}
-          >
-            {islandName}
-          </h1>
-        )}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          {isEditing ? (
+            <input
+              type="text"
+              value={editValue}
+              onChange={(e) => setEditValue(e.target.value)}
+              onBlur={handleTitleBlur}
+              onKeyDown={handleKeyDown}
+              autoFocus
+              className="w-40 bg-transparent text-center text-black outline-none border-b-2 border-black"
+              style={{ fontSize: '32px', fontWeight: 700 }}
+            />
+          ) : (
+            <h1
+              onClick={handleTitleClick}
+              className="text-black cursor-pointer border-b-2 border-black leading-none"
+              style={{ fontSize: '32px', fontWeight: 700 }}
+            >
+              {islandName}
+            </h1>
+          )}
+        </div>
 
         {/* Friends icon */}
-        <button onClick={onFriendsClick} className="w-10 h-10 flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="black">
-            <circle cx="11" cy="10" r="4" />
-            <circle cx="21" cy="10" r="4" />
-            <path d="M11 15c-3.5 0-6 2-6 4v3h12v-3c0-2-2.5-4-6-4z" />
-            <path d="M21 15c-3.5 0-6 2-6 4v3h12v-3c0-2-2.5-4-6-4z" />
-          </svg>
+        <button onClick={onFriendsClick} className="w-12 h-12 flex items-center justify-center">
+          <img src={friendsIcon} alt="Friends" className="w-[41px] h-[41px] object-contain" />
         </button>
       </div>
 
       {/* Main content */}
-      <div className="flex-1 px-4 pt-4 overflow-hidden">
+      <div className="relative flex-1 px-4 pt-4 overflow-hidden">
         {/* Coin counter and icons */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="absolute left-4 right-4 top-4 z-10 flex items-start justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-[#F4C430] rounded-full border-2 border-black"></div>
+            <CoinIcon className="w-7 h-7" />
             <span className="text-black" style={{ fontSize: '20px', fontWeight: 700 }}>63</span>
           </div>
 
           <div className="flex flex-col gap-3">
             {/* Decorate icon */}
-            <button onClick={onDecorateClick} className="w-12 h-12 bg-[#7A9B5F] rounded-lg border-2 border-black flex items-center justify-center">
-              <div className="w-6 h-6 bg-white rounded-sm"></div>
+            <button onClick={onDecorateClick} className="w-14 h-14 flex items-center justify-center">
+              <img src={editIcon} alt="Decorate" className="w-[51px] h-[51px] object-contain" />
             </button>
 
             {/* Tomato Customize icon */}
-            <button onClick={onCustomizeClick} className="w-12 h-12 bg-[#E74C3C] rounded-full border-2 border-black"></button>
+            <button onClick={onCustomizeClick} className="w-14 h-14 flex items-center justify-center">
+              <img src={customizeIcon} alt="Customize" className="w-[51px] h-[51px] object-contain" />
+            </button>
           </div>
         </div>
 
         {/* Island illustration */}
-        <div className="flex items-center justify-center">
-          <div className="w-[280px] h-[320px] bg-[#7A9B5F] rounded-[40px] border-4 border-black relative">
-            {/* Tree placeholders */}
-            <div className="absolute top-8 left-8 w-10 h-12 bg-[#4A7C3C] rounded-lg border-2 border-black"></div>
-            <div className="absolute bottom-16 right-16 w-10 h-12 bg-[#4A7C3C] rounded-lg border-2 border-black"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative w-[360px] h-[408px]">
+            <img src={islandImage} alt="Island" className="absolute inset-0 h-full w-full object-contain" />
 
             {/* Dropped decorations */}
             {decorations.map((item) => (
@@ -119,7 +122,7 @@ export default function IslandMainScreen({ onStoreClick, onFriendsClick, onDecor
       </div>
 
       {/* Bottom tab bar */}
-      <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={() => {}} onTab4Click={onProfileClick} />
+      <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={() => {}} onTab4Click={onProfileClick} />
     </div>
   );
 }

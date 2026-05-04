@@ -43,33 +43,33 @@ export default function HomeScreen({ onNotificationClick, onCalendarClick, onMis
   }, []);
 
   return (
-    <div className="h-full flex flex-col bg-[#EDEDEE] px-4 overflow-hidden">
+    <div className="h-full flex flex-col bg-[#EDEDEE] overflow-hidden">
       {/* Header section */}
-      <div className="flex items-start justify-between pt-5 pb-3 flex-shrink-0">
+      <div className="flex items-start justify-between px-4 pt-5 pb-3 flex-shrink-0">
         <div>
-          <p className="text-black mb-1" style={{ fontSize: '10px', fontWeight: 400 }}>
+          <p className="text-black mb-1" style={{ fontSize: '17px', fontWeight: 400 }}>
             Today's Steps
           </p>
-          <h1 className="numeric-italic text-black mb-0.5" style={{ fontSize: '32px', fontWeight: 700, lineHeight: '1' }}>
+          <h1 className="numeric-italic text-black mb-0.5" style={{ fontSize: '39px', fontWeight: 700, lineHeight: '1' }}>
             {currentSteps.toLocaleString()}
           </h1>
-          <p className="numeric-italic text-black mb-0.5" style={{ fontSize: '9px', fontWeight: 400 }}>
+          <p className="numeric-italic text-black mb-0.5" style={{ fontSize: '16px', fontWeight: 400 }}>
             {currentKm.toFixed(1)} km / {currentKcal} kcal
           </p>
-          <p className="numeric-italic text-black" style={{ fontSize: '9px', fontWeight: 400 }}>
+          <p className="numeric-italic text-black" style={{ fontSize: '16px', fontWeight: 400 }}>
             {currentCoins} coins earned today
           </p>
         </div>
 
         {/* Bell notification button */}
         <button onClick={onNotificationClick} className="relative mt-1">
-          <img src={notifiBlack} alt="Notifications" className="w-[29px] h-[29px] object-contain" />
+          <img src={notifiBlack} alt="Notifications" className="w-[35px] h-[35px] object-contain" />
           <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full"></div>
         </button>
       </div>
 
       {/* Character illustration placeholder */}
-      <div className="flex-1 flex items-center justify-center min-h-0">
+      <div className="flex-1 flex items-center justify-center min-h-0 px-4">
         <div className="relative w-[299px] h-[309px]">
           <div
             className="absolute inset-0 h-full w-full transition-colors duration-1000 ease-linear"
@@ -94,7 +94,7 @@ export default function HomeScreen({ onNotificationClick, onCalendarClick, onMis
       </div>
 
       {/* Progress bar section */}
-      <div className="flex-shrink-0 pb-3">
+      <div className="flex-shrink-0 px-4 pb-3">
         <div className="relative">
           {/* Progress bar background */}
           <div className="relative h-5 bg-white rounded-full border-2 border-black overflow-hidden">
@@ -112,29 +112,29 @@ export default function HomeScreen({ onNotificationClick, onCalendarClick, onMis
 
           {/* Labels */}
           <div className="flex justify-between mt-0.5">
-            <span className="numeric-italic text-black" style={{ fontSize: '8px', fontWeight: 400 }}>0</span>
-            <span className="numeric-italic text-black" style={{ fontSize: '8px', fontWeight: 400 }}>10,000</span>
+            <span className="numeric-italic text-black" style={{ fontSize: '15px', fontWeight: 400 }}>0</span>
+            <span className="numeric-italic text-black" style={{ fontSize: '15px', fontWeight: 400 }}>10,000</span>
           </div>
         </div>
 
         {/* Steps left text */}
-        <p className="numeric-italic text-right text-black mt-1" style={{ fontSize: '9px', fontWeight: 400 }}>
+        <p className="numeric-italic text-right text-black mt-1" style={{ fontSize: '16px', fontWeight: 400 }}>
           {stepsLeft.toLocaleString()} steps left
         </p>
       </div>
 
       {/* Calendar button */}
-      <div className="flex-shrink-0 pb-2">
+      <div className="flex-shrink-0 px-4 pb-2">
         <button
           onClick={onCalendarClick}
-          className="w-12 h-12 flex items-center justify-center"
+          className="w-14 h-14 flex items-center justify-center"
         >
-          <img src={calendarFin} alt="Calendar" className="w-[41px] h-[41px] object-contain" />
+          <img src={calendarFin} alt="Calendar" className="w-[49px] h-[49px] object-contain" />
         </button>
       </div>
 
       {/* Bottom tab bar */}
-      <TabBar onTab1Click={() => {}} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
+      <TabBar activeTab="home" onTab1Click={() => {}} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
     </div>
   );
 }

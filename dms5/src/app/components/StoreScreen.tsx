@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
+import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
+import flower1 from "../../imports/flower-1.png";
+import house1 from "../../imports/house-1.png";
+import house2 from "../../imports/house-2.png";
+import house3 from "../../imports/house-3.png";
+import palmTree from "../../imports/palm-tree.png";
+import pineTree from "../../imports/pine-tree.png";
 
 interface StoreScreenProps {
   onBack: () => void;
@@ -16,6 +23,7 @@ interface StoreItem {
   name: string;
   price: number;
   category: "house" | "nature";
+  image: string;
 }
 
 export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIslandClick, onProfileClick, onClosetClick, onAppearanceClick }: StoreScreenProps) {
@@ -25,15 +33,15 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
   const [message, setMessage] = useState<"" | "not-enough" | "purchased">("");
 
   const houseItems: StoreItem[] = [
-    { id: "h1", name: "Rock cave", price: 20, category: "house" },
-    { id: "h2", name: "Tent", price: 60, category: "house" },
-    { id: "h3", name: "Mailbox", price: 40, category: "house" },
+    { id: "h1", name: "Rock cave", price: 20, category: "house", image: house1 },
+    { id: "h2", name: "Tent", price: 60, category: "house", image: house2 },
+    { id: "h3", name: "Mailbox", price: 40, category: "house", image: house3 },
   ];
 
   const natureItems: StoreItem[] = [
-    { id: "n1", name: "Palm tree", price: 20, category: "nature" },
-    { id: "n2", name: "Pine tree", price: 30, category: "nature" },
-    { id: "n3", name: "Bush", price: 15, category: "nature" },
+    { id: "n1", name: "Palm tree", price: 20, category: "nature", image: palmTree },
+    { id: "n2", name: "Pine tree", price: 30, category: "nature", image: pineTree },
+    { id: "n3", name: "Flower", price: 15, category: "nature", image: flower1 },
   ];
 
   useEffect(() => {
@@ -74,7 +82,7 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
           Store
         </h1>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-[#F4C430] rounded-full border-2 border-black"></div>
+          <CoinIcon className="w-6 h-6" />
           <span className="text-black" style={{ fontSize: '18px', fontWeight: 700 }}>{userCoins}</span>
         </div>
       </div>
@@ -128,10 +136,10 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
                   className="flex-shrink-0 w-36 bg-white rounded-2xl border-2 border-black/20 p-4 cursor-pointer hover:bg-gray-50"
                 >
                   <div className="w-full h-28 bg-gray-200 rounded-lg border-2 border-black/10 mb-3 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-gray-400 rounded"></div>
+                    <img src={item.image} alt={item.name} className="max-h-[96px] max-w-[96px] object-contain" />
                   </div>
                   <div className="flex items-center justify-center gap-1">
-                    <div className="w-5 h-5 bg-[#F4C430] rounded-full border-2 border-black"></div>
+                    <CoinIcon className="w-5 h-5" />
                     <span className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>{item.price}</span>
                   </div>
                 </div>
@@ -156,10 +164,10 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
                   className="flex-shrink-0 w-36 bg-white rounded-2xl border-2 border-black/20 p-4 cursor-pointer hover:bg-gray-50"
                 >
                   <div className="w-full h-28 bg-gray-200 rounded-lg border-2 border-black/10 mb-3 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-gray-400 rounded"></div>
+                    <img src={item.image} alt={item.name} className="max-h-[96px] max-w-[96px] object-contain" />
                   </div>
                   <div className="flex items-center justify-center gap-1">
-                    <div className="w-5 h-5 bg-[#F4C430] rounded-full border-2 border-black"></div>
+                    <CoinIcon className="w-5 h-5" />
                     <span className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>{item.price}</span>
                   </div>
                 </div>
@@ -174,11 +182,11 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-3xl p-6 mx-4 max-w-sm w-full border-2 border-black/20">
             <div className="bg-gray-100 rounded-2xl p-6 mb-4 flex items-center justify-center border-2 border-black/10">
-              <div className="w-32 h-32 bg-gray-400 rounded-lg"></div>
+              <img src={selectedItem.image} alt={selectedItem.name} className="max-h-32 max-w-32 object-contain" />
             </div>
 
             <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-6 h-6 bg-[#F4C430] rounded-full border-2 border-black"></div>
+              <CoinIcon className="w-6 h-6" />
               <span className="text-black" style={{ fontSize: '20px', fontWeight: 700 }}>{selectedItem.price}</span>
             </div>
 
@@ -227,7 +235,7 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
 
       {/* Fixed bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
-        <TabBar onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
+        <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onIslandClick} onTab4Click={onProfileClick} />
       </div>
     </div>
   );
