@@ -19,9 +19,20 @@ export type MissionCategory = "starter" | "intermediate" | "advanced";
 
 export type DecorateCategory = "house" | "nature";
 
+export type PurchasedDecorItem = {
+  id: string;
+  name: string;
+  category: DecorateCategory;
+  image: string;
+  price: number;
+};
+
 export type IslandDecoration = {
   id: string;
-  type: string;
+  itemId: string;
+  name: string;
+  category: DecorateCategory;
+  image: string;
   x: number;
   y: number;
 };

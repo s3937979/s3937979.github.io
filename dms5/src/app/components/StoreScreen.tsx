@@ -7,6 +7,7 @@ import house2 from "../../imports/house-2.png";
 import house3 from "../../imports/house-3.png";
 import palmTree from "../../imports/palm-tree.png";
 import pineTree from "../../imports/pine-tree.png";
+import type { PurchasedDecorItem } from "../types";
 
 interface StoreScreenProps {
   onBack: () => void;
@@ -16,17 +17,25 @@ interface StoreScreenProps {
   onProfileClick: () => void;
   onClosetClick: () => void;
   onAppearanceClick: () => void;
+  purchasedDecorItems: PurchasedDecorItem[];
+  onPurchasedDecorItemsChange: (items: PurchasedDecorItem[]) => void;
 }
 
-interface StoreItem {
+interface StoreItem extends PurchasedDecorItem {
   id: string;
-  name: string;
-  price: number;
-  category: "house" | "nature";
-  image: string;
 }
 
-export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIslandClick, onProfileClick, onClosetClick, onAppearanceClick }: StoreScreenProps) {
+export default function StoreScreen({
+  onBack,
+  onHomeClick,
+  onMissionClick,
+  onIslandClick,
+  onProfileClick,
+  onClosetClick,
+  onAppearanceClick,
+  purchasedDecorItems,
+  onPurchasedDecorItemsChange,
+}: StoreScreenProps) {
   const [activeCategory, setActiveCategory] = useState<"decor" | "closet" | "appearance">("decor");
   const [selectedItem, setSelectedItem] = useState<StoreItem | null>(null);
   const [userCoins, setUserCoins] = useState(63);
@@ -57,6 +66,9 @@ export default function StoreScreen({ onBack, onHomeClick, onMissionClick, onIsl
     if (selectedItem) {
       if (userCoins >= selectedItem.price) {
         setUserCoins(userCoins - selectedItem.price);
+        if (!purchasedDecorItems.some((item) => item.id === selectedItem.id)) {
+          onPurchasedDecorItemsChange([...purchasedDecorItems, selectedItem]);
+        }
         setMessage("purchased");
         setSelectedItem(null);
       } else {

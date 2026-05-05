@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
-
-type DecorateCategory = "house" | "nature";
+import backIcon from "../../imports/back-icon.png";
+import islandImage from "../../imports/island.png";
+import type { DecorateCategory, IslandDecoration, PurchasedDecorItem } from "../types";
 
 interface IslandDecorateScreenProps {
   initialCategory?: DecorateCategory;
@@ -13,21 +14,19 @@ interface IslandDecorateScreenProps {
   onHomeClick: () => void;
   onMissionClick: () => void;
   onProfileClick: () => void;
-  decorations: DroppedItem[];
-  onDecorationsChange: (decorations: DroppedItem[]) => void;
+  islandName: string;
+  purchasedItems: PurchasedDecorItem[];
+  decorations: IslandDecoration[];
+  onDecorationsChange: (decorations: IslandDecoration[]) => void;
 }
 
-interface DroppedItem {
-  id: string;
-  type: string;
-  x: number;
-  y: number;
-}
+type DragDecorItem = PurchasedDecorItem;
+type DecorateViewCategory = DecorateCategory | "all";
 
-function DraggableItem({ id, type }: { id: string; type: string }) {
+function DraggableItem({ item }: { item: DragDecorItem }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "decoration-item",
-    item: { id, type },
+    item,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -40,106 +39,134 @@ function DraggableItem({ id, type }: { id: string; type: string }) {
         isDragging ? "opacity-50" : ""
       }`}
     >
-      <div className="w-18 h-18 bg-gray-400 rounded-lg"></div>
+      <img src={item.image} alt={item.name} className="max-h-[84px] max-w-[84px] object-contain pointer-events-none" />
     </div>
   );
 }
 
-function IslandDropZone({ onDrop, droppedItems, onBack }: { onDrop: (item: any, x: number, y: number) => void; droppedItems: DroppedItem[]; onBack: () => void }) {
+function IslandDropZone({
+  onDrop,
+  droppedItems,
+}: {
+  onDrop: (item: DragDecorItem, x: number, y: number) => void;
+  droppedItems: IslandDecoration[];
+}) {
   const [, drop] = useDrop(() => ({
     accept: "decoration-item",
-    drop: (item, monitor) => {
+    drop: (item: DragDecorItem, monitor) => {
       const offset = monitor.getClientOffset();
-      if (offset) {
-        const dropZone = document.getElementById("island-drop-zone");
-        if (dropZone) {
-          const rect = dropZone.getBoundingClientRect();
-          const x = offset.x - rect.left;
-          const y = offset.y - rect.top;
-          onDrop(item, x, y);
-        }
+      const dropZone = document.getElementById("island-drop-zone");
+      if (!offset || !dropZone) {
+        return;
       }
+
+      const rect = dropZone.getBoundingClientRect();
+      const x = Math.max(0, Math.min(offset.x - rect.left - 24, rect.width - 48));
+      const y = Math.max(0, Math.min(offset.y - rect.top - 24, rect.height - 48));
+      onDrop(item, x, y);
     },
   }));
 
   return (
-    <div
-      id="island-drop-zone"
-      ref={drop}
-      onClick={onBack}
-      className="w-full max-w-[260px] h-[120px] bg-[#7A9B5F] rounded-[24px] border-3 border-black relative cursor-pointer mx-auto"
-    >
-      {/* Tree placeholders */}
-      <div className="absolute top-2 left-2 w-5 h-7 bg-[#4A7C3C] rounded-lg border-2 border-black pointer-events-none"></div>
-      <div className="absolute bottom-4 right-6 w-5 h-7 bg-[#4A7C3C] rounded-lg border-2 border-black pointer-events-none"></div>
+    <div id="island-drop-zone" ref={drop} className="relative w-[320px] max-w-full aspect-[360/408] mx-auto">
+      <img src={islandImage} alt="Island" className="absolute inset-0 h-full w-full object-contain" />
 
-      {/* Dropped items */}
       {droppedItems.map((item) => (
-        <div
+        <img
           key={item.id}
-          className="absolute w-4 h-4 bg-gray-600 rounded-sm border border-black pointer-events-none"
+          src={item.image}
+          alt={item.name}
+          className="absolute w-12 h-12 object-contain pointer-events-none"
           style={{ left: `${item.x}px`, top: `${item.y}px` }}
-        ></div>
+        />
       ))}
     </div>
   );
 }
 
-function IslandDecorateScreenContent({ initialCategory = "house", onBack, onCategoryChange, onHomeClick, onMissionClick, onProfileClick, decorations, onDecorationsChange }: IslandDecorateScreenProps) {
-  const [category, setCategory] = useState<DecorateCategory>(initialCategory);
+function IslandDecorateScreenContent({
+  onBack,
+  onCategoryChange,
+  onHomeClick,
+  onMissionClick,
+  onProfileClick,
+  islandName,
+  purchasedItems,
+  decorations,
+  onDecorationsChange,
+}: IslandDecorateScreenProps) {
+  const [category, setCategory] = useState<DecorateViewCategory>("all");
 
-  const handleCategoryClick = (newCategory: DecorateCategory) => {
+  const handleCategoryClick = (newCategory: DecorateViewCategory) => {
     setCategory(newCategory);
-    if (onCategoryChange) {
-      onCategoryChange(newCategory);
+    if (newCategory !== "all") {
+      onCategoryChange?.(newCategory);
     }
   };
 
-  const handleDrop = (item: any, x: number, y: number) => {
-    onDecorationsChange([...decorations, { ...item, x, y, id: `${item.id}-${Date.now()}` }]);
+  const handleDrop = (item: DragDecorItem, x: number, y: number) => {
+    onDecorationsChange([
+      ...decorations,
+      {
+        id: `${item.id}-${Date.now()}`,
+        itemId: item.id,
+        name: item.name,
+        category: item.category,
+        image: item.image,
+        x,
+        y,
+      },
+    ]);
   };
 
-  const houseItems = [{ id: "house-1", type: "house" }];
-  const natureItems = [
-    { id: "nature-1", type: "palm" },
-    { id: "nature-2", type: "pine" },
-    { id: "nature-3", type: "bush" },
-    { id: "nature-4", type: "flower" },
-  ];
+  const filteredItems = useMemo(
+    () => (category === "all" ? purchasedItems : purchasedItems.filter((item) => item.category === category)),
+    [category, purchasedItems],
+  );
 
-  const items = category === "house" ? houseItems : natureItems;
+  const emptyMessage = category === "house" ? "Buy new house" : category === "nature" ? "Buy new nature item" : "Buy new items";
 
   return (
     <div className="h-full flex flex-col bg-[#8DC5E8]">
-      {/* Yellow header */}
-      <div className="bg-[#F4E4A3] px-4 py-3 flex items-center justify-center border-b-2 border-black flex-shrink-0">
-        <h1 className="text-black" style={{ fontSize: '20px', fontWeight: 700 }}>
-          Tom's Island
+      <div className="relative bg-[#F4E4A3] px-4 py-3 flex items-center justify-center border-b-2 border-black flex-shrink-0">
+        <button onClick={onBack} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center">
+          <img src={backIcon} alt="Back" className="w-6 h-6 object-contain" />
+        </button>
+        <h1 className="text-black" style={{ fontSize: "20px", fontWeight: 700 }}>
+          {islandName}
         </h1>
       </div>
 
-      {/* Island area with coin counter */}
       <div className="px-4 pt-2 pb-1 flex-shrink-0">
         <div className="flex items-start justify-end mb-1">
           <div className="flex items-center gap-2">
             <CoinIcon className="w-5 h-5" />
-            <span className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>63</span>
+            <span className="text-black" style={{ fontSize: "16px", fontWeight: 700 }}>
+              63
+            </span>
           </div>
         </div>
 
-        <IslandDropZone onDrop={handleDrop} droppedItems={decorations} onBack={onBack} />
+        <IslandDropZone onDrop={handleDrop} droppedItems={decorations} />
       </div>
 
-      {/* White panel with horizontally scrollable items */}
       <div className="flex-1 bg-white/90 rounded-t-3xl pt-3 flex flex-col min-h-0 border-t-2 border-black/20">
-        {/* Category buttons */}
         <div className="flex gap-2 mb-3 px-4 flex-shrink-0">
+          <button
+            onClick={() => handleCategoryClick("all")}
+            className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
+              category === "all" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
+            }`}
+            style={{ fontSize: "14px", fontWeight: 600 }}
+          >
+            All
+          </button>
           <button
             onClick={() => handleCategoryClick("house")}
             className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
               category === "house" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
             }`}
-            style={{ fontSize: '14px', fontWeight: 600 }}
+            style={{ fontSize: "14px", fontWeight: 600 }}
           >
             House
           </button>
@@ -148,23 +175,27 @@ function IslandDecorateScreenContent({ initialCategory = "house", onBack, onCate
             className={`px-5 py-2 rounded-full border-2 border-black transition-colors ${
               category === "nature" ? "bg-[#7A9B5F] text-black" : "bg-white text-black"
             }`}
-            style={{ fontSize: '14px', fontWeight: 600 }}
+            style={{ fontSize: "14px", fontWeight: 600 }}
           >
             Nature
           </button>
         </div>
 
-        {/* Horizontally scrollable items */}
         <div className="flex-1 overflow-x-auto overflow-y-hidden scrollbar-hide px-4 pb-24">
-          <div className="flex gap-3 items-start">
-            {items.map((item) => (
-              <DraggableItem key={item.id} id={item.id} type={item.type} />
-            ))}
-          </div>
+          {filteredItems.length > 0 ? (
+            <div className="flex gap-3 items-start">
+              {filteredItems.map((item) => (
+                <DraggableItem key={item.id} item={item} />
+              ))}
+            </div>
+          ) : (
+            <div className="h-full flex items-center justify-center text-center text-black/70 px-8">
+              <p style={{ fontSize: "18px", fontWeight: 600 }}>{emptyMessage}</p>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Bottom tab bar */}
       <div className="absolute bottom-0 left-0 right-0">
         <TabBar activeTab="island" onTab1Click={onHomeClick} onTab2Click={onMissionClick} onTab3Click={onBack} onTab4Click={onProfileClick} />
       </div>

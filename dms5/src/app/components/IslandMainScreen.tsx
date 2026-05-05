@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
 import customizeIcon from "../../imports/customize.png";
@@ -6,6 +6,7 @@ import editIcon from "../../imports/edit-icon.png";
 import friendsIcon from "../../imports/friends-icon.png";
 import islandImage from "../../imports/island.png";
 import storeIcon from "../../imports/store-icon.png";
+import type { IslandDecoration } from "../types";
 
 interface IslandMainScreenProps {
   onStoreClick: () => void;
@@ -15,13 +16,31 @@ interface IslandMainScreenProps {
   onHomeClick: () => void;
   onMissionClick: () => void;
   onProfileClick: () => void;
-  decorations: Array<{ id: string; type: string; x: number; y: number }>;
+  islandName: string;
+  onIslandNameChange: (name: string) => void;
+  decorations: IslandDecoration[];
 }
 
-export default function IslandMainScreen({ onStoreClick, onFriendsClick, onDecorateClick, onCustomizeClick, onHomeClick, onMissionClick, onProfileClick, decorations }: IslandMainScreenProps) {
-  const [islandName, setIslandName] = useState("Island");
+export default function IslandMainScreen({
+  onStoreClick,
+  onFriendsClick,
+  onDecorateClick,
+  onCustomizeClick,
+  onHomeClick,
+  onMissionClick,
+  onProfileClick,
+  islandName,
+  onIslandNameChange,
+  decorations,
+}: IslandMainScreenProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(islandName);
+
+  useEffect(() => {
+    if (!isEditing) {
+      setEditValue(islandName);
+    }
+  }, [isEditing, islandName]);
 
   const handleTitleClick = () => {
     setIsEditing(true);
@@ -31,7 +50,7 @@ export default function IslandMainScreen({ onStoreClick, onFriendsClick, onDecor
   const handleTitleBlur = () => {
     setIsEditing(false);
     if (editValue.trim()) {
-      setIslandName(editValue);
+      onIslandNameChange(editValue.trim());
     } else {
       setEditValue(islandName);
     }
@@ -111,11 +130,13 @@ export default function IslandMainScreen({ onStoreClick, onFriendsClick, onDecor
 
             {/* Dropped decorations */}
             {decorations.map((item) => (
-              <div
+              <img
                 key={item.id}
-                className="absolute w-8 h-8 bg-gray-600 rounded-sm border border-black"
+                src={item.image}
+                alt={item.name}
+                className="absolute w-12 h-12 object-contain pointer-events-none"
                 style={{ left: `${item.x}px`, top: `${item.y}px` }}
-              ></div>
+              />
             ))}
           </div>
         </div>

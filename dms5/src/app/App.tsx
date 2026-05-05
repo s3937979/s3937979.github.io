@@ -18,7 +18,7 @@ import StoreClosetScreen from "./components/StoreClosetScreen";
 import StoreAppearanceScreen from "./components/StoreAppearanceScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SettingsScreen from "./components/SettingsScreen";
-import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory } from "./types";
+import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory, PurchasedDecorItem } from "./types";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<AppPage>("logo");
@@ -27,6 +27,8 @@ export default function App() {
   const [missionCategory, setMissionCategory] = useState<MissionCategory>("starter");
   const [decorateCategory, setDecorateCategory] = useState<DecorateCategory>("house");
   const [islandDecorations, setIslandDecorations] = useState<IslandDecoration[]>([]);
+  const [purchasedDecorItems, setPurchasedDecorItems] = useState<PurchasedDecorItem[]>([]);
+  const [islandName, setIslandName] = useState("Island");
   const [userName, setUserName] = useState("Tommy");
 
   const totalSlides = 4; // Splash1, Splash2, Splash3, Signin
@@ -198,6 +200,8 @@ export default function App() {
             onHomeClick={goToHome}
             onMissionClick={() => goToMission()}
             onProfileClick={goToProfile}
+            islandName={islandName}
+            onIslandNameChange={setIslandName}
             decorations={islandDecorations}
           />
         )}
@@ -210,6 +214,8 @@ export default function App() {
             onHomeClick={goToHome}
             onMissionClick={() => goToMission()}
             onProfileClick={goToProfile}
+            islandName={islandName}
+            purchasedItems={purchasedDecorItems}
             decorations={islandDecorations}
             onDecorationsChange={setIslandDecorations}
           />
@@ -224,6 +230,8 @@ export default function App() {
             onProfileClick={goToProfile}
             onClosetClick={goToStoreCloset}
             onAppearanceClick={goToStoreAppearance}
+            purchasedDecorItems={purchasedDecorItems}
+            onPurchasedDecorItemsChange={setPurchasedDecorItems}
           />
         )}
 
