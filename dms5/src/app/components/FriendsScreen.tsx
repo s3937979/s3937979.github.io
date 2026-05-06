@@ -1,5 +1,14 @@
 import { useState } from "react";
 import TabBar from "./TabBar";
+import friendsIcon from "../../imports/friends-icon.png";
+import searchIcon from "../../imports/search-icon.svg";
+import minaAvatar from "../../imports/face green.png";
+import alexAvatar from "../../imports/face.png";
+
+const friendAvatars: Record<string, string> = {
+  mina: minaAvatar,
+  alex: alexAvatar,
+};
 
 interface FriendsScreenProps {
   onBack: () => void;
@@ -41,7 +50,6 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
   };
 
   const showAlexPreview = searchCode === "111111";
-
   return (
     <div className="h-full flex flex-col bg-[#C8D9B4]">
       {/* Scrollable content */}
@@ -61,7 +69,7 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
         {/* My friend code */}
         <div className="mx-4 mb-4 bg-[#7A9B5F] rounded-2xl p-4 border-2 border-black">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 bg-black rounded-full"></div>
+            <img src={friendsIcon} alt="" className="w-8 h-8 object-contain" />
             <h2 className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>
               My friend code
             </h2>
@@ -95,7 +103,11 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
             Add by code
           </h2>
           <div className="relative mb-3">
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-gray-400 rounded-full"></div>
+            <img
+              src={searchIcon}
+              alt=""
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 object-contain pointer-events-none"
+            />
             <input
               type="text"
               value={searchCode}
@@ -110,7 +122,11 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
           {showAlexPreview && (
             <div className="bg-white rounded-xl p-3 mb-3 border-2 border-black/20">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-[#E74C3C] rounded-full border-2 border-black flex-shrink-0"></div>
+                <img
+                  src={friendAvatars.alex}
+                  alt="Alex"
+                  className="w-12 h-12 rounded-full border-2 border-black flex-shrink-0 object-cover bg-white"
+                />
                 <div className="flex-1">
                   <p className="text-black" style={{ fontSize: '16px', fontWeight: 700 }}>Alex</p>
                   <p className="text-black" style={{ fontSize: '11px', fontWeight: 400 }}>2,100 steps left</p>
@@ -140,7 +156,12 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
           <div className="space-y-3">
             {friends.map((friend) => (
               <div key={friend.id} className="bg-white rounded-2xl p-3 border-2 border-black/20 flex items-center gap-3">
-                <div className="w-14 h-14 bg-[#7A9B5F] rounded-full border-2 border-black flex-shrink-0 relative">
+                <div className="w-14 h-14 rounded-full border-2 border-black flex-shrink-0 relative overflow-hidden bg-white">
+                  <img
+                    src={friendAvatars[friend.id] ?? friendAvatars.alex}
+                    alt={friend.name}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border border-white"></div>
                 </div>
                 <div className="flex-1">
