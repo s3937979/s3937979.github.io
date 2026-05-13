@@ -128,13 +128,19 @@ function IslandDecorateScreenContent({
 
   return (
     <div className="h-full flex flex-col bg-[#8DC5E8]">
-      <div className="relative bg-[#F4E4A3] px-4 py-3 flex items-center justify-center border-b-2 border-black flex-shrink-0">
-        <button onClick={onBack} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center">
-          <img src={backIcon} alt="Back" className="w-6 h-6 object-contain" />
+      <div className="relative bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
+        <button onClick={onBack} className="w-12 h-12 flex items-center justify-center">
+          <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
         </button>
-        <h1 className="text-black" style={{ fontSize: "20px", fontWeight: 700 }}>
-          {islandName}
-        </h1>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <h1
+            className="text-black border-b-2 border-black leading-none"
+            style={{ fontSize: "32px", fontWeight: 700 }}
+          >
+            {islandName}
+          </h1>
+        </div>
+        <div className="w-12 h-12" />
       </div>
 
       <div className="px-4 pt-2 pb-1 flex-shrink-0">

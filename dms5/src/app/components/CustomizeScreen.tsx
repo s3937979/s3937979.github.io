@@ -23,7 +23,7 @@ export default function CustomizeScreen({
   onProfileClick,
 }: CustomizeScreenProps) {
   return (
-    <div className="h-full flex flex-col bg-[#8DC5E8]">
+    <div className="relative h-full flex flex-col bg-[#8DC5E8]">
       <div className="relative bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
         <button onClick={onIslandClick} className="w-12 h-12 flex items-center justify-center">
           <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
@@ -59,7 +59,7 @@ export default function CustomizeScreen({
           </div>
         </div>
 
-        <div className="flex-1 bg-white rounded-t-[36px] border-t-2 border-black px-5 pt-6 overflow-y-auto">
+        <div className="flex-1 bg-white rounded-t-[36px] border-t-2 border-black px-5 pt-6 pb-24 overflow-y-auto">
           <div className="min-h-full">
             {purchasedItems.length === 0 ? (
               <div className="h-full min-h-[220px] flex items-center justify-center text-center">
@@ -83,13 +83,15 @@ export default function CustomizeScreen({
         </div>
       </div>
 
-      <TabBar
-        activeTab="island"
-        onTab1Click={onHomeClick}
-        onTab2Click={onMissionClick}
-        onTab3Click={onIslandClick}
-        onTab4Click={onProfileClick}
-      />
+      <div className="absolute bottom-0 left-0 right-0">
+        <TabBar
+          activeTab="island"
+          onTab1Click={onHomeClick}
+          onTab2Click={onMissionClick}
+          onTab3Click={onIslandClick}
+          onTab4Click={onProfileClick}
+        />
+      </div>
     </div>
   );
 }

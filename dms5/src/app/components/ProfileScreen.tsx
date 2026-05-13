@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import TabBar from "./TabBar";
+import settingIcon from "../../imports/setting-icon.png";
 
 interface ProfileScreenProps {
   onHomeClick: () => void;
@@ -58,8 +59,8 @@ export default function ProfileScreen({ onHomeClick, onIslandClick, onMissionCli
         <h1 className="text-black flex-1 text-center" style={{ fontSize: '24px', fontWeight: 700 }}>
           Profile
         </h1>
-        <button onClick={onSettingsClick} className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-          <div className="w-4 h-4 bg-white rounded-sm"></div>
+        <button onClick={onSettingsClick} className="w-8 h-8 flex items-center justify-center">
+          <img src={settingIcon} alt="" className="w-full h-full object-contain" />
         </button>
       </div>
 

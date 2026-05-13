@@ -45,10 +45,10 @@ export default function Splash3Screen({ onPrevious, onNext }: Splash3ScreenProps
 
       {/* Text content */}
       <div className="pb-7 flex-shrink-0">
-        <h2 className="text-[22px] mb-1.5 text-black" style={{ fontWeight: 700, lineHeight: '1.2' }}>
+        <h2 className="text-[27px] mb-1.5 text-black" style={{ fontWeight: 700, lineHeight: '1.2' }}>
           Build your own island.
         </h2>
-        <p className="text-[12px] text-black/80 leading-relaxed" style={{ fontWeight: 400 }}>
+        <p className="text-[17px] text-black/80 leading-relaxed" style={{ fontWeight: 400 }}>
           Use your coins to decorate and
           <br />
           grow your virtual island.

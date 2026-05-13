@@ -17,17 +17,17 @@ export default function Signup1Screen({ onNext }: Signup1ScreenProps) {
     <div className="h-full flex flex-col bg-[#EDEDEE] px-4 overflow-hidden justify-between">
       {/* Header */}
       <div className="flex items-center justify-between pt-5 pb-4 flex-shrink-0">
-        <h1 className="text-black" style={{ fontSize: '28px', fontWeight: 700 }}>
+        <h1 className="text-black" style={{ fontSize: '35px', fontWeight: 700 }}>
           Sign Up
         </h1>
-        <span className="text-black" style={{ fontSize: '14px', fontWeight: 400 }}>
+        <span className="text-black" style={{ fontSize: '21px', fontWeight: 400 }}>
           1/3
         </span>
       </div>
 
       {/* Email field */}
       <div className="flex-1 min-h-0">
-        <label className="block mb-1 text-black" style={{ fontSize: '11px', fontWeight: 700 }}>
+        <label className="block mb-1 text-black" style={{ fontSize: '18px', fontWeight: 700 }}>
           Email
         </label>
         <input
@@ -36,7 +36,7 @@ export default function Signup1Screen({ onNext }: Signup1ScreenProps) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Please enter your email"
           className="w-full px-3 py-2 bg-[#D1D1D4] rounded-lg text-black placeholder:text-black/50"
-          style={{ fontSize: '11px', fontWeight: 400 }}
+          style={{ fontSize: '18px', fontWeight: 400 }}
         />
       </div>
 
@@ -46,7 +46,7 @@ export default function Signup1Screen({ onNext }: Signup1ScreenProps) {
           onClick={handleNext}
           disabled={!email.trim()}
           className="w-full py-2.5 bg-[#2C2C2E] text-white rounded-xl disabled:opacity-50"
-          style={{ fontSize: '12px', fontWeight: 700 }}
+          style={{ fontSize: '19px', fontWeight: 700 }}
         >
           Next
         </button>

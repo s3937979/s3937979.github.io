@@ -27,7 +27,7 @@ export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninSc
       <div className="flex-shrink-0">
         {/* Email field */}
         <div className="mb-2">
-          <label className="block mb-1 text-black" style={{ fontSize: '11px', fontWeight: 700 }}>
+          <label className="block mb-1 text-black" style={{ fontSize: '18px', fontWeight: 700 }}>
             Email
           </label>
           <input
@@ -36,13 +36,13 @@ export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninSc
             onChange={(e) => setEmail(e.target.value)}
             placeholder="ex) wando@email.com"
             className="w-full px-3 py-2 bg-[#D1D1D4] rounded-lg text-black placeholder:text-black/40"
-            style={{ fontSize: '11px', fontWeight: 400 }}
+            style={{ fontSize: '18px', fontWeight: 400 }}
           />
         </div>
 
         {/* Password field */}
         <div className="mb-2.5">
-          <label className="block mb-1 text-black" style={{ fontSize: '11px', fontWeight: 700 }}>
+          <label className="block mb-1 text-black" style={{ fontSize: '18px', fontWeight: 700 }}>
             Password
           </label>
           <input
@@ -51,7 +51,7 @@ export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninSc
             onChange={(e) => setPassword(e.target.value)}
             placeholder="ex) 123456789"
             className="w-full px-3 py-2 bg-[#D1D1D4] rounded-lg text-black placeholder:text-black/40"
-            style={{ fontSize: '11px', fontWeight: 400 }}
+            style={{ fontSize: '18px', fontWeight: 400 }}
           />
         </div>
       </div>
@@ -62,13 +62,13 @@ export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninSc
         <button
           onClick={onGetStarted}
           className="w-full py-2.5 bg-[#2C2C2E] text-white rounded-xl mb-2 transition-transform duration-200 ease-out hover:scale-[1.04]"
-          style={{ fontSize: '12px', fontWeight: 700 }}
+          style={{ fontSize: '19px', fontWeight: 700 }}
         >
           Get started
         </button>
 
         {/* Create account link */}
-        <div className="text-center" style={{ fontSize: '10px' }}>
+        <div className="text-center" style={{ fontSize: '17px' }}>
           <span className="text-black" style={{ fontWeight: 400 }}>
             Don't have an account?{" "}
           </span>
