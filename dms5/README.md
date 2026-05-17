@@ -1,26 +1,22 @@
 # Wando React App
 
-React + Vite + TypeScript 기반 웹앱입니다.
+A web app built with React, Vite, and TypeScript.
 
-## 실행
+## Running the Project
+
+To install the required packages and run the project locally, use the following commands:
 
 ```bash
 npm install
 npm run dev
-```
 
-## 빌드
-
-```bash
 npm run typecheck
 npm run build
+
+- src/main.tsx: Entry point of the React app
+- src/app/App.tsx: Handles screen navigation and top-level state management
+- src/app/components: Contains screen components and shared UI components
+- src/app/types.ts: Defines shared types used across the app
+- src/imports: Stores image assets used in the screens
+- src/styles: Contains Tailwind settings, theme styles, and global styles
 ```
-
-## 주요 구조
-
-- `src/main.tsx`: React 앱 진입점
-- `src/app/App.tsx`: 앱 화면 전환과 최상위 상태 관리
-- `src/app/components`: 화면 컴포넌트와 공용 UI 컴포넌트
-- `src/app/types.ts`: 앱에서 공유하는 타입
-- `src/imports`: 화면에서 사용하는 이미지 에셋
-- `src/styles`: Tailwind, 테마, 전역 스타일
