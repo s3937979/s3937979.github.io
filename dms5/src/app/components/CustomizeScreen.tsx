@@ -3,6 +3,7 @@ import TabBar from "./TabBar";
 import backIcon from "../../imports/back-icon.png";
 import storeIcon from "../../imports/store-icon.png";
 import tomatoImage from "../../imports/tomato.png";
+import type { PurchasedCharacterItem } from "../types";
 
 interface CustomizeScreenProps {
   onStoreClick: () => void;
@@ -11,9 +12,10 @@ interface CustomizeScreenProps {
   onMissionClick: () => void;
   onIslandClick: () => void;
   onProfileClick: () => void;
+  purchasedItems: PurchasedCharacterItem[];
+  equippedItem: PurchasedCharacterItem | null;
+  onEquipItem: (item: PurchasedCharacterItem) => void;
 }
-
-const purchasedItems: Array<{ id: string; name: string; preview: string }> = [];
 
 export default function CustomizeScreen({
   onStoreClick,
@@ -21,7 +23,12 @@ export default function CustomizeScreen({
   onMissionClick,
   onIslandClick,
   onProfileClick,
+  purchasedItems,
+  equippedItem,
+  onEquipItem,
 }: CustomizeScreenProps) {
+  const characterImage = equippedItem?.wornImage ?? tomatoImage;
+
   return (
     <div className="relative h-full flex flex-col bg-[#8DC5E8]">
       <div className="relative bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
@@ -31,10 +38,10 @@ export default function CustomizeScreen({
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <h1
-            className="text-black border-b-2 border-black leading-none"
+            className="text-black leading-none"
             style={{ fontSize: "32px", fontWeight: 700 }}
           >
-            Island
+            Customize
           </h1>
         </div>
 
@@ -44,18 +51,24 @@ export default function CustomizeScreen({
       </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="px-4 pt-5 pb-4 flex items-center justify-center">
-          <div className="flex items-center justify-center gap-2">
-            <CoinIcon className="w-7 h-7" />
-            <span className="text-black leading-none" style={{ fontSize: "20px", fontWeight: 700 }}>
-              63
-            </span>
+        <div className="px-4 pt-2 pb-1 flex-shrink-0">
+          <div className="flex items-start justify-end mb-1">
+            <div className="flex items-center gap-2">
+              <CoinIcon className="w-5 h-5" />
+              <span className="text-black" style={{ fontSize: "16px", fontWeight: 700 }}>
+                63
+              </span>
+            </div>
           </div>
         </div>
 
         <div className="px-6 pb-4 flex items-center justify-center">
           <div className="w-full max-w-[270px] aspect-[1/1.2] flex items-center justify-center">
-            <img src={tomatoImage} alt="Tomato" className="w-full h-full object-contain" />
+            <img
+              src={characterImage}
+              alt={equippedItem ? `${equippedItem.name} preview` : "Tomato"}
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
 
@@ -68,13 +81,26 @@ export default function CustomizeScreen({
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-3 gap-4 pb-6">
+              <div className="grid grid-cols-3 gap-3 pb-6">
                 {purchasedItems.map((item) => (
                   <div
                     key={item.id}
-                    className="aspect-square rounded-2xl border-2 border-black/15 bg-[#F6F6F6] p-3 flex items-center justify-center"
+                    className={`rounded-2xl border-2 bg-[#F6F6F6] p-2 flex min-h-[136px] flex-col items-center justify-between gap-2 ${
+                      equippedItem?.id === item.id ? "border-[#7A9B5F]" : "border-black/15"
+                    }`}
                   >
-                    <img src={item.preview} alt={item.name} className="max-h-full max-w-full object-contain" />
+                    <div className="h-[72px] w-full flex items-center justify-center">
+                      <img src={item.image} alt={item.name} className="max-h-full max-w-full object-contain" />
+                    </div>
+                    <button
+                      onClick={() => onEquipItem(item)}
+                      className={`w-full rounded-full border-2 border-black px-2 py-1 text-black ${
+                        equippedItem?.id === item.id ? "bg-[#7A9B5F]" : "bg-[#F4E4A3]"
+                      }`}
+                      style={{ fontSize: "12px", fontWeight: 700 }}
+                    >
+                      {equippedItem?.id === item.id ? "Worn" : "Wear"}
+                    </button>
                   </div>
                 ))}
               </div>

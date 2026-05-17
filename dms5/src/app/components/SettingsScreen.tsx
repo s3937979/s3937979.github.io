@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TabBar from "./TabBar";
+import backIcon from "../../imports/back-icon.png";
 
 interface SettingsScreenProps {
   onBack: () => void;
@@ -47,10 +48,8 @@ export default function SettingsScreen({
     <div className="h-full flex flex-col bg-[#EDEDEE]">
       {/* Header */}
       <div className="bg-[#7A9B5F] px-4 py-4 flex items-center justify-center relative border-b-2 border-black flex-shrink-0">
-        <button onClick={onBack} className="absolute left-4">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
+        <button onClick={onBack} className="absolute left-4 w-12 h-12 flex items-center justify-center">
+          <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
         </button>
         <h1 className="text-black" style={{ fontSize: '24px', fontWeight: 700 }}>
           Settings
@@ -131,10 +130,19 @@ export default function SettingsScreen({
           <button className="w-full bg-white rounded-2xl p-4 border-2 border-black/20 flex items-center justify-between hover:bg-gray-50 transition-colors">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-[#7A9B5F] rounded-full flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" fill="none" stroke="white" strokeWidth="2.4" />
+                  <text
+                    x="12"
+                    y="17"
+                    textAnchor="middle"
+                    fill="white"
+                    fontSize="16"
+                    fontWeight="800"
+                    fontFamily="Arial, sans-serif"
+                  >
+                    ?
+                  </text>
                 </svg>
               </div>
               <span className="text-black" style={{ fontSize: '16px', fontWeight: 600 }}>

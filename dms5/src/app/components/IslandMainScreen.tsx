@@ -6,7 +6,8 @@ import editIcon from "../../imports/edit-icon.png";
 import friendsIcon from "../../imports/friends-icon.png";
 import islandImage from "../../imports/island.png";
 import storeIcon from "../../imports/store-icon.png";
-import type { IslandDecoration } from "../types";
+import tomatoImage from "../../imports/tomato.png";
+import type { IslandDecoration, PurchasedCharacterItem } from "../types";
 
 interface IslandMainScreenProps {
   onStoreClick: () => void;
@@ -19,6 +20,7 @@ interface IslandMainScreenProps {
   islandName: string;
   onIslandNameChange: (name: string) => void;
   decorations: IslandDecoration[];
+  equippedCharacterItem: PurchasedCharacterItem | null;
 }
 
 export default function IslandMainScreen({
@@ -32,6 +34,7 @@ export default function IslandMainScreen({
   islandName,
   onIslandNameChange,
   decorations,
+  equippedCharacterItem,
 }: IslandMainScreenProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(islandName);
@@ -127,6 +130,12 @@ export default function IslandMainScreen({
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-[360px] h-[408px]">
             <img src={islandImage} alt="Island" className="absolute inset-0 h-full w-full object-contain" />
+
+            <img
+              src={equippedCharacterItem?.wornImage ?? tomatoImage}
+              alt={equippedCharacterItem ? `${equippedCharacterItem.name} on island` : "Tomato on island"}
+              className="absolute left-[145px] top-[184px] h-[92px] w-[78px] object-contain pointer-events-none"
+            />
 
             {/* Dropped decorations */}
             {decorations.map((item) => (

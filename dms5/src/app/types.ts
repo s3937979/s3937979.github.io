@@ -19,6 +19,10 @@ export type MissionCategory = "starter" | "intermediate" | "advanced";
 
 export type DecorateCategory = "house" | "nature";
 
+export type CharacterItemSource = "closet" | "appearance";
+
+export type CharacterItemSubcategory = "bottoms" | "shoes" | "accessories" | "hair" | "face" | "body";
+
 export type PurchasedDecorItem = {
   id: string;
   name: string;
@@ -35,4 +39,14 @@ export type IslandDecoration = {
   image: string;
   x: number;
   y: number;
+};
+
+export type PurchasedCharacterItem = {
+  id: string;
+  name: string;
+  source: CharacterItemSource;
+  subcategory: CharacterItemSubcategory;
+  image: string;
+  wornImage: string;
+  price: number;
 };

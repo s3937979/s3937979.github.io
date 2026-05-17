@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import TabBar from "./TabBar";
 import calendarFin from "../../imports/calendar-fin.png";
 import colorLayer from "../../imports/color-layer.png";
@@ -11,11 +11,19 @@ interface HomeScreenProps {
   onMissionClick: () => void;
   onIslandClick?: () => void;
   onProfileClick?: () => void;
+  elapsedSeconds: number;
+  onElapsedSecondsChange: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export default function HomeScreen({ onNotificationClick, onCalendarClick, onMissionClick, onIslandClick, onProfileClick }: HomeScreenProps) {
-  const [elapsedSeconds, setElapsedSeconds] = useState(0);
-
+export default function HomeScreen({
+  onNotificationClick,
+  onCalendarClick,
+  onMissionClick,
+  onIslandClick,
+  onProfileClick,
+  elapsedSeconds,
+  onElapsedSecondsChange,
+}: HomeScreenProps) {
   const goalSteps = 10000;
   const secondsPerStepBatch = 30;
   const stepsPerBatch = 1000;
@@ -36,11 +44,11 @@ export default function HomeScreen({ onNotificationClick, onCalendarClick, onMis
   // Timer to increment once per second for a live counter effect.
   useEffect(() => {
     const interval = setInterval(() => {
-      setElapsedSeconds((prev) => prev + 1);
+      onElapsedSecondsChange((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [onElapsedSecondsChange]);
 
   return (
     <div className="h-full flex flex-col bg-[#EDEDEE] overflow-hidden">

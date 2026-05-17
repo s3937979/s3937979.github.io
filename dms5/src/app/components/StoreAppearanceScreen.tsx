@@ -20,6 +20,8 @@ import bodyPreview1 from "../../imports/body-1-1.png";
 import bodyPreview2 from "../../imports/body-2-1.png";
 import bodyPreview3 from "../../imports/body-3-1.png";
 import tomato from "../../imports/tomato.png";
+import backIcon from "../../imports/back-icon.png";
+import type { PurchasedCharacterItem } from "../types";
 
 interface StoreAppearanceScreenProps {
   onBack: () => void;
@@ -29,6 +31,8 @@ interface StoreAppearanceScreenProps {
   onMissionClick: () => void;
   onIslandClick: () => void;
   onProfileClick: () => void;
+  purchasedItems: PurchasedCharacterItem[];
+  onPurchasedItemsChange: (items: PurchasedCharacterItem[]) => void;
 }
 
 type SubCategory = "hair" | "face" | "body";
@@ -38,11 +42,21 @@ interface AppearanceItem {
   name: string;
   price: number;
   subcategory: SubCategory;
-  image?: string;
-  wornImage?: string;
+  image: string;
+  wornImage: string;
 }
 
-export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetClick, onHomeClick, onMissionClick, onIslandClick, onProfileClick }: StoreAppearanceScreenProps) {
+export default function StoreAppearanceScreen({
+  onBack,
+  onDecorClick,
+  onClosetClick,
+  onHomeClick,
+  onMissionClick,
+  onIslandClick,
+  onProfileClick,
+  purchasedItems,
+  onPurchasedItemsChange,
+}: StoreAppearanceScreenProps) {
   const [activeSubcategory, setActiveSubcategory] = useState<SubCategory>("hair");
   const [userCoins, setUserCoins] = useState(63);
   const [selectedItem, setSelectedItem] = useState<AppearanceItem | null>(null);
@@ -80,6 +94,15 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
     if (selectedItem) {
       if (userCoins >= selectedItem.price) {
         setUserCoins(userCoins - selectedItem.price);
+        if (!purchasedItems.some((item) => item.id === selectedItem.id)) {
+          onPurchasedItemsChange([
+            ...purchasedItems,
+            {
+              ...selectedItem,
+              source: "appearance",
+            },
+          ]);
+        }
         setMessage("purchased");
         setSelectedItem(null);
       } else {
@@ -111,10 +134,8 @@ export default function StoreAppearanceScreen({ onBack, onDecorClick, onClosetCl
     <div className="h-full flex flex-col bg-[#EDEDEE]">
       {/* Header */}
       <div className="bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
-        <button onClick={onBack}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
+        <button onClick={onBack} className="w-12 h-12 flex items-center justify-center">
+          <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
         </button>
         <h1 className="text-black" style={{ fontSize: '24px', fontWeight: 700 }}>
           Store

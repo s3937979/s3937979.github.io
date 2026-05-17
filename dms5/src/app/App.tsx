@@ -18,16 +18,19 @@ import StoreClosetScreen from "./components/StoreClosetScreen";
 import StoreAppearanceScreen from "./components/StoreAppearanceScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SettingsScreen from "./components/SettingsScreen";
-import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory, PurchasedDecorItem } from "./types";
+import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory, PurchasedCharacterItem, PurchasedDecorItem } from "./types";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<AppPage>("logo");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
+  const [homeElapsedSeconds, setHomeElapsedSeconds] = useState(0);
   const [missionCategory, setMissionCategory] = useState<MissionCategory>("starter");
   const [decorateCategory, setDecorateCategory] = useState<DecorateCategory>("house");
   const [islandDecorations, setIslandDecorations] = useState<IslandDecoration[]>([]);
   const [purchasedDecorItems, setPurchasedDecorItems] = useState<PurchasedDecorItem[]>([]);
+  const [purchasedCharacterItems, setPurchasedCharacterItems] = useState<PurchasedCharacterItem[]>([]);
+  const [equippedCharacterItem, setEquippedCharacterItem] = useState<PurchasedCharacterItem | null>(null);
   const [islandName, setIslandName] = useState("Island");
   const [userName, setUserName] = useState("Tommy");
 
@@ -173,7 +176,15 @@ export default function App() {
 
         {currentPage === "home" && (
           <>
-            <HomeScreen onNotificationClick={handleNotificationClick} onCalendarClick={goToCalendar} onMissionClick={() => goToMission()} onIslandClick={goToIslandMain} onProfileClick={goToProfile} />
+            <HomeScreen
+              onNotificationClick={handleNotificationClick}
+              onCalendarClick={goToCalendar}
+              onMissionClick={() => goToMission()}
+              onIslandClick={goToIslandMain}
+              onProfileClick={goToProfile}
+              elapsedSeconds={homeElapsedSeconds}
+              onElapsedSecondsChange={setHomeElapsedSeconds}
+            />
             {showNotification && <NotificationOverlay onClose={handleCloseNotification} />}
           </>
         )}
@@ -203,6 +214,7 @@ export default function App() {
             islandName={islandName}
             onIslandNameChange={setIslandName}
             decorations={islandDecorations}
+            equippedCharacterItem={equippedCharacterItem}
           />
         )}
 
@@ -244,6 +256,8 @@ export default function App() {
             onMissionClick={() => goToMission()}
             onIslandClick={goToIslandMain}
             onProfileClick={goToProfile}
+            purchasedItems={purchasedCharacterItems}
+            onPurchasedItemsChange={setPurchasedCharacterItems}
           />
         )}
 
@@ -256,6 +270,8 @@ export default function App() {
             onMissionClick={() => goToMission()}
             onIslandClick={goToIslandMain}
             onProfileClick={goToProfile}
+            purchasedItems={purchasedCharacterItems}
+            onPurchasedItemsChange={setPurchasedCharacterItems}
           />
         )}
 
@@ -277,6 +293,9 @@ export default function App() {
             onMissionClick={() => goToMission()}
             onIslandClick={goToIslandMain}
             onProfileClick={goToProfile}
+            purchasedItems={purchasedCharacterItems}
+            equippedItem={equippedCharacterItem}
+            onEquipItem={setEquippedCharacterItem}
           />
         )}
 

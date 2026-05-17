@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TabBar from "./TabBar";
+import backIcon from "../../imports/back-icon.png";
 
 interface CalendarScreenProps {
   onBack: () => void;
@@ -89,10 +90,8 @@ export default function CalendarScreen({ onBack, onHomeClick, onMissionClick, on
     <div className="h-full flex flex-col bg-[#7A9B5F]">
       {/* Fixed Header */}
       <div className="flex items-center justify-center relative pt-5 pb-4 flex-shrink-0 bg-[#7A9B5F] z-10">
-        <button onClick={onBack} className="absolute left-4">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
+        <button onClick={onBack} className="absolute left-4 w-12 h-12 flex items-center justify-center">
+          <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
         </button>
         <h1 className="text-black" style={{ fontSize: '20px', fontWeight: 700 }}>
           Calendar

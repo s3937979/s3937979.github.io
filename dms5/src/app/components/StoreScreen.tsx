@@ -7,6 +7,7 @@ import house2 from "../../imports/house-2.png";
 import house3 from "../../imports/house-3.png";
 import palmTree from "../../imports/palm-tree.png";
 import pineTree from "../../imports/pine-tree.png";
+import backIcon from "../../imports/back-icon.png";
 import type { PurchasedDecorItem } from "../types";
 
 interface StoreScreenProps {
@@ -85,10 +86,8 @@ export default function StoreScreen({
     <div className="h-full flex flex-col bg-[#EDEDEE]">
       {/* Header */}
       <div className="bg-[#F4E4A3] px-4 py-4 flex items-center justify-between border-b-2 border-black flex-shrink-0">
-        <button onClick={onBack}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
+        <button onClick={onBack} className="w-12 h-12 flex items-center justify-center">
+          <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
         </button>
         <h1 className="text-black" style={{ fontSize: '24px', fontWeight: 700 }}>
           Store

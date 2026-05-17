@@ -4,6 +4,7 @@ import friendsIcon from "../../imports/friends-icon.png";
 import searchIcon from "../../imports/search-icon.svg";
 import minaAvatar from "../../imports/face green.png";
 import alexAvatar from "../../imports/face.png";
+import backIcon from "../../imports/back-icon.png";
 
 const friendAvatars: Record<string, string> = {
   mina: minaAvatar,
@@ -56,10 +57,8 @@ export default function FriendsScreen({ onBack, onHomeClick, onMissionClick, onI
       <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide pb-20">
         {/* Header */}
         <div className="flex items-center relative pt-5 pb-4 px-4 flex-shrink-0">
-          <button onClick={onBack} className="absolute left-4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
+          <button onClick={onBack} className="absolute left-4 w-12 h-12 flex items-center justify-center">
+            <img src={backIcon} alt="Back" className="w-[41px] h-[41px] object-contain" />
           </button>
           <h1 className="text-black w-full text-center" style={{ fontSize: '24px', fontWeight: 700 }}>
             Friends

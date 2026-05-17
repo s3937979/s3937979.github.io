@@ -134,10 +134,10 @@ function IslandDecorateScreenContent({
         </button>
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <h1
-            className="text-black border-b-2 border-black leading-none"
+            className="text-black leading-none"
             style={{ fontSize: "32px", fontWeight: 700 }}
           >
-            {islandName}
+            Decorate
           </h1>
         </div>
         <div className="w-12 h-12" />
