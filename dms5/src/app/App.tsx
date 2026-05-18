@@ -18,7 +18,7 @@ import StoreClosetScreen from "./components/StoreClosetScreen";
 import StoreAppearanceScreen from "./components/StoreAppearanceScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SettingsScreen from "./components/SettingsScreen";
-import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory, PurchasedCharacterItem, PurchasedDecorItem, SavedUser } from "./types";
+import type { AppPage, CharacterPosition, DecorateCategory, IslandDecoration, MissionCategory, PurchasedCharacterItem, PurchasedDecorItem, SavedUser } from "./types";
 
 const savedUserStorageKey = "wando.savedUser";
 
@@ -47,6 +47,7 @@ export default function App() {
   const [purchasedCharacterItems, setPurchasedCharacterItems] = useState<PurchasedCharacterItem[]>([]);
   const [equippedCharacterItem, setEquippedCharacterItem] = useState<PurchasedCharacterItem | null>(null);
   const [islandName, setIslandName] = useState("Island");
+  const [islandCharacterPosition, setIslandCharacterPosition] = useState<CharacterPosition>({ x: 145, y: 184 });
   const [userName, setUserName] = useState(() => getSavedUser()?.nickname || "Tommy");
 
   const totalSlides = 4; // Splash1, Splash2, Splash3, Signin
@@ -264,6 +265,8 @@ export default function App() {
             onIslandNameChange={setIslandName}
             decorations={islandDecorations}
             equippedCharacterItem={equippedCharacterItem}
+            characterPosition={islandCharacterPosition}
+            onCharacterPositionChange={setIslandCharacterPosition}
           />
         )}
 

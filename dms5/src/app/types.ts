@@ -41,6 +41,11 @@ export type IslandDecoration = {
   y: number;
 };
 
+export type CharacterPosition = {
+  x: number;
+  y: number;
+};
+
 export type PurchasedCharacterItem = {
   id: string;
   name: string;

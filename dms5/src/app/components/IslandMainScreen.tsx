@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import CoinIcon from "./CoinIcon";
 import TabBar from "./TabBar";
 import customizeIcon from "../../imports/customize.png";
@@ -7,7 +7,12 @@ import friendsIcon from "../../imports/friends-icon.png";
 import islandImage from "../../imports/island.png";
 import storeIcon from "../../imports/store-icon.png";
 import tomatoImage from "../../imports/tomato.png";
-import type { IslandDecoration, PurchasedCharacterItem } from "../types";
+import type { CharacterPosition, IslandDecoration, PurchasedCharacterItem } from "../types";
+
+const characterSize = {
+  width: 78,
+  height: 92,
+};
 
 interface IslandMainScreenProps {
   onStoreClick: () => void;
@@ -21,6 +26,8 @@ interface IslandMainScreenProps {
   onIslandNameChange: (name: string) => void;
   decorations: IslandDecoration[];
   equippedCharacterItem: PurchasedCharacterItem | null;
+  characterPosition: CharacterPosition;
+  onCharacterPositionChange: (position: CharacterPosition) => void;
 }
 
 export default function IslandMainScreen({
@@ -35,9 +42,13 @@ export default function IslandMainScreen({
   onIslandNameChange,
   decorations,
   equippedCharacterItem,
+  characterPosition,
+  onCharacterPositionChange,
 }: IslandMainScreenProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(islandName);
+  const islandRef = useRef<HTMLDivElement>(null);
+  const dragOffsetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!isEditing) {
@@ -62,6 +73,50 @@ export default function IslandMainScreen({
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       handleTitleBlur();
+    }
+  };
+
+  const moveCharacter = (clientX: number, clientY: number) => {
+    const islandRect = islandRef.current?.getBoundingClientRect();
+
+    if (!islandRect) {
+      return;
+    }
+
+    const maxX = islandRect.width - characterSize.width;
+    const maxY = islandRect.height - characterSize.height;
+    const nextX = clientX - islandRect.left - dragOffsetRef.current.x;
+    const nextY = clientY - islandRect.top - dragOffsetRef.current.y;
+
+    onCharacterPositionChange({
+      x: Math.min(Math.max(nextX, 0), maxX),
+      y: Math.min(Math.max(nextY, 0), maxY),
+    });
+  };
+
+  const handleCharacterPointerDown = (event: PointerEvent<HTMLImageElement>) => {
+    const characterRect = event.currentTarget.getBoundingClientRect();
+
+    dragOffsetRef.current = {
+      x: event.clientX - characterRect.left,
+      y: event.clientY - characterRect.top,
+    };
+
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  };
+
+  const handleCharacterPointerMove = (event: PointerEvent<HTMLImageElement>) => {
+    if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+      return;
+    }
+
+    moveCharacter(event.clientX, event.clientY);
+  };
+
+  const handleCharacterPointerUp = (event: PointerEvent<HTMLImageElement>) => {
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
     }
   };
 
@@ -128,13 +183,19 @@ export default function IslandMainScreen({
 
         {/* Island illustration */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative w-[360px] h-[408px]">
+          <div ref={islandRef} className="relative w-[360px] h-[408px]">
             <img src={islandImage} alt="Island" className="absolute inset-0 h-full w-full object-contain" />
 
             <img
               src={equippedCharacterItem?.wornImage ?? tomatoImage}
               alt={equippedCharacterItem ? `${equippedCharacterItem.name} on island` : "Tomato on island"}
-              className="absolute left-[145px] top-[184px] h-[92px] w-[78px] object-contain pointer-events-none"
+              draggable={false}
+              onPointerDown={handleCharacterPointerDown}
+              onPointerMove={handleCharacterPointerMove}
+              onPointerUp={handleCharacterPointerUp}
+              onPointerCancel={handleCharacterPointerUp}
+              className="absolute z-10 h-[92px] w-[78px] touch-none cursor-grab object-contain active:cursor-grabbing"
+              style={{ left: `${characterPosition.x}px`, top: `${characterPosition.y}px` }}
             />
 
             {/* Dropped decorations */}
