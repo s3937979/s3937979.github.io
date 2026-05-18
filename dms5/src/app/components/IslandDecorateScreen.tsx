@@ -100,16 +100,21 @@ function IslandDecorateScreenContent({
     clientX: number;
     clientY: number;
   } | null>(null);
-  const [movingDecoration, setMovingDecoration] = useState<{ id: string; pointerId: number } | null>(null);
   const dropZoneRef = useRef<HTMLDivElement | null>(null);
+  const decorationsRef = useRef(decorations);
+  const movingDecorationRef = useRef<{ id: string; pointerId: number; offsetX: number; offsetY: number } | null>(null);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setShowGuide(false);
-    }, 3000);
+    }, 4000);
 
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    decorationsRef.current = decorations;
+  }, [decorations]);
 
   const handleCategoryClick = (newCategory: DecorateViewCategory) => {
     setCategory(newCategory);
@@ -188,34 +193,46 @@ function IslandDecorateScreenContent({
     }
   };
 
-  const moveDecoration = (id: string, clientX: number, clientY: number) => {
+  const moveDecoration = (id: string, clientX: number, clientY: number, offsetX: number, offsetY: number) => {
     const rect = dropZoneRef.current?.getBoundingClientRect();
 
     if (!rect) {
       return;
     }
 
-    const nextX = Math.max(0, Math.min(clientX - rect.left - 24, rect.width - 48));
-    const nextY = Math.max(0, Math.min(clientY - rect.top - 24, rect.height - 48));
+    const nextX = Math.max(0, Math.min(clientX - rect.left - offsetX, rect.width - 48));
+    const nextY = Math.max(0, Math.min(clientY - rect.top - offsetY, rect.height - 48));
 
     onDecorationsChange(
-      decorations.map((decoration) => decoration.id === id ? { ...decoration, x: nextX, y: nextY } : decoration),
+      decorationsRef.current.map((decoration) => decoration.id === id ? { ...decoration, x: nextX, y: nextY } : decoration),
     );
   };
 
   const handleMoveDecorationStart = (event: PointerEvent<HTMLImageElement>, item: IslandDecoration) => {
+    const itemRect = event.currentTarget.getBoundingClientRect();
+    const offsetX = event.clientX - itemRect.left;
+    const offsetY = event.clientY - itemRect.top;
+
     event.currentTarget.setPointerCapture(event.pointerId);
-    setMovingDecoration({ id: item.id, pointerId: event.pointerId });
-    moveDecoration(item.id, event.clientX, event.clientY);
+    movingDecorationRef.current = { id: item.id, pointerId: event.pointerId, offsetX, offsetY };
+    moveDecoration(item.id, event.clientX, event.clientY, offsetX, offsetY);
     event.preventDefault();
   };
 
   const handleMoveDecorationMove = (event: PointerEvent<HTMLImageElement>) => {
+    const movingDecoration = movingDecorationRef.current;
+
     if (!movingDecoration || movingDecoration.pointerId !== event.pointerId) {
       return;
     }
 
-    moveDecoration(movingDecoration.id, event.clientX, event.clientY);
+    moveDecoration(
+      movingDecoration.id,
+      event.clientX,
+      event.clientY,
+      movingDecoration.offsetX,
+      movingDecoration.offsetY,
+    );
   };
 
   const handleMoveDecorationEnd = (event: PointerEvent<HTMLImageElement>) => {
@@ -223,7 +240,7 @@ function IslandDecorateScreenContent({
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
 
-    setMovingDecoration(null);
+    movingDecorationRef.current = null;
   };
 
   const filteredItems = useMemo(
@@ -263,10 +280,12 @@ function IslandDecorateScreenContent({
         </div>
 
         {showGuide && (
-          <div className="absolute left-1/2 top-[92px] z-20 -translate-x-1/2 rounded-full border-2 border-black bg-white px-4 py-2 shadow-lg">
+          <div className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center px-4">
+            <div className="rounded-full border-2 border-black bg-white px-5 py-3 shadow-lg">
             <p className="whitespace-nowrap text-black" style={{ fontSize: "14px", fontWeight: 700 }}>
               Drag items onto your island
             </p>
+            </div>
           </div>
         )}
 
