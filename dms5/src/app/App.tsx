@@ -100,7 +100,7 @@ export default function App() {
   const handleSignupComplete = (user: SavedUser) => {
     saveUser(user);
     setUserName(user.nickname);
-    goToHome();
+    goToSignin();
   };
 
   const goToSignin = () => {
