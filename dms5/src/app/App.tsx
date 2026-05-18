@@ -274,6 +274,7 @@ export default function App() {
           <IslandDecorateScreen
             initialCategory={decorateCategory}
             onBack={goToIslandMain}
+            onStoreClick={goToStore}
             onCategoryChange={handleDecorateCategoryChange}
             onHomeClick={goToHome}
             onMissionClick={() => goToMission()}
