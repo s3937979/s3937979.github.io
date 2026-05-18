@@ -18,7 +18,22 @@ import StoreClosetScreen from "./components/StoreClosetScreen";
 import StoreAppearanceScreen from "./components/StoreAppearanceScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import SettingsScreen from "./components/SettingsScreen";
-import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory, PurchasedCharacterItem, PurchasedDecorItem } from "./types";
+import type { AppPage, DecorateCategory, IslandDecoration, MissionCategory, PurchasedCharacterItem, PurchasedDecorItem, SavedUser } from "./types";
+
+const savedUserStorageKey = "wando.savedUser";
+
+function getSavedUser(): SavedUser | null {
+  try {
+    const savedUser = window.localStorage.getItem(savedUserStorageKey);
+    return savedUser ? JSON.parse(savedUser) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveUser(user: SavedUser) {
+  window.localStorage.setItem(savedUserStorageKey, JSON.stringify(user));
+}
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<AppPage>("logo");
@@ -32,7 +47,7 @@ export default function App() {
   const [purchasedCharacterItems, setPurchasedCharacterItems] = useState<PurchasedCharacterItem[]>([]);
   const [equippedCharacterItem, setEquippedCharacterItem] = useState<PurchasedCharacterItem | null>(null);
   const [islandName, setIslandName] = useState("Island");
-  const [userName, setUserName] = useState("Tommy");
+  const [userName, setUserName] = useState(() => getSavedUser()?.nickname || "Tommy");
 
   const totalSlides = 4; // Splash1, Splash2, Splash3, Signin
 
@@ -64,6 +79,12 @@ export default function App() {
 
   const goToSignup = () => {
     setCurrentPage("signup");
+  };
+
+  const handleSignupComplete = (user: SavedUser) => {
+    saveUser(user);
+    setUserName(user.nickname);
+    goToSignin();
   };
 
   const goToSignin = () => {
@@ -133,6 +154,18 @@ export default function App() {
     setCurrentPage("settings");
   };
 
+  const handleUserNameChange = (nextUserName: string) => {
+    setUserName(nextUserName);
+
+    const savedUser = getSavedUser();
+    if (savedUser) {
+      saveUser({
+        ...savedUser,
+        nickname: nextUserName,
+      });
+    }
+  };
+
   return (
     <div className="min-h-[100dvh] flex items-center justify-center bg-black">
       {/* Mobile app container */}
@@ -172,7 +205,7 @@ export default function App() {
           </div>
         )}
 
-        {currentPage === "signup" && <SignupScreen onComplete={goToSignin} />}
+        {currentPage === "signup" && <SignupScreen onComplete={handleSignupComplete} />}
 
         {currentPage === "home" && (
           <>
@@ -319,7 +352,7 @@ export default function App() {
             onIslandClick={goToIslandMain}
             onProfileClick={goToProfile}
             userName={userName}
-            onUserNameChange={setUserName}
+            onUserNameChange={handleUserNameChange}
           />
         )}
       </div>

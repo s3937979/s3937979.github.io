@@ -2,9 +2,10 @@ import { useState } from "react";
 import Signup1Screen from "./Signup1Screen";
 import Signup2Screen from "./Signup2Screen";
 import Signup3Screen from "./Signup3Screen";
+import type { SavedUser } from "../types";
 
 interface SignupScreenProps {
-  onComplete: () => void;
+  onComplete: (user: SavedUser) => void;
 }
 
 export default function SignupScreen({ onComplete }: SignupScreenProps) {
@@ -25,8 +26,14 @@ export default function SignupScreen({ onComplete }: SignupScreenProps) {
     setSignupStep(3);
   };
 
-  const handleSignup3Complete = () => {
-    onComplete();
+  const handleSignup3Complete = (nickname: string) => {
+    const completedUser = {
+      ...signupData,
+      nickname,
+    };
+
+    setSignupData(completedUser);
+    onComplete(completedUser);
   };
 
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface Signup3ScreenProps {
-  onGetStarted: () => void;
+  onGetStarted: (nickname: string) => void;
 }
 
 export default function Signup3Screen({ onGetStarted }: Signup3ScreenProps) {
@@ -9,7 +9,7 @@ export default function Signup3Screen({ onGetStarted }: Signup3ScreenProps) {
 
   const handleGetStarted = () => {
     if (nickname.trim()) {
-      onGetStarted();
+      onGetStarted(nickname.trim());
     }
   };
 

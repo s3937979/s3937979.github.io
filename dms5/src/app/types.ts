@@ -50,3 +50,9 @@ export type PurchasedCharacterItem = {
   wornImage: string;
   price: number;
 };
+
+export type SavedUser = {
+  email: string;
+  password: string;
+  nickname: string;
+};
