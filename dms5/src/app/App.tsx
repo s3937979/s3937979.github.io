@@ -77,6 +77,22 @@ export default function App() {
     setCurrentPage("home");
   };
 
+  const handleSignin = (email: string, password: string) => {
+    const savedUser = getSavedUser();
+
+    if (!savedUser) {
+      return "Please create an account first.";
+    }
+
+    if (savedUser.email !== email.trim() || savedUser.password !== password) {
+      return "Email or password is incorrect.";
+    }
+
+    setUserName(savedUser.nickname);
+    goToHome();
+    return "";
+  };
+
   const goToSignup = () => {
     setCurrentPage("signup");
   };
@@ -84,7 +100,7 @@ export default function App() {
   const handleSignupComplete = (user: SavedUser) => {
     saveUser(user);
     setUserName(user.nickname);
-    goToSignin();
+    goToHome();
   };
 
   const goToSignin = () => {
@@ -199,7 +215,7 @@ export default function App() {
 
               {/* Signin Screen */}
               <div className="w-full h-full flex-shrink-0">
-                <SigninScreen onGetStarted={goToHome} onCreateAccount={goToSignup} />
+                <SigninScreen onGetStarted={handleSignin} onCreateAccount={goToSignup} />
               </div>
             </div>
           </div>

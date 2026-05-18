@@ -9,10 +9,12 @@ export default function Signup2Screen({ onNext }: Signup2ScreenProps) {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleNext = () => {
-    if (password.trim() && confirmPassword.trim()) {
+    if (password.trim() && confirmPassword.trim() && password === confirmPassword) {
       onNext(password);
     }
   };
+
+  const passwordsDoNotMatch = Boolean(password && confirmPassword && password !== confirmPassword);
 
   return (
     <div className="h-full flex flex-col bg-[#EDEDEE] px-4 overflow-hidden justify-between">
@@ -57,13 +59,19 @@ export default function Signup2Screen({ onNext }: Signup2ScreenProps) {
             style={{ fontSize: '18px', fontWeight: 400 }}
           />
         </div>
+
+        {passwordsDoNotMatch && (
+          <p className="mt-2 text-[#C0392B]" style={{ fontSize: '14px', fontWeight: 700 }}>
+            Passwords do not match.
+          </p>
+        )}
       </div>
 
       {/* Next button */}
       <div className="flex-shrink-0 pb-4">
         <button
           onClick={handleNext}
-          disabled={!password.trim() || !confirmPassword.trim()}
+          disabled={!password.trim() || !confirmPassword.trim() || passwordsDoNotMatch}
           className="w-full py-2.5 bg-[#2C2C2E] text-white rounded-xl disabled:opacity-50"
           style={{ fontSize: '19px', fontWeight: 700 }}
         >

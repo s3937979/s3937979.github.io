@@ -2,13 +2,19 @@ import { useState } from "react";
 import loginTomFin from "../../imports/login-tom-fin.png";
 
 interface SigninScreenProps {
-  onGetStarted: () => void;
+  onGetStarted: (email: string, password: string) => string;
   onCreateAccount: () => void;
 }
 
 export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninScreenProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleGetStarted = () => {
+    const error = onGetStarted(email, password);
+    setErrorMessage(error);
+  };
 
   return (
     <div className="h-full flex flex-col bg-[#EDEDEE] px-4 overflow-hidden">
@@ -33,7 +39,10 @@ export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninSc
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setErrorMessage("");
+            }}
             placeholder="ex) wando@email.com"
             className="w-full px-3 py-2 bg-[#D1D1D4] rounded-lg text-black placeholder:text-black/40"
             style={{ fontSize: '18px', fontWeight: 400 }}
@@ -48,20 +57,30 @@ export default function SigninScreen({ onGetStarted, onCreateAccount }: SigninSc
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setErrorMessage("");
+            }}
             placeholder="ex) 123456789"
             className="w-full px-3 py-2 bg-[#D1D1D4] rounded-lg text-black placeholder:text-black/40"
             style={{ fontSize: '18px', fontWeight: 400 }}
           />
         </div>
+
+        {errorMessage && (
+          <p className="mt-1 text-[#C0392B]" style={{ fontSize: '14px', fontWeight: 700 }}>
+            {errorMessage}
+          </p>
+        )}
       </div>
 
       {/* Bottom section */}
       <div className="flex-shrink-0 mt-3 pb-4">
         {/* Get started button */}
         <button
-          onClick={onGetStarted}
-          className="w-full py-2.5 bg-[#2C2C2E] text-white rounded-xl mb-2 transition-transform duration-200 ease-out hover:scale-[1.04]"
+          onClick={handleGetStarted}
+          disabled={!email.trim() || !password.trim()}
+          className="w-full py-2.5 bg-[#2C2C2E] text-white rounded-xl mb-2 transition-transform duration-200 ease-out hover:scale-[1.04] disabled:opacity-50"
           style={{ fontSize: '19px', fontWeight: 700 }}
         >
           Get started
