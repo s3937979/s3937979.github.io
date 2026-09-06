@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shooting Dreams</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/tgs5udc.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/tgs5udc.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <audio id="bg-music" src="music/background-music.mp3" autoplay loop></audio>
+
+    <div class="main-page">
+      <img
+        src="images/main-page.png"
+        alt="this is my main page."
+        class="main-page"
+        id="main-image"
+      />
+      <img
+        src="images/main-page-stars.png"
+        alt="this is the image of stars on the main page"
+        class="main-page-stars"
+        id="main-image"
+      />
+
+      <h1 id="heading" src="images/second-page.png">Send Shooting Dream</h1>
+    </div>
+
+    <div class="second-page">
+      <img
+        src="images/second-page.png"
+        alt="this is the second page."
+        class="second-page-bg"
+      />
+
+      <img
+        src="images/star-character.png"
+        alt="this is the star character image"
+        class="star-character"
+      />
+
+      <dialog id="myDialog" class="win95-dialog">
+        <div class="dialog-header"></div>
+        <h2>&nbsp;Today's shooting dream</h2>
+
+        <div id="dialog-body">
+          <input type="text" placeholder="Title" class="dream-title" />
+          <input type="text" placeholder="01/JAN/2000" class="dream-date" />
+          <textarea placeholder="Contents" class="dream-contents"></textarea>
+        </div>
+
+        <div id="dialog-footer">
+          <select id="emotion-select">
+            <option>#Emotion</option>
+            <option>#Happy</option>
+            <option>#Sad</option>
+            <option>#Weird</option>
+            <option>#Excited</option>
+            <option>#Scared</option>
+            <option>#Surprised</option>
+            <option>#Angry</option>
+          </select>
+          <button class="send-button" src="images/third-page.png">SEND</button>
+        </div>
+      </dialog>
+    </div>
+
+    <div class="third-page" display="none">
+      <img
+        src="images/third-page.png"
+        alt="this is the third page"
+        class="third-page-bg"
+      />
+
+      <img id="emotion-star" alt="Emotion Star" class="emotion-star" />
+
+      <h3 id="fade-text" class="fade-text">
+        I will shine soon! <br />
+        Don't worry. <br />
+        I'll carry your dream through stars.
+      </h3>
+    </div>
+  </body>
+</html>

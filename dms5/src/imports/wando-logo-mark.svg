@@ -1,0 +1,12 @@
+<svg width="1600" height="1600" viewBox="0 0 1600 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g filter="url(#shadow)">
+    <rect x="60" y="60" width="1480" height="1480" rx="210" fill="#729656"/>
+    <path d="M522 545C424 668 286 842 267 930C256 979 281 1010 318 1044C363 1085 459 1171 522 1219C606 1283 671 1237 700 1216C749 1182 747 1125 726 1080C707 1039 669 997 608 962C652 933 705 891 753 845C709 745 615 597 522 545Z" fill="white"/>
+    <path d="M595 395C657 340 811 318 894 360C927 377 944 405 968 452C1015 545 1075 702 1107 874C1142 843 1195 812 1263 817C1354 823 1414 882 1420 961C1427 1054 1362 1091 1294 1120C1215 1155 1055 1219 975 1244C926 1260 900 1239 880 1212C845 1167 790 1028 745 933C692 823 626 711 578 636C534 568 536 447 595 395Z" fill="white"/>
+  </g>
+  <defs>
+    <filter id="shadow" x="36" y="36" width="1528" height="1528" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+</svg>

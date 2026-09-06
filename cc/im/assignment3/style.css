@@ -1,0 +1,338 @@
+/*
+This CSS file styles both the index page and gameplay elements.
+It contains positioning, animation, typography, and visual interaction for objects.
+Each section is annotated to explain purpose and behavior.
+*/
+
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+/*
+.main-page creates a full-screen layout for the main menu.
+Fixed position ensures persistent visibility.
+z-index ensures it's layered correctly for animations.
+*/
+.main-page {
+  height: 100vh;
+  bottom: 300px;
+  right: 10px;
+  position: fixed;
+  display: flex;
+  z-index: 1;
+}
+
+/*
+The story popup appears centered on the screen when STORY is clicked.
+It includes padding, styling, and z-index layering for prominence.
+*/
+#story-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fffaf0;
+  padding: 40px 50px;
+  border: 3px solid #000;
+  border-radius: 20px;
+  font-family: "Bungee", sans-serif;
+  font-size: 20px;
+  z-index: 9999;
+  text-align: center;
+}
+
+/* Text paragraph styles inside the popup. */
+p {
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  color: #000000;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Close button for the story popup. */
+#close-story {
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 18px;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border: 3px solid #000;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Ketchup animation starting hidden. Pops on load. */
+.ketchup {
+  position: fixed;
+  top: -90px;
+  left: -100px;
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 0.2s ease-out;
+  width: 1700px;
+}
+
+.ketchup.pop {
+  opacity: 1;
+  transform: scale(1.7);
+  animation: popIn 0.3s ease-out forwards;
+}
+
+/* Pop-in keyframe for ketchup. */
+@keyframes popIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tomato image and bounce animation. */
+.tomato1 {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease-out;
+  width: 1500px;
+  position: absolute;
+  top: 400px;
+  right: -60px;
+  z-index: 2;
+}
+
+.tomato1.pop {
+  opacity: 1;
+  animation: bounceIn 0.4s ease-out forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3) translateY(20px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Title animation: styled, scaled, and rotated for flair. */
+.title {
+  position: absolute;
+  top: 420px;
+  right: 500px;
+  transform: translateX(-50%) scale(0.5);
+  opacity: 0;
+  font-size: 150px;
+  color: #000000;
+  transition: all 0.3s ease-out;
+  z-index: 3;
+  font-family: "modak", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 0.8;
+  rotate: -10deg;
+}
+
+.title.pop {
+  opacity: 1;
+  animation: titlePop 0.4s ease-out forwards;
+}
+
+@keyframes titlePop {
+  0% {
+    transform: translateX(-50%) scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Bottom button styles for start and story buttons. */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  position: fixed;
+  bottom: 60px;
+  left: 70%;
+  transform: translateX(-50%) scale(0.8);
+  z-index: 10;
+  opacity: 0;
+  transition: all 0.4s ease-out;
+}
+
+.button-group.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.main-btn {
+  padding: 1px 15px;
+  font-size: 40px;
+  border: 3px solid #000000;
+  border-radius: 19px;
+  background-color: #e32626;
+  color: rgb(0, 0, 0);
+  font-family: "modak", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.main-btn:hover {
+  transform: scale(1.05);
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Game-specific elements follow below */
+
+#game {
+  background-image: url("image/bg-stage1.jpg");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: contain;
+  width: 1520px;
+  height: 770px;
+}
+
+#game.scroll {
+  animation: scroll-bg 10s linear infinite;
+}
+
+@keyframes scroll-bg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100vw 0;
+  }
+}
+
+#stage-start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 60px;
+  border-radius: 20px;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  animation: popIn 0.4s ease;
+}
+
+#tomato2 {
+  position: absolute;
+  bottom: 70px;
+  left: 100px;
+  width: 250px;
+  z-index: 999;
+  transition: bottom 0.3s ease;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.obstacle {
+  width: 300px;
+  height: 100px;
+  bottom: 79px;
+  background-image: url("image/obstacle1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#score {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 48px;
+  color: rgb(0, 0, 0);
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  z-index: 9999;
+}
+
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 4px solid #000;
+  border-radius: 20px;
+  padding: 40px 60px;
+  font-size: 40px;
+  text-align: center;
+  z-index: 9999;
+  display: none;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-over button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 24px;
+  background-color: #e32626;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 15px;
+  border: 3px solid #000000;
+  cursor: pointer;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  transition: transform 0.2s ease;
+}
+
+#game-over button:hover {
+  transform: scale(1.2);
+}
+
+#game-clear {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 60px 100px;
+  background-color: #ffffff;
+  border: 4px solid #222;
+  border-radius: 20px;
+  font-size: 40px;
+  font-family: "lores-15-bold-alt-oakland", sans-serif;
+  z-index: 2000;
+  text-align: center;
+}

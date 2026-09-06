@@ -1,0 +1,490 @@
+/* Jennie’s album Ruby uses red as its signature color, 
+so I chose red as the primary color theme for the website 
+to reflect the album’s identity. I also incorporated the 'Vivaldi' 
+font, which is featured in the album design, to visually align 
+the site with the album’s artistic concept. */
+
+/* === FADE-IN OVERLAY ON PAGE LOAD === */
+/* This overlay creates a smooth fade-in effect when the website is opened,
+   matching the dramatic, theatrical theme of the album (inspired by stage curtains). */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+  animation: fadeOut 1.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* === BASE BODY STYLING === */
+/* Centered layout for dramatic first impact */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+
+/* === HEADER STYLES (ALBUM TITLE, ARTIST NAME, ETC.) === */
+/* These headers use theatrical typography and carefully placed positions
+   to replicate a physical album cover layout. */
+h1 {
+  position: absolute;
+  text-align: center;
+  color: #cb0000;
+  font-size: 230px;
+  top: 260px;
+  left: 440px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  position: absolute;
+  color: #f60707;
+  font-size: 20px;
+  top: 420px;
+  left: 640px;
+  font-family: "pt-serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+h3 {
+  position: relative;
+  color: #ff0000;
+  font-size: 25px;
+  top: 790px;
+  right: 71px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+h4 {
+  position: relative;
+  color: #ff0202;
+  font-size: 60px;
+  top: 680px;
+  right: 10px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+h5 {
+  text-align: left;
+  position: absolute;
+  color: #fff0f0;
+  font-size: 21px;
+  margin-bottom: 10px;
+  width: 1000px;
+  height: 800px;
+  top: 740px;
+  left: -70px;
+  font-family: "bagatela", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+h6 {
+  position: relative;
+  color: #ff0202;
+  background-color: white;
+  width: 170px;
+  font-size: 21px;
+  top: 1090px;
+  left: 931px;
+  font-family: "bagatela", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+h7 {
+  position: relative;
+  color: #ea0000;
+  background-color: white;
+  font-size: 63px;
+  top: 1120px;
+  left: 270px;
+  font-family: "bagatela", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+h8 {
+  position: relative;
+  color: #ff0202;
+  width: 170px;
+  font-size: 50px;
+  top: 1800px;
+  left: -440px;
+  font-family: "vivaldi-mn", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#tracklist {
+  position: relative;
+  list-style: none;
+  padding: 0;
+}
+
+/* === TRACKLIST ITEM POSITIONING === */
+/* Each <li> is manually positioned to allow full visual customization.
+   Although not ideal for responsive design, it aligns with the artistic control over LP layout. */
+#tracklist li {
+  position: absolute;
+  font-size: 1.3rem;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+/* Active track feedback with color change for better UX */
+#tracklist li.active {
+  background-color: #ee3a3a;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: background-color 0.7s ease;
+}
+
+#tracklist li:nth-child(1) {
+  top: 1200px;
+  left: -110px;
+}
+#tracklist li:nth-child(2) {
+  top: 1250px;
+  left: -110px;
+}
+#tracklist li:nth-child(3) {
+  top: 1300px;
+  left: -110px;
+}
+#tracklist li:nth-child(4) {
+  top: 1350px;
+  left: -110px;
+}
+#tracklist li:nth-child(5) {
+  top: 1400px;
+  left: -110px;
+}
+#tracklist li:nth-child(6) {
+  top: 1450px;
+  left: -110px;
+}
+#tracklist li:nth-child(7) {
+  top: 1500px;
+  left: -110px;
+}
+#tracklist li:nth-child(8) {
+  top: 1200px;
+  right: -110px;
+}
+#tracklist li:nth-child(9) {
+  top: 1250px;
+  right: -110px;
+}
+#tracklist li:nth-child(10) {
+  top: 1300px;
+  right: -110px;
+}
+#tracklist li:nth-child(11) {
+  top: 1350px;
+  right: -110px;
+}
+#tracklist li:nth-child(12) {
+  top: 1400px;
+  right: -110px;
+}
+#tracklist li:nth-child(13) {
+  top: 1450px;
+  right: -110px;
+}
+#tracklist li:nth-child(14) {
+  top: 1500px;
+  right: -110px;
+}
+#tracklist li:nth-child(15) {
+  top: 1550px;
+  right: -110px;
+}
+
+.fade-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.main-page {
+  text-align: center;
+  align-items: center;
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-cover {
+  position: absolute;
+  top: 0px;
+  right: 490px;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.album-info {
+  position: relative;
+  align-items: center;
+}
+
+.album-info-image {
+  position: relative;
+  top: 1800px;
+  right: -290px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.album-info-image2 {
+  position: relative;
+  top: 1500px;
+  right: 10px;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* === LP PLAYER STYLING === */
+/* The LP graphic rotates only when playing, mimicking real turntable behavior */
+.lp {
+  position: absolute;
+  top: 2400px;
+  left: 130px;
+  width: 600px;
+  height: 700px;
+  border-radius: 50%;
+  animation: spin 3s linear infinite;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+
+.tonearm {
+  position: absolute;
+  top: 2490px;
+  left: 530px;
+  width: 250px;
+  height: 430px;
+  transform-origin: left center;
+  cursor: grab;
+  user-select: none;
+}
+
+/* Tonearm is interactive and serves as a play/pause toggle.
+   A hover scale effect gives the user visual feedback. */
+.tonearm:hover {
+  transform: scale(1.05);
+}
+
+#click-zone {
+  position: absolute;
+  top: 2830px;
+  left: 530px;
+  width: 150px;
+  height: 50px;
+  transform: rotate(-36deg);
+  background: transparent;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.player-container {
+  width: 500px;
+  text-align: center;
+}
+
+audio {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* === CONTROL BUTTONS === */
+/* Next, previous, repeat buttons are styled as large icons with hover scaling for feedback */
+#next-button {
+  width: 90px;
+  cursor: pointer;
+  position: absolute;
+  top: 2700px;
+  left: 800px;
+  z-index: 20;
+}
+
+#next-button:hover {
+  transform: scale(1.1);
+}
+
+#prev-button {
+  width: 90px;
+  cursor: pointer;
+  position: absolute;
+  top: 2700px;
+  right: 780px;
+  z-index: 20;
+}
+
+#prev-button:hover {
+  transform: scale(1.1);
+}
+
+#repeat-button {
+  position: relative;
+  width: 60px;
+  height: 50px;
+  top: 2110px;
+  right: 600px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#repeat-button.active {
+  transform: scale(1.2);
+}
+
+.volume-container {
+  position: relative;
+  display: inline-block;
+}
+
+#volume-button {
+  position: relative;
+  scale: 2;
+  top: 2010px;
+  left: 660px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#volume-slider {
+  position: relative;
+  top: 2000px;
+  left: 690px;
+  transform: translateX(-50%) rotate(-90deg);
+  width: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+/* === VOLUME CONTROL === */
+/* Volume slider appears on hover for cleaner UI. Rotated vertically for compact design */
+.volume-container:hover #volume-slider {
+  opacity: 3;
+  pointer-events: all;
+}
+
+.song-title {
+  position: relative;
+  top: 2400px;
+  right: -10px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "pt-serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.progress-container {
+  width: 480px;
+  height: 8px;
+  background-color: #000000;
+  border-radius: 4px;
+  top: 2410px;
+  right: -190px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* === PROGRESS BAR AND SONG TITLE === */
+/* Shows current time, duration, and includes a hover enlargement effect */
+.progress-container:hover {
+  transform: scale(1.1);
+  background-color: #fff0f0;
+}
+
+.progress-bar {
+  position: relative;
+  height: 100%;
+  width: 0%;
+  background-color: rgb(204, 15, 15);
+  border-radius: 4px;
+  transition: width 0.2s linear;
+  cursor: pointer;
+}
+
+.time {
+  position: absolute;
+  top: 150%;
+  font-size: 15px;
+  color: #ffffff;
+  transform: translateY(4px);
+  font-family: "pt-serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.time.current {
+  left: 0;
+}
+
+.time.total {
+  right: 0;
+}
+
+/* === COPYRIGHT TEXT === */
+/* Placed at bottom for formal branding. Not using <footer> tag to preserve custom layout */
+.copyright {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #ffffff;
+  position: absolute;
+  top: 3500px;
+  right: 540px;
+}

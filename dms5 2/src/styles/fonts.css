@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Massilia';
+  src: url('../assets/fonts/Massilia-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Massilia';
+  src: url('../assets/fonts/Massilia-Oblique.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Massilia';
+  src: url('../assets/fonts/Massilia-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Massilia';
+  src: url('../assets/fonts/Massilia-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Massilia';
+  src: url('../assets/fonts/Massilia-Bold-Oblique.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Massilia';
+  src: url('../assets/fonts/Massilia-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

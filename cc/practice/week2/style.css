@@ -1,0 +1,23 @@
+* {
+  margin: 15px;
+}
+
+:root {
+  --col01: black;
+  --col02: white;
+  --col03: red;
+  --col04: blue;
+  --border: single 1rem var(--col03);
+}
+
+.container {
+  position: relative;
+  width: 300%;
+  height: 500px;
+}
+
+img {
+  position: absolute;
+  top: 300px;
+  left: 300px;
+}
